@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Odontología 2026 — Hospital Dr. Leonardo Guzmán</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --az1:#0B4F72;--az2:#1A7AAF;--az3:#2196C4;--azc:#E8F4FB;--azm:#B8D9EE;
+  --teal:#0F8B8D;--verde:#0E7A5A;--vbg:#E6F4EF;
+  --amber:#9A6200;--abg:#FEF3CD;
+  --rojo:#C0392B;--rbg:#FDECEA;
+  --fondo:#F4F7FA;--borde:#DDE8F0;--texto:#0D2E42;--muted:#6B8CA4;--blanco:#fff;
+  --r:10px;--r2:14px;
+}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo);color:var(--texto);font-size:13px}
+/* LOADER */
+#loader{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;gap:16px}
+.spin{width:40px;height:40px;border:3px solid var(--azc);border-top-color:var(--az2);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* HEADER */
+.hdr{background:var(--blanco);border-bottom:1px solid var(--borde);padding:0 24px;display:flex;align-items:center;gap:0;height:60px;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(11,79,114,.06)}
+.hdr-brand{display:flex;align-items:center;gap:12px;padding-right:24px;border-right:1px solid var(--borde)}
+.logo{width:36px;height:36px;border-radius:50%;background:var(--az1);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#fff;letter-spacing:-.5px;flex-shrink:0}
+.brand-txt h1{font-size:13px;font-weight:700;color:var(--az1);line-height:1.2}
+.brand-txt p{font-size:10px;color:var(--muted)}
+.hdr-nav{display:flex;align-items:center;gap:2px;padding:0 20px;flex:1}
+.nb{padding:6px 14px;border:none;background:none;font-family:inherit;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;border-radius:7px;transition:all .15s}
+.nb:hover{background:var(--azc);color:var(--az1)}
+.nb.on{background:var(--az1);color:#fff}
+.hdr-r{display:flex;align-items:center;gap:10px;margin-left:auto}
+.sel{font-family:inherit;font-size:12px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none}
+.live{background:#E6F9F2;color:#0E7A5A;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px}
+.upd{font-size:10px;color:var(--muted)}
+/* MAIN */
+.main{padding:20px 24px 48px;max-width:1200px;margin:0 auto}
+/* KPI */
+.krow{display:grid;gap:12px;margin-bottom:20px}
+.krow5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.krow3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.krow4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kc{background:var(--blanco);border-radius:var(--r2);border:1px solid var(--borde);padding:16px 16px 13px;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.kc:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(11,79,114,.09)}
+.kc-bar{position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r2) var(--r2) 0 0}
+.klbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.kval{font-size:22px;font-weight:700;line-height:1;margin-bottom:3px}
+.ksub{font-size:11px;color:var(--muted)}
+.pbar{height:3px;background:var(--borde);border-radius:2px;margin-top:8px;overflow:hidden}
+.pbf{height:100%;border-radius:2px;width:0%;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.ppct{font-size:10px;color:var(--muted);margin-top:4px;display:flex;align-items:center;gap:5px}
+.bdg{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px}
+.bok{background:var(--vbg);color:var(--verde)}.bwarn{background:var(--abg);color:var(--amber)}.blow{background:var(--rbg);color:var(--rojo)}.binfo{background:var(--azc);color:var(--az1)}
+/* CARDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.g13{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:20px}
+.card{background:var(--blanco);border-radius:var(--r2);border:1px solid var(--borde);padding:18px}
+.card-h{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.ct{font-size:13px;font-weight:700;color:var(--texto)}
+.cs{font-size:11px;color:var(--muted);margin-top:2px}
+/* TABLA */
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:0 10px 10px;text-align:left;border-bottom:1px solid var(--borde);white-space:nowrap}
+.tbl th.r{text-align:right}
+.tbl td{padding:9px 10px;border-bottom:1px solid #F0F5F9;vertical-align:middle}
+.tbl td.r{text-align:right}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#F7FBFE}
+.ename{font-weight:600;color:var(--az1)}
+.espec{font-size:10px;color:var(--muted);margin-top:1px}
+.mbar{height:4px;background:var(--borde);border-radius:2px;overflow:hidden;width:56px;display:inline-block;vertical-align:middle}
+.mbarf{height:100%;border-radius:2px}
+/* FILTROS */
+.frow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.chip{padding:6px 14px;border:1px solid var(--borde);border-radius:20px;font-size:11px;font-weight:500;color:var(--muted);cursor:pointer;background:var(--blanco);transition:all .15s;font-family:inherit}
+.chip:hover{border-color:var(--az2);color:var(--az1)}
+.chip.on{background:var(--az1);color:#fff;border-color:var(--az1)}
+/* ANIM */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .35s ease both}
+.fu:nth-child(1){animation-delay:.04s}.fu:nth-child(2){animation-delay:.08s}
+.fu:nth-child(3){animation-delay:.12s}.fu:nth-child(4){animation-delay:.16s}
+.fu:nth-child(5){animation-delay:.20s}
+/* SECTION LABEL */
+.slbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 12px;display:flex;align-items:center;gap:8px}
+.slbl::after{content:'';flex:1;height:1px;background:var(--borde)}
+/* GAUGE */
+.gauge-num{font-size:26px;font-weight:700;text-align:center;line-height:1}
+.gauge-lbl{font-size:11px;color:var(--muted);text-align:center;margin-top:3px}
+/* STAT ROW */
+.srow{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F0F5F9}
+.srow:last-child{border-bottom:none}
+.slname{font-size:12px;font-weight:500;color:var(--texto)}
+.slval{font-size:12px;font-weight:700}
+@media(max-width:900px){.krow5{grid-template-columns:repeat(3,1fr)}.g2,.g3,.g13{grid-template-columns:1fr}}
+@media(max-width:600px){.krow5,.krow3,.krow4{grid-template-columns:1fr 1fr}.main{padding:12px 12px 40px}}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="spin"></div>
+  <div style="font-size:13px;color:var(--muted);font-weight:500">Cargando datos del Servicio Dental...</div>
+</div>
+
+<div id="app" style="display:none">
+<div class="hdr">
+  <div class="hdr-brand">
+    <img src="data:image/jpeg;base64,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" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0" alt="HRA Logo">
+    <div class="brand-txt">
+      <h1>Hospital Dr. Leonardo Guzmán</h1>
+      <p>Servicio Dental · Antofagasta · 2026</p>
+    </div>
+  </div>
+  <div class="hdr-nav">
+    <button class="nb on" onclick="setVista('general',this)">General</button>
+    <button class="nb" onclick="setVista('especialistas',this)">Especialidad</button>
+    <button class="nb" onclick="setVista('profesional',this)">Profesional</button>
+    <button class="nb" onclick="setVista('inasistencia',this)">Inasistencia</button>
+    <button class="nb" onclick="setVista('financiero',this)">Financiero</button>
+  </div>
+  <div class="hdr-r">
+    <select class="sel" id="sel-mes" onchange="render()"></select>
+    <span class="upd" id="upd-lbl"></span>
+  </div>
+</div>
+
+<div class="main" id="cnt"></div>
+</div>
+
+<script>
+const DATA_URL = 'datos.json';
+let DB = null, vista = 'general', espActiva = 'todas', profActivo = 'todos';
+let charts = {};
+
+// ── UTILIDADES ──
+const pct = (a,b) => b>0 ? Math.round(a/b*100) : 0;
+const fmt = n => {
+  if(!n||n===0) return '$0';
+  if(n>=1e6) return '$'+(Math.round(n/1e5)/10).toFixed(1)+'M';
+  if(n>=1e3) return '$'+Math.round(n/1e3)+'K';
+  return '$'+n.toLocaleString('es-CL');
+};
+const pcls = p => p>=85?'bok':p>=55?'bwarn':'blow';
+const pclr = p => p>=85?'#0E7A5A':p>=55?'#9A6200':'#C0392B';
+const destroyCharts = () => {Object.values(charts).forEach(c=>{try{c.destroy()}catch(e){}});charts={};};
+
+// ── CARGA DE DATOS ──
+async function cargarDatos(){
+  try{
+    const r = await fetch(DATA_URL+'?t='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    DB = await r.json();
+    document.getElementById('upd-lbl').textContent = 'Actualizado: '+DB.actualizado;
+    poblarMeses();
+    render();
+    document.getElementById('loader').style.display='none';
+    document.getElementById('app').style.display='block';
+  } catch(e){
+    document.getElementById('loader').innerHTML = '<div style="color:#C0392B;font-size:14px;text-align:center;padding:20px">Error al cargar datos.<br><small>'+e.message+'</small></div>';
+  }
+}
+
+function poblarMeses(){
+  const sel = document.getElementById('sel-mes');
+  sel.innerHTML = '<option value="acum">Acumulado '+DB.meses.length+' meses</option>';
+  DB.meses.forEach(m=>{
+    const label = m.replace('01_','').replace('02_','').replace('03_','').replace('04_','').replace('05_','').replace('06_','').replace('07_','').replace('08_','').replace('09_','').replace(/^\d+_/,'');
+    const opt = document.createElement('option');
+    opt.value=m; opt.textContent=label+' 2026';
+    sel.appendChild(opt);
+  });
+}
+
+// ── DATOS AGREGADOS ──
+function getDatoEsp(nombre, mes){
+  const meses = DB.especialistas[nombre]?.meses || {};
+  if(mes==='acum'){
+    return Object.values(meses).reduce((a,b)=>({
+      cne:a.cne+b.cne, control:a.control+b.control, altas:a.altas+b.altas,
+      inasist_cne:a.inasist_cne+b.inasist_cne, inasist_ctrl:a.inasist_ctrl+b.inasist_ctrl,
+      ppv:a.ppv+b.ppv, ingresos:a.ingresos+b.ingresos,
+      meta_altas_mes:a.meta_altas_mes+b.meta_altas_mes,
+      meta_cne_mes:a.meta_cne_mes+b.meta_cne_mes,
+    }),{cne:0,control:0,altas:0,inasist_cne:0,inasist_ctrl:0,ppv:0,ingresos:0,meta_altas_mes:0,meta_cne_mes:0});
+  }
+  return meses[mes]||{cne:0,control:0,altas:0,inasist_cne:0,inasist_ctrl:0,ppv:0,ingresos:0,meta_altas_mes:0,meta_cne_mes:0};
+}
+
+function getTotales(mes, filtroEsp, filtroPro){
+  let cne=0,ctrl=0,altas=0,ic=0,ik=0,ppv=0,mA=0,mC=0;
+  Object.keys(DB.especialistas).forEach(n=>{
+    const e=DB.especialistas[n];
+    if(filtroEsp && filtroEsp!=='todas' && e.especialidad!==filtroEsp) return;
+    if(filtroPro && filtroPro!=='todos' && n!==filtroPro) return;
+    const d=getDatoEsp(n,mes);
+    cne+=d.cne;ctrl+=d.control;altas+=d.altas;
+    ic+=d.inasist_cne;ik+=d.inasist_ctrl;ppv+=d.ppv;
+    mA+=d.meta_altas_mes; mC+=d.meta_cne_mes;
+  });
+  return {cne,ctrl,altas,ic,ik,ppv,mA,mC};
+}
+
+function getMesPorNum(num){
+  return DB.meses.find(m=>m.startsWith(num+'_')||m.startsWith('0'+num+'_'))||null;
+}
+
+// ── RENDER PRINCIPAL ──
+function setVista(v, btn){
+  vista=v;
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  render();
+}
+
+function render(){
+  destroyCharts();
+  const mes = document.getElementById('sel-mes')?.value||'acum';
+  const cnt = document.getElementById('cnt');
+  if(vista==='general')       cnt.innerHTML = renderGeneral(mes);
+  else if(vista==='especialistas') cnt.innerHTML = renderEspecialistas(mes);
+  else if(vista==='profesional'){
+    cnt.innerHTML = renderProfesional(mes);
+    const firstName = Object.keys(DB.especialistas).sort()[0];
+    setTimeout(()=>renderProfesionalDetalle(firstName, mes), 80);
+  }
+  else if(vista==='inasistencia')  cnt.innerHTML = renderInasistencia(mes);
+  else cnt.innerHTML = renderFinanciero(mes);
+  setTimeout(()=>drawCharts(mes), 80);
+}
+
+// ── KPI CARD SIMPLE ──
+function kpi(color,lbl,val,sub){
+  return `<div class="kc fu">
+    <div class="kc-bar" style="background:${color}"></div>
+    <div class="klbl">${lbl}</div>
+    <div class="kval" style="color:${color}">${val}</div>
+    <div class="ksub">${sub}</div>
+  </div>`;
+}
+
+// ── KPI CON SEMÁFORO ──
+function kpiSemaforo(lbl, val, sub, pctReal, pctEsperado){
+  const ratio = pctEsperado > 0 ? (pctReal / pctEsperado) * 100 : 0;
+  let color, icono, bdgCls, estado;
+  if(ratio < 90){ color='#C0392B'; icono='✗'; bdgCls='blow'; estado='Bajo lo esperado'; }
+  else if(ratio > 110){ color='#9A6200'; icono='✗'; bdgCls='bwarn'; estado='Sobre lo esperado'; }
+  else { color='#0E7A5A'; icono='✓'; bdgCls='bok'; estado='Dentro del rango'; }
+  return `<div class="kc fu">
+    <div class="kc-bar" style="background:${color}"></div>
+    <div class="klbl">${lbl}</div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="kval" style="color:${color}">${val}</div>
+      <span style="font-size:22px;font-weight:900;color:${color}">${icono}</span>
+    </div>
+    <div class="ksub">${sub}</div>
+    <div class="pbar"><div class="pbf" style="background:${color}" data-w="${Math.min(pctReal,100)}"></div></div>
+    <div class="ppct">${pctReal}% anual <span class="bdg ${bdgCls}">${estado}</span></div>
+  </div>`;
+}
+
+// ── VISTA GENERAL ──
+function renderGeneral(mes){
+  const t=getTotales(mes, espActiva, profActivo);
+  // When filtering by speciality or professional, use corresponding metas
+  let META_ALTAS_ANUAL=4233, META_CNE_ANUAL=6326;
+  if(profActivo && profActivo!=='todos'){
+    const ep = DB.especialistas[profActivo];
+    META_ALTAS_ANUAL = ep ? ep.meta_altas : 0;
+    META_CNE_ANUAL   = ep ? ep.meta_cne   : 0;
+  } else if(espActiva && espActiva!=='todas'){
+    META_ALTAS_ANUAL=0; META_CNE_ANUAL=0;
+    Object.entries(DB.especialistas).forEach(([n,e])=>{
+      if(e.especialidad===espActiva){ META_ALTAS_ANUAL+=e.meta_altas; META_CNE_ANUAL+=e.meta_cne; }
+    });
+  }
+  const nMeses = mes==='acum' ? DB.meses.length : 1;
+
+  const pA = pct(t.altas, META_ALTAS_ANUAL);
+  const pC = pct(t.cne,   META_CNE_ANUAL);
+  const pEsperado = Math.round(nMeses / 12 * 100);
+
+  const pCumpl = Math.round((pA + pC) / 2);
+  const ratioCumpl = pEsperado > 0 ? (pCumpl / pEsperado) * 100 : 0;
+  let colorCumpl, iconoCumpl, bdgCumpl, estadoCumpl;
+  if(ratioCumpl < 90){ colorCumpl='#C0392B'; iconoCumpl='✗'; bdgCumpl='blow'; estadoCumpl='Bajo lo esperado'; }
+  else if(ratioCumpl > 110){ colorCumpl='#9A6200'; iconoCumpl='✗'; bdgCumpl='bwarn'; estadoCumpl='Sobre lo esperado'; }
+  else { colorCumpl='#0E7A5A'; iconoCumpl='✓'; bdgCumpl='bok'; estadoCumpl='Dentro del rango'; }
+
+  // Top 5 por altas (filtrado por especialidad si aplica)
+  const top5 = Object.entries(DB.especialistas)
+    .filter(([n,e])=>!espActiva||espActiva==='todas'||e.especialidad===espActiva)
+    .map(([n,e])=>{const d=getDatoEsp(n,mes);return{n,d,e};})
+    .sort((a,b)=>b.d.altas-a.d.altas).slice(0,5);
+
+  const top5rows = top5.map(x=>{
+    const mA=x.d.meta_altas_mes;
+    const p=pct(x.d.altas,mA);
+    return `<div class="srow">
+      <div><div class="slname">${x.n}</div><div style="font-size:10px;color:var(--muted)">${x.e.especialidad}</div></div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="mbar"><div class="mbarf" style="width:${Math.min(p,100)}%;background:${x.e.color}"></div></div>
+        <span style="font-size:12px;font-weight:700;color:${x.e.color}">${x.d.altas}</span>
+        <span class="bdg ${pcls(p)}">${p}%</span>
+      </div>
+    </div>`;
+  }).join('');
+
+    const espsDisp = [...new Set(Object.values(DB.especialistas).map(e=>e.especialidad))].sort();
+  const espOpts = `<option value="todas">Todas las especialidades</option>` +
+    espsDisp.map(e=>`<option value="${e}" ${espActiva===e?'selected':''}>${e}</option>`).join('');
+  const profFiltrados = Object.keys(DB.especialistas).filter(n=>
+    espActiva==='todas' || DB.especialistas[n].especialidad===espActiva
+  ).sort();
+  const profOpts = `<option value="todos">Todos los profesionales</option>` +
+    profFiltrados.map(n=>`<option value="${n}" ${profActivo===n?'selected':''}>${n}</option>`).join('');
+
+  return `
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:10px 14px;background:var(--blanco);border-radius:var(--r2);border:1px solid var(--borde)">
+  <button onclick="resetFiltros()" style="font-family:inherit;font-size:11px;font-weight:700;color:${espActiva==='todas'&&profActivo==='todos'?'#fff':'var(--az1)'};background:${espActiva==='todas'&&profActivo==='todos'?'var(--az1)':'var(--azc)'};border:1px solid var(--azm);border-radius:7px;padding:6px 14px;cursor:pointer">Servicio Dental (Todos)</button>
+  <span style="color:var(--borde);font-size:16px">›</span>
+  <select onchange="setEspActiva(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${espOpts}</select>
+  <span style="color:var(--borde);font-size:16px">›</span>
+  <select onchange="setProfActivo(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${profOpts}</select>
+</div>
+<div class="krow krow3">
+  ${kpiSemaforo('Consultas nuevas (CNE)', t.cne.toLocaleString('es-CL'), 'Meta anual: '+META_CNE_ANUAL.toLocaleString('es-CL'), pC, pEsperado)}
+  ${kpiSemaforo('Altas de tratamiento', t.altas.toLocaleString('es-CL'), 'Meta anual: '+META_ALTAS_ANUAL.toLocaleString('es-CL'), pA, pEsperado)}
+  ${(()=>{
+    // Top 2 especialidades por ausentismo CNE
+    const espInasCNE = Object.entries(DB.especialistas).map(([n,e])=>{
+      const d=getDatoEsp(n,mes);
+      return {esp:e.especialidad, ic:d.inasist_cne, cne:d.cne};
+    }).reduce((acc,x)=>{
+      if(!acc[x.esp]) acc[x.esp]={ic:0,cne:0};
+      acc[x.esp].ic+=x.ic; acc[x.esp].cne+=x.cne; return acc;
+    },{});
+    const sortedCNE=Object.entries(espInasCNE).map(([e,v])=>({e,p:v.cne>0?Math.round(v.ic/v.cne*100):0,ic:v.ic})).filter(x=>x.ic>0).sort((a,b)=>b.p-a.p);
+    const top2cne=sortedCNE.slice(0,2);
+    const restoCNE=100-top2cne.reduce((s,x)=>s+x.p,0);
+    const subCNE=top2cne.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCNE)}%`).join(' · ');
+    const pCNE=t.cne>0?Math.round(t.ic/t.cne*100):0; return kpi('#C0392B','Inasistentes a CNE', t.ic.toLocaleString('es-CL')+' ('+pCNE+'%)', subCNE);
+  })()}
+</div>
+<div class="krow krow3" style="margin-top:-8px">
+  ${(()=>{
+    const espInasCtrl = Object.entries(DB.especialistas).map(([n,e])=>{
+      const d=getDatoEsp(n,mes);
+      return {esp:e.especialidad, ik:d.inasist_ctrl, ctrl:d.control};
+    }).reduce((acc,x)=>{
+      if(!acc[x.esp]) acc[x.esp]={ik:0,ctrl:0};
+      acc[x.esp].ik+=x.ik; acc[x.esp].ctrl+=x.ctrl; return acc;
+    },{});
+    const sortedCtrl=Object.entries(espInasCtrl).map(([e,v])=>({e,p:v.ctrl>0?Math.round(v.ik/v.ctrl*100):0,ik:v.ik})).filter(x=>x.ik>0).sort((a,b)=>b.p-a.p);
+    const top2ctrl=sortedCtrl.slice(0,2);
+    const restoCtrl=100-top2ctrl.reduce((s,x)=>s+x.p,0);
+    const subCtrl=top2ctrl.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCtrl)}%`).join(' · ');
+    const pCtrl=t.ctrl>0?Math.round(t.ik/t.ctrl*100):0; return kpi('#E67E22','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl);
+  })()}
+  ${(()=>{
+    const espPPV = Object.entries(DB.especialistas).map(([n,e])=>{
+      const d=getDatoEsp(n,mes);
+      return {esp:e.especialidad, ppv:d.ppv};
+    }).reduce((acc,x)=>{
+      if(!acc[x.esp]) acc[x.esp]=0;
+      acc[x.esp]+=x.ppv; return acc;
+    },{});
+    const sortedPPV=Object.entries(espPPV).map(([e,v])=>({e,ppv:v})).filter(x=>x.ppv>0).sort((a,b)=>b.ppv-a.ppv);
+    const top2ppv=sortedPPV.slice(0,2);
+    const restoPPV=t.ppv>0?Math.max(0,100-top2ppv.reduce((s,x)=>s+Math.round(x.ppv/t.ppv*100),0)):0;
+    const subPPV=top2ppv.map(x=>`${x.e}: ${t.ppv>0?Math.round(x.ppv/t.ppv*100):0}%`).concat(`Restantes: ${restoPPV}%`).join(' · ');
+    return kpi('#0E7A5A','Registro Financiero PPV', fmt(t.ppv), subPPV);
+  })()}
+  <div class="kc fu">
+    <div class="kc-bar" style="background:${colorCumpl}"></div>
+    <div class="klbl">Cumplimiento programación</div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="kval" style="color:${colorCumpl}">${pCumpl}%</div>
+      <span style="font-size:22px;font-weight:900;color:${colorCumpl}">${iconoCumpl}</span>
+    </div>
+    <div class="ksub">CNE ${pC}% · Altas ${pA}%</div>
+    <div class="pbar"><div class="pbf" style="background:${colorCumpl}" data-w="${Math.min(pCumpl,100)}"></div></div>
+    <div class="ppct">Esperado al corte: ${pEsperado}% <span class="bdg ${bdgCumpl}">${estadoCumpl}</span></div>
+  </div>
+</div>
+</div>
+</div>
+<div class="g2" style="grid-template-columns:1fr">
+  <div class="card">
+    <div class="card-h">
+      <div><div class="ct">Análisis de ausentismo</div><div class="cs">Según especialidad seleccionada arriba</div></div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select id="sel-tipo-inas" onchange="renderPanelCruzado()" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:5px 10px;cursor:pointer;outline:none">
+          <option value="CNE">Inasistencia a CNE</option>
+          <option value="Control">Inasistencia a Control</option>
+        </select>
+      </div>
+    </div>
+    <div id="panel-cruzado"></div>
+  </div>
+</div>`;
+}
+
+// ── VISTA ESPECIALISTAS ──
+function renderEspecialistas(mes){
+  const names = Object.keys(DB.especialistas);
+  const rows = names.map(n=>{
+    const e=DB.especialistas[n], d=getDatoEsp(n,mes);
+    const p=pct(d.altas,d.meta_altas_mes);
+    const pi=d.cne+d.control>0?Math.round((d.inasist_cne+d.inasist_ctrl)/(d.cne+d.control)*100):0;
+    return {n,e,d,p,pi};
+  }).sort((a,b)=>b.d.altas-a.d.altas);
+
+  const chips = [...new Set(names.map(n=>DB.especialistas[n].especialidad))].sort();
+
+  const tbody = rows.map(r=>`
+    <tr class="esp-row" data-esp="${r.e.especialidad}">
+      <td><div class="ename">${r.n}</div><div class="espec">${r.e.especialidad}</div></td>
+      <td class="r">${r.d.cne}</td>
+      <td class="r">${r.d.control}</td>
+      <td class="r"><strong>${r.d.altas}</strong></td>
+      <td class="r">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end">
+          <div class="mbar"><div class="mbarf" style="width:${Math.min(r.p,100)}%;background:${r.e.color}"></div></div>
+          <span class="bdg ${pcls(r.p)}">${r.p}%</span>
+        </div>
+      </td>
+      <td class="r"><span style="color:${r.pi>25?'#C0392B':'#0E7A5A'};font-weight:700">${r.pi}%</span></td>
+      <td class="r">${fmt(r.d.ppv)}</td>
+    </tr>`).join('');
+
+  return `
+<div class="frow">
+  <span style="font-size:11px;color:var(--muted);font-weight:600">Especialidad:</span>
+  <button class="chip on" onclick="filtrarEsp(this,'todas')">Todas</button>
+  ${chips.map(c=>`<button class="chip" onclick="filtrarEsp(this,'${c}')">${c}</button>`).join('')}
+</div>
+<div class="card">
+  <div class="card-h">
+    <div><div class="ct">Producción detallada — 26 especialistas</div><div class="cs">Ordenado por altas · ${mes==='acum'?'Acumulado '+DB.meses.length+' meses':mes.replace(/^\d+_/,'')}</div></div>
+    <span class="bdg binfo">26 profesionales · 10 especialidades</span>
+  </div>
+  <div style="overflow-x:auto">
+    <table class="tbl" id="esp-tbl">
+      <thead><tr>
+        <th>Especialista</th><th class="r">CNE</th><th class="r">Ctrl</th>
+        <th class="r">Altas</th><th class="r">Cumplimiento</th>
+        <th class="r">% Inas.</th><th class="r">PPV</th>
+      </tr></thead>
+      <tbody>${tbody}</tbody>
+    </table>
+  </div>
+</div>`;
+}
+
+function filtrarGeneral(btn, esp){
+  espActiva = esp;
+  document.querySelectorAll('.frow .chip').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+  poblarSelectorEsp();
+  setTimeout(renderPanelCruzado, 50);
+}
+
+function setEspActiva(val){
+  espActiva = val;
+  profActivo = 'todos';
+  render();
+}
+
+function setProfActivo(val){
+  profActivo = val;
+  render();
+}
+
+function resetFiltros(){
+  espActiva = 'todas';
+  profActivo = 'todos';
+  render();
+}
+
+function filtrarEsp(btn, esp){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.esp-row').forEach(r=>{
+    r.style.display=(esp==='todas'||r.dataset.esp===esp)?'':'none';
+  });
+}
+
+// ── VISTA INASISTENCIA ──
+function renderInasistencia(mes){
+  const names = Object.keys(DB.especialistas);
+  let totInas=0,totCne=0,totCtrl=0;
+  const ranking = names.map(n=>{
+    const d=getDatoEsp(n,mes), e=DB.especialistas[n];
+    const tot=d.inasist_cne+d.inasist_ctrl;
+    const base=d.cne+d.control;
+    const p=base>0?Math.round(tot/base*100):0;
+    totInas+=tot; totCne+=d.cne; totCtrl+=d.control;
+    return {n,tot,p,e,d};
+  }).filter(x=>x.tot>0).sort((a,b)=>b.p-a.p);
+
+  const pGlobal=totCne+totCtrl>0?Math.round(totInas/(totCne+totCtrl)*100):0;
+
+  const rankRows = ranking.slice(0,12).map(r=>`
+    <tr>
+      <td><div class="ename">${r.n}</div><div class="espec">${r.e.especialidad}</div></td>
+      <td class="r">${r.d.inasist_cne}</td>
+      <td class="r">${r.d.inasist_ctrl}</td>
+      <td class="r"><strong>${r.tot}</strong></td>
+      <td class="r"><span style="color:${r.p>25?'#C0392B':r.p>15?'#9A6200':'#0E7A5A'};font-weight:700">${r.p}%</span></td>
+    </tr>`).join('');
+
+    const espsDisp = [...new Set(Object.values(DB.especialistas).map(e=>e.especialidad))].sort();
+  const espOpts = `<option value="todas">Todas las especialidades</option>` +
+    espsDisp.map(e=>`<option value="${e}" ${espActiva===e?'selected':''}>${e}</option>`).join('');
+  const profFiltrados = Object.keys(DB.especialistas).filter(n=>
+    espActiva==='todas' || DB.especialistas[n].especialidad===espActiva
+  ).sort();
+  const profOpts = `<option value="todos">Todos los profesionales</option>` +
+    profFiltrados.map(n=>`<option value="${n}" ${profActivo===n?'selected':''}>${n}</option>`).join('');
+
+  return `
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:10px 14px;background:var(--blanco);border-radius:var(--r2);border:1px solid var(--borde)">
+  <button onclick="resetFiltros()" style="font-family:inherit;font-size:11px;font-weight:700;color:${espActiva==='todas'&&profActivo==='todos'?'#fff':'var(--az1)'};background:${espActiva==='todas'&&profActivo==='todos'?'var(--az1)':'var(--azc)'};border:1px solid var(--azm);border-radius:7px;padding:6px 14px;cursor:pointer">Servicio Dental (Todos)</button>
+  <span style="color:var(--borde);font-size:16px">›</span>
+  <select onchange="setEspActiva(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${espOpts}</select>
+  <span style="color:var(--borde);font-size:16px">›</span>
+  <select onchange="setProfActivo(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${profOpts}</select>
+</div>
+<div class="krow krow3">
+  ${kpi('#C0392B','Total inasistencias',totInas.toLocaleString('es-CL'),mes==='acum'?'Acumulado '+DB.meses.length+' meses':'Mes seleccionado')}
+  ${kpi(pGlobal>25?'#C0392B':'#0E7A5A','Tasa global',pGlobal+'%','Meta institucional: &lt;20%')}
+  ${kpi('#1A7AAF','Atenciones programadas',(totCne+totCtrl).toLocaleString('es-CL'),'CNE + Controles')}
+</div>
+<div class="g2">
+  <div class="card">
+    <div class="card-h"><div><div class="ct">Ranking por % inasistencia</div><div class="cs">Relativo a carga programada</div></div></div>
+    <div style="overflow-x:auto">
+      <table class="tbl">
+        <thead><tr><th>Especialista</th><th class="r">Inas.CNE</th><th class="r">Inas.Ctrl</th><th class="r">Total</th><th class="r">%</th></tr></thead>
+        <tbody>${rankRows}</tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div><div class="ct">Evolución inasistencias</div><div class="cs">CNE vs Control por mes</div></div></div>
+    <div style="position:relative;height:260px"><canvas id="ch-inas" role="img" aria-label="Evolución inasistencias"></canvas></div>
+  </div>
+</div>`;
+}
+
+// ── VISTA FINANCIERO ──
+function renderFinanciero(mes){
+  const names = Object.keys(DB.especialistas);
+  const topPPV = names.map(n=>{
+    const d=getDatoEsp(n,mes), e=DB.especialistas[n];
+    return{n,ppv:d.ppv,e};
+  }).filter(x=>x.ppv>0).sort((a,b)=>b.ppv-a.ppv);
+
+  const t=getTotales(mes, espActiva, profActivo);
+  const ppvRows = topPPV.slice(0,10).map(r=>{
+    const p=t.ppv>0?Math.round(r.ppv/t.ppv*100):0;
+    return `<tr>
+      <td><div class="ename">${r.n}</div><div class="espec">${r.e.especialidad}</div></td>
+      <td class="r" style="color:#0E7A5A;font-weight:700">${fmt(r.ppv)}</td>
+      <td class="r">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end">
+          <div class="mbar"><div class="mbarf" style="width:${p}%;background:${r.e.color}"></div></div>
+          <span style="font-size:11px;color:var(--muted)">${p}%</span>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+
+    const espsDisp = [...new Set(Object.values(DB.especialistas).map(e=>e.especialidad))].sort();
+  const espOpts = `<option value="todas">Todas las especialidades</option>` +
+    espsDisp.map(e=>`<option value="${e}" ${espActiva===e?'selected':''}>${e}</option>`).join('');
+  const profFiltrados = Object.keys(DB.especialistas).filter(n=>
+    espActiva==='todas' || DB.especialistas[n].especialidad===espActiva
+  ).sort();
+  const profOpts = `<option value="todos">Todos los profesionales</option>` +
+    profFiltrados.map(n=>`<option value="${n}" ${profActivo===n?'selected':''}>${n}</option>`).join('');
+
+  return `
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:10px 14px;background:var(--blanco);border-radius:var(--r2);border:1px solid var(--borde)">
+  <button onclick="resetFiltros()" style="font-family:inherit;font-size:11px;font-weight:700;color:${espActiva==='todas'&&profActivo==='todos'?'#fff':'var(--az1)'};background:${espActiva==='todas'&&profActivo==='todos'?'var(--az1)':'var(--azc)'};border:1px solid var(--azm);border-radius:7px;padding:6px 14px;cursor:pointer">Servicio Dental (Todos)</button>
+  <span style="color:var(--borde);font-size:16px">›</span>
+  <select onchange="setEspActiva(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${espOpts}</select>
+  <span style="color:var(--borde);font-size:16px">›</span>
+  <select onchange="setProfActivo(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${profOpts}</select>
+</div>
+<div class="krow krow3">
+  ${kpi('#0E7A5A','Registro Financiero PPV total',fmt(t.ppv),mes==='acum'?'Acumulado '+DB.meses.length+' meses':'Mes seleccionado')}
+  ${kpi('#0B4F72','Arancel NoGES','$156.330','Por alta estándar')}
+  ${kpi('#C0842D','Arancel GES','$525.230','Paquete trazadora 60+')}
+</div>
+<div class="g2">
+  <div class="card">
+    <div class="card-h"><div><div class="ct">Ranking PPV por especialista</div><div class="cs">% participación en total</div></div></div>
+    <div style="overflow-x:auto">
+      <table class="tbl">
+        <thead><tr><th>Especialista</th><th class="r">Monto</th><th class="r">% Total</th></tr></thead>
+        <tbody>${ppvRows}</tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div><div class="ct">PPV mensual por especialidad</div><div class="cs">Principales especialidades</div></div></div>
+    <div style="position:relative;height:280px"><canvas id="ch-ppv" role="img" aria-label="PPV mensual"></canvas></div>
+  </div>
+</div>`;
+}
+
+// ── VISTA PROFESIONAL ──
+function renderProfesional(mes){
+  const names = Object.keys(DB.especialistas).sort();
+  return `
+<div class="frow" style="margin-bottom:16px">
+  <span style="font-size:11px;color:var(--muted);font-weight:600">Profesional:</span>
+  <select onchange="renderProfesionalDetalle(this.value,'${mes}')" style="font-family:inherit;font-size:12px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">
+    ${names.map(n=>`<option value="${n}">${n} — ${DB.especialistas[n].especialidad}</option>`).join('')}
+  </select>
+</div>
+<div id="prof-detalle"></div>`;
+}
+
+function renderProfesionalDetalle(nombre, mes){
+  const e = DB.especialistas[nombre];
+  if(!e) return;
+  const d = getDatoEsp(nombre, mes);
+  const p = pct(d.altas, e.meta_altas);
+  const pCNE = pct(d.cne, e.meta_cne);
+  const pi = d.cne+d.control>0 ? Math.round((d.inasist_cne+d.inasist_ctrl)/(d.cne+d.control)*100) : 0;
+  const pan = document.getElementById('prof-detalle');
+  if(!pan) return;
+  pan.innerHTML = `
+    <div class="krow krow3">
+      <div class="kc fu"><div class="kc-bar" style="background:${e.color}"></div>
+        <div class="klbl">Consultas nuevas (CNE)</div>
+        <div class="kval" style="color:${e.color}">${d.cne}</div>
+        <div class="ksub">Meta anual: ${e.meta_cne}</div>
+        <div class="pbar"><div class="pbf" style="background:${e.color};width:${Math.min(pCNE,100)}%"></div></div>
+        <div class="ppct">${pCNE}% anual</div>
+      </div>
+      <div class="kc fu"><div class="kc-bar" style="background:${e.color}"></div>
+        <div class="klbl">Altas de tratamiento</div>
+        <div class="kval" style="color:${e.color}">${d.altas}</div>
+        <div class="ksub">Meta anual: ${e.meta_altas}</div>
+        <div class="pbar"><div class="pbf" style="background:${e.color};width:${Math.min(p,100)}%"></div></div>
+        <div class="ppct">${p}% anual</div>
+      </div>
+      <div class="kc fu"><div class="kc-bar" style="background:#C0392B"></div>
+        <div class="klbl">Inasistencia</div>
+        <div class="kval" style="color:#C0392B">${d.inasist_cne+d.inasist_ctrl}</div>
+        <div class="ksub">${pi}% de atenciones programadas</div>
+      </div>
+    </div>
+    <div class="g2" style="margin-top:16px">
+      <div class="card">
+        <div class="card-h"><div><div class="ct">Evolución mensual</div><div class="cs">${nombre} — ${e.especialidad}</div></div></div>
+        <div style="position:relative;height:220px"><canvas id="ch-prof-evol" role="img" aria-label="Evolución mensual de ${nombre}"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><div><div class="ct">Indicadores específicos</div><div class="cs">Producción por tipo de prestación</div></div></div>
+        <div style="padding:8px 0">${renderIndicadores(d.indicadores)}</div>
+      </div>
+    </div>`;
+  drawProfChart(nombre);
+}
+
+function renderIndicadores(ind){
+  if(!ind) return '<p style="color:var(--muted);font-size:12px">Sin indicadores específicos</p>';
+  return ind.split(' | ').map(i=>{
+    const [k,v] = i.split(':');
+    return `<div class="srow"><div class="slname">${k||''}</div><div class="slval" style="color:var(--az1)">${v||0}</div></div>`;
+  }).join('');
+}
+
+function drawProfChart(nombre){
+  const meses = DB.meses;
+  const mesLabels = meses.map(m=>m.replace(/^\d+_/,''));
+  const e = DB.especialistas[nombre];
+  const evolData = meses.map(m=>getDatoEsp(nombre,m));
+  const c = document.getElementById('ch-prof-evol');
+  if(c && window.Chart){
+    charts.prof = new Chart(c,{type:'bar',data:{labels:mesLabels,datasets:[
+      {label:'Altas',data:evolData.map(x=>x.altas),backgroundColor:e.color,borderRadius:4,borderWidth:0},
+      {label:'CNE',data:evolData.map(x=>x.cne),backgroundColor:e.color+'88',borderRadius:4,borderWidth:0},
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:8,color:'#6B8CA4'}}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#6B8CA4'}},y:{grid:{color:'#F0F5F9'},ticks:{font:{size:11},color:'#6B8CA4'}}}}});
+  }
+}
+
+// ── GRÁFICOS ──
+function drawCharts(mes){
+  const names = Object.keys(DB.especialistas);
+  const meses = DB.meses;
+  const mesLabels = meses.map(m=>m.replace(/^\d+_/,''));
+
+  if(vista==='general'){
+    // Evolución mensual
+    const evolData = meses.map(m=>{
+      let a=0,c=0,i=0;
+      names.forEach(n=>{const d=getDatoEsp(n,m);a+=d.altas;c+=d.cne;i+=d.inasist_cne+d.inasist_ctrl;});
+      return{a,c,i};
+    });
+    const c1=document.getElementById('ch-evol');
+    if(c1) charts.c1=new Chart(c1,{type:'bar',data:{labels:mesLabels,datasets:[
+      {label:'Altas',data:evolData.map(x=>x.a),backgroundColor:'#0B4F72',borderRadius:4,borderWidth:0},
+      {label:'CNE',data:evolData.map(x=>x.c),backgroundColor:'#2196C4',borderRadius:4,borderWidth:0},
+      {label:'Inasistencias',data:evolData.map(x=>x.i),backgroundColor:'#E8A87C',borderRadius:4,borderWidth:0},
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:10,color:'#6B8CA4'}}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#6B8CA4'}},y:{grid:{color:'#F0F5F9'},ticks:{font:{size:11},color:'#6B8CA4'}}}}});
+
+    // Donut especialidades
+    const espGrupos={};
+    names.forEach(n=>{
+      const e=DB.especialistas[n], d=getDatoEsp(n,'acum');
+      if(!espGrupos[e.especialidad]) espGrupos[e.especialidad]={altas:0,color:e.color};
+      espGrupos[e.especialidad].altas+=d.altas;
+    });
+    const espK=Object.keys(espGrupos).filter(e=>espGrupos[e].altas>0);
+    const c2=document.getElementById('ch-esp');
+    if(c2) charts.c2=new Chart(c2,{type:'doughnut',data:{labels:espK,datasets:[{data:espK.map(e=>espGrupos[e].altas),backgroundColor:espK.map(e=>espGrupos[e].color),borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right',labels:{font:{size:10},boxWidth:10,padding:8,color:'#6B8CA4'}}}}});
+
+    // Cumplimiento barras
+    const top8=names.map(n=>{const d=getDatoEsp(n,mes),e=DB.especialistas[n];return{n,d,e};}).sort((a,b)=>b.d.altas-a.d.altas).slice(0,8);
+    const c3=document.getElementById('ch-cumpl');
+    if(c3) charts.c3=new Chart(c3,{type:'bar',data:{labels:top8.map(x=>x.n.split(' ')[0]),datasets:[
+      {label:'Altas',data:top8.map(x=>x.d.altas),backgroundColor:top8.map(x=>x.e.color),borderRadius:5,borderWidth:0},
+      {label:'Meta',data:top8.map(x=>x.d.meta_altas_mes),backgroundColor:'rgba(0,0,0,0.06)',borderRadius:5,borderWidth:0},
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:8,color:'#6B8CA4'}}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#6B8CA4'}},y:{grid:{color:'#F0F5F9'},ticks:{font:{size:10},color:'#6B8CA4'}}}}});
+  }
+
+  if(vista==='inasistencia'){
+    const inasMes=meses.map(m=>{let ic=0,ik=0;names.forEach(n=>{const d=getDatoEsp(n,m);ic+=d.inasist_cne;ik+=d.inasist_ctrl;});return{ic,ik};});
+    const ci=document.getElementById('ch-inas');
+    if(ci) charts.ci=new Chart(ci,{type:'line',data:{labels:mesLabels,datasets:[
+      {label:'Inas. CNE',data:inasMes.map(x=>x.ic),borderColor:'#C0392B',backgroundColor:'rgba(192,57,43,.08)',pointBackgroundColor:'#C0392B',pointRadius:5,tension:.35,fill:true},
+      {label:'Inas. Control',data:inasMes.map(x=>x.ik),borderColor:'#E67E22',backgroundColor:'rgba(230,126,34,.08)',pointBackgroundColor:'#E67E22',pointRadius:5,tension:.35,fill:true},
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:10,color:'#6B8CA4'}}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#6B8CA4'}},y:{grid:{color:'#F0F5F9'},ticks:{font:{size:11},color:'#6B8CA4'}}}}});
+  }
+
+  if(vista==='financiero'){
+    const espPPV=['Cirugia Maxilofacial','Endodoncia','Rehabilitacion Oral','Odontopediatria','Implantologia'];
+    const ppvColors={'Cirugia Maxilofacial':'#0B4F72','Endodoncia':'#1A7AAF','Rehabilitacion Oral':'#2E86AB','Odontopediatria':'#0E7A5A','Implantologia':'#C0842D'};
+    const ppvMes=meses.map(m=>{
+      const obj={};espPPV.forEach(e=>{obj[e]=0;});
+      names.forEach(n=>{const esp=DB.especialistas[n].especialidad;if(obj[esp]!==undefined)obj[esp]+=getDatoEsp(n,m).ppv;});
+      return obj;
+    });
+    const cp=document.getElementById('ch-ppv');
+    if(cp) charts.cp=new Chart(cp,{type:'bar',data:{labels:mesLabels,datasets:espPPV.map(e=>({label:e,data:ppvMes.map(x=>Math.round(x[e]/1e5)/10),backgroundColor:ppvColors[e],borderRadius:4,borderWidth:0}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:8,color:'#6B8CA4'}}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:11},color:'#6B8CA4'}},y:{stacked:true,grid:{color:'#F0F5F9'},ticks:{font:{size:11},color:'#6B8CA4',callback:v=>'$'+v+'M'}}}}});
+  }
+
+  // Animar barras
+  setTimeout(()=>{document.querySelectorAll('.pbf[data-w]').forEach(el=>{el.style.width=el.getAttribute('data-w')+'%';});},150);
+
+  // Paneles ausentismo en vista general
+  if(vista==='general'){
+    poblarSelectorEsp();
+    setTimeout(renderPanelCruzado, 100);
+  }
+}
+
+function poblarSelectorEsp(){
+  // no-op: esp now comes from espActiva global
+}
+
+function renderPanelDias(){
+  const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
+  const cntCNE={}, cntCtrl={};
+  diasOrden.forEach(d=>{cntCNE[d]=0; cntCtrl[d]=0;});
+
+  Object.entries(DB.inasistencias_detalle).forEach(([key,val])=>{
+    Object.entries(val.dias||{}).forEach(([dia,n])=>{
+      if(cntCNE[dia]!==undefined){
+        cntCNE[dia]+=val.cne>0?n:0;
+        cntCtrl[dia]+=val.ctrl>0?n:0;
+      }
+    });
+  });
+
+  const maxCNE=Math.max(...Object.values(cntCNE),1);
+  const maxCtrl=Math.max(...Object.values(cntCtrl),1);
+
+  function barHtml(dias, cnt, max, color){
+    return diasOrden.map(d=>`
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <div style="width:70px;font-size:11px;color:var(--muted);font-weight:500">${d}</div>
+        <div style="flex:1;background:var(--borde);border-radius:3px;height:14px;overflow:hidden">
+          <div style="width:${Math.round(cnt[d]/max*100)}%;background:${color};height:100%;border-radius:3px;transition:width .8s"></div>
+        </div>
+        <div style="width:35px;text-align:right;font-size:11px;font-weight:700;color:${color}">${cnt[d]}</div>
+      </div>`).join('');
+  }
+
+  const panCNE = document.getElementById('panel-inas-cne');
+  const panCtrl = document.getElementById('panel-inas-ctrl');
+  if(panCNE) panCNE.innerHTML = barHtml(diasOrden, cntCNE, maxCNE, '#C0392B');
+  if(panCtrl) panCtrl.innerHTML = barHtml(diasOrden, cntCtrl, maxCtrl, '#E67E22');
+}
+
+// renderPanelEsp removido - reemplazado por renderPanelCruzado
+
+function renderPanelCruzado(){
+  if(!DB.inasistencias_cruzadas) return;
+  const selTipo = document.getElementById('sel-tipo-inas');
+  if(!selTipo) return;
+
+  const tipo = selTipo.value;
+  const pan = document.getElementById('panel-cruzado');
+  if(!pan) return;
+
+  // Determine context: profesional > especialidad > todos
+  let esp = espActiva;
+  let titulo = 'Servicio Dental completo';
+  let esProf = false;
+
+  if(profActivo && profActivo !== 'todos'){
+    // Professional selected - map to their speciality in cruzadas
+    const eProf = DB.especialistas[profActivo];
+    esp = eProf ? eProf.especialidad : espActiva;
+    titulo = profActivo;
+    esProf = true;
+  } else if(esp === 'todas'){
+    esp = Object.keys(DB.inasistencias_cruzadas).sort()[0] || '';
+    titulo = esp;
+  } else {
+    titulo = esp;
+  }
+
+  const data = DB.inasistencias_cruzadas?.[esp]?.[tipo];
+  if(!data || data.total === 0){
+    pan.innerHTML = '<div style="color:var(--muted);font-size:12px;padding:16px">Sin datos de inasistencia para esta selección.</div>';
+    return;
+  }
+
+  const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'];
+  const maxDia = Math.max(...Object.values(data.dias),1);
+  const topDia = Object.entries(data.dias).sort((a,b)=>b[1]-a[1])[0];
+  const totSexo = data.sexo.H + data.sexo.M + data.sexo.Otro || 1;
+  const topSexo = data.sexo.H >= data.sexo.M ? 'Hombres' : 'Mujeres';
+  const totEdad = Object.values(data.edades).reduce((a,b)=>a+b,0)||1;
+  const topEdad = Object.entries(data.edades).sort((a,b)=>b[1]-a[1])[0];
+  const colorTipo = tipo==='CNE' ? '#C0392B' : '#E67E22';
+
+  const insight = `En <strong>${titulo}</strong>, el mayor ausentismo a <strong>${tipo}</strong> ocurre los <strong>${topDia?.[0]||'—'}</strong>, concentrado en <strong>${topSexo}</strong> de <strong>${topEdad?.[0]||'—'}</strong> años.`;
+
+  const barDias = diasOrden.filter(d=>data.dias[d]!==undefined).map(d=>`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+      <div style="width:75px;font-size:11px;color:var(--muted)">${d}</div>
+      <div style="flex:1;background:var(--borde);border-radius:3px;height:16px;overflow:hidden">
+        <div style="width:${Math.round((data.dias[d]||0)/maxDia*100)}%;background:${colorTipo};height:100%;border-radius:3px;transition:width .8s"></div>
+      </div>
+      <div style="width:30px;text-align:right;font-size:11px;font-weight:700;color:${colorTipo}">${data.dias[d]||0}</div>
+    </div>`).join('');
+
+  const barSexo = ['H','M'].map(s=>`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+      <div style="width:75px;font-size:11px;color:var(--muted)">${s==='H'?'Hombres':'Mujeres'}</div>
+      <div style="flex:1;background:var(--borde);border-radius:3px;height:16px;overflow:hidden">
+        <div style="width:${Math.round(data.sexo[s]/totSexo*100)}%;background:${s==='H'?'#1A7AAF':'#C0842D'};height:100%;border-radius:3px;transition:width .8s"></div>
+      </div>
+      <div style="width:30px;text-align:right;font-size:11px;font-weight:700">${Math.round(data.sexo[s]/totSexo*100)}%</div>
+    </div>`).join('');
+
+  const edadOrden = ['<18','18-39','40-59','60+','Sin dato'];
+  const barEdad = edadOrden.filter(e=>data.edades[e]>0).map(e=>`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+      <div style="width:75px;font-size:11px;color:var(--muted)">${e} años</div>
+      <div style="flex:1;background:var(--borde);border-radius:3px;height:16px;overflow:hidden">
+        <div style="width:${Math.round(data.edades[e]/totEdad*100)}%;background:#0F8B8D;height:100%;border-radius:3px;transition:width .8s"></div>
+      </div>
+      <div style="width:30px;text-align:right;font-size:11px;font-weight:700;color:#0F8B8D">${Math.round(data.edades[e]/totEdad*100)}%</div>
+    </div>`).join('');
+
+  const recHtml = '';
+
+  pan.innerHTML = `
+    <div style="background:var(--azc);border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:12px;color:var(--az1);line-height:1.6">
+      💡 ${insight}
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Por día de semana</div>
+        ${barDias}
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Por sexo</div>
+        ${barSexo}
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin:14px 0 10px">Por rango etario</div>
+        ${barEdad}
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Resumen</div>
+        <div style="font-size:13px;font-weight:700;color:${colorTipo};margin-bottom:4px">${data.total} inasistencias</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Total registradas · ${tipo}</div>
+        <div style="font-size:11px;color:var(--muted)">Día crítico: <strong>${topDia?.[0]||'—'}</strong> (${topDia?.[1]||0} casos)</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">Sexo predominante: <strong>${topSexo}</strong></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">Edad predominante: <strong>${topEdad?.[0]||'—'}</strong></div>
+      </div>
+    </div>
+    ${recHtml}`;
+
+}
+
+
+
+cargarDatos();
+</script>
+</body>
+</html>
