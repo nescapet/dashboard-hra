@@ -814,24 +814,38 @@ function renderPanelCruzado(){
   if(!pan) return;
 
   // Determine context: profesional > especialidad > todos
-  let esp = espActiva;
-  let titulo = 'Servicio Dental completo';
-  let esProf = false;
+  let titulo = 'Servicio Dental';
+  let data = null;
 
   if(profActivo && profActivo !== 'todos'){
-    // Professional selected - map to their speciality in cruzadas
+    // Profesional específico
     const eProf = DB.especialistas[profActivo];
-    esp = eProf ? eProf.especialidad : espActiva;
+    const espProf = eProf ? eProf.especialidad : '';
     titulo = profActivo;
-    esProf = true;
-  } else if(esp === 'todas'){
-    esp = Object.keys(DB.inasistencias_cruzadas).sort()[0] || '';
-    titulo = esp;
+    data = DB.inasistencias_cruzadas?.[espProf]?.[tipo] || null;
+    // Si no hay datos cruzados por especialidad, intentar buscar por nombre
+    // (los datos cruzados están agrupados por especialidad, no por profesional)
+  } else if(espActiva && espActiva !== 'todas'){
+    // Especialidad seleccionada
+    titulo = espActiva;
+    data = DB.inasistencias_cruzadas?.[espActiva]?.[tipo] || null;
   } else {
-    titulo = esp;
+    // Todos — sumar todas las especialidades
+    titulo = 'Servicio Dental completo';
+    const allEsps = Object.keys(DB.inasistencias_cruzadas || {});
+    if(allEsps.length > 0){
+      data = {total:0, dias:{}, sexo:{H:0,M:0,Otro:0}, edades:{'<18':0,'18-39':0,'40-59':0,'60+':0,'Sin dato':0}};
+      allEsps.forEach(esp=>{
+        const d = DB.inasistencias_cruzadas[esp]?.[tipo];
+        if(!d) return;
+        data.total += d.total;
+        Object.entries(d.dias).forEach(([k,v])=>{ data.dias[k]=(data.dias[k]||0)+v; });
+        Object.entries(d.sexo).forEach(([k,v])=>{ data.sexo[k]=(data.sexo[k]||0)+v; });
+        Object.entries(d.edades).forEach(([k,v])=>{ data.edades[k]=(data.edades[k]||0)+v; });
+      });
+    }
   }
 
-  const data = DB.inasistencias_cruzadas?.[esp]?.[tipo];
   if(!data || data.total === 0){
     pan.innerHTML = '<div style="color:var(--muted);font-size:12px;padding:16px">Sin datos de inasistencia para esta selección.</div>';
     return;
