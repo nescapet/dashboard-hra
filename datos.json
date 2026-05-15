@@ -1,5 +1,5 @@
 {
-  "actualizado": "14/05/2026 20:06",
+  "actualizado": "14/05/2026 21:31",
   "meses": [
     "01_Enero",
     "02_Febrero",
@@ -1673,7 +1673,7 @@
     }
   },
   "inasistencias_detalle": {
-    "Nikole Guerrero|Marzo": {
+    "Nikole Guerrero|03_Marzo": {
       "total": 264,
       "cne": 0,
       "ctrl": 264,
@@ -1685,7 +1685,7 @@
         "Martes": 32
       }
     },
-    "Cristian Villalobos|Enero": {
+    "Cristian Villalobos|01_Enero": {
       "total": 408,
       "cne": 8,
       "ctrl": 400,
@@ -1697,7 +1697,7 @@
         "Lunes": 120
       }
     },
-    "Gabriela Farias|Enero": {
+    "Gabriela Farias|01_Enero": {
       "total": 232,
       "cne": 16,
       "ctrl": 216,
@@ -1709,7 +1709,7 @@
         "Viernes": 32
       }
     },
-    "Giselle Garrido|Enero": {
+    "Giselle Garrido|01_Enero": {
       "total": 208,
       "cne": 24,
       "ctrl": 184,
@@ -1721,7 +1721,7 @@
         "Miercoles": 32
       }
     },
-    "Juan Bugueno|Enero": {
+    "Juan Bugueno|01_Enero": {
       "total": 48,
       "cne": 48,
       "ctrl": 0,
@@ -1730,7 +1730,7 @@
         "Martes": 8
       }
     },
-    "Marcelo Rivera|Enero": {
+    "Marcelo Rivera|01_Enero": {
       "total": 24,
       "cne": 0,
       "ctrl": 24,
@@ -1740,7 +1740,7 @@
         "Lunes": 8
       }
     },
-    "Nikole Guerrero|Enero": {
+    "Nikole Guerrero|01_Enero": {
       "total": 80,
       "cne": 0,
       "ctrl": 80,
@@ -1750,7 +1750,7 @@
         "Martes": 24
       }
     },
-    "Pablo Spencer|Enero": {
+    "Pablo Spencer|01_Enero": {
       "total": 200,
       "cne": 48,
       "ctrl": 152,
@@ -1760,7 +1760,7 @@
         "Viernes": 40
       }
     },
-    "Roberto Munoz|Enero": {
+    "Roberto Munoz|01_Enero": {
       "total": 208,
       "cne": 0,
       "ctrl": 208,
@@ -1771,7 +1771,7 @@
         "Viernes": 64
       }
     },
-    "Rodolfo Olivares|Enero": {
+    "Rodolfo Olivares|01_Enero": {
       "total": 152,
       "cne": 0,
       "ctrl": 152,
@@ -1781,7 +1781,7 @@
         "Martes": 16
       }
     },
-    "Sebastian Godoy|Enero": {
+    "Sebastian Godoy|01_Enero": {
       "total": 392,
       "cne": 104,
       "ctrl": 288,
@@ -1793,7 +1793,7 @@
         "Viernes": 64
       }
     },
-    "Gabriela Farias|Marzo": {
+    "Gabriela Farias|03_Marzo": {
       "total": 182,
       "cne": 49,
       "ctrl": 133,
@@ -1804,7 +1804,7 @@
         "Martes": 63
       }
     },
-    "Giselle Garrido|Marzo": {
+    "Giselle Garrido|03_Marzo": {
       "total": 357,
       "cne": 168,
       "ctrl": 189,
@@ -1816,7 +1816,7 @@
         "Viernes": 21
       }
     },
-    "Jorge Ferrada|Marzo": {
+    "Jorge Ferrada|03_Marzo": {
       "total": 77,
       "cne": 21,
       "ctrl": 56,
@@ -1825,7 +1825,7 @@
         "Miercoles": 49
       }
     },
-    "Manuel Campana|Marzo": {
+    "Manuel Campana|03_Marzo": {
       "total": 371,
       "cne": 77,
       "ctrl": 294,
@@ -1837,7 +1837,7 @@
         "Viernes": 56
       }
     },
-    "Paula Besnier|Marzo": {
+    "Paula Besnier|03_Marzo": {
       "total": 168,
       "cne": 14,
       "ctrl": 154,
@@ -1847,7 +1847,7 @@
         "Lunes": 70
       }
     },
-    "Roberto Munoz|Marzo": {
+    "Roberto Munoz|03_Marzo": {
       "total": 322,
       "cne": 28,
       "ctrl": 294,
@@ -1858,7 +1858,7 @@
         "Viernes": 63
       }
     },
-    "Rodolfo Olivares|Marzo": {
+    "Rodolfo Olivares|03_Marzo": {
       "total": 182,
       "cne": 21,
       "ctrl": 161,
@@ -1869,7 +1869,7 @@
         "Martes": 42
       }
     },
-    "Sebastian Godoy|Marzo": {
+    "Sebastian Godoy|03_Marzo": {
       "total": 504,
       "cne": 147,
       "ctrl": 357,
@@ -1881,7 +1881,7 @@
         "Viernes": 28
       }
     },
-    "Gabriela Farias|Febrero": {
+    "Gabriela Farias|02_Febrero": {
       "total": 176,
       "cne": 56,
       "ctrl": 120,
@@ -1893,7 +1893,7 @@
         "Viernes": 16
       }
     },
-    "Giselle Garrido|Febrero": {
+    "Giselle Garrido|02_Febrero": {
       "total": 544,
       "cne": 192,
       "ctrl": 352,
@@ -1905,7 +1905,7 @@
         "Viernes": 96
       }
     },
-    "Manuel Campana|Febrero": {
+    "Manuel Campana|02_Febrero": {
       "total": 272,
       "cne": 48,
       "ctrl": 224,
@@ -1917,7 +1917,7 @@
         "Jueves": 40
       }
     },
-    "Nikole Guerrero|Febrero": {
+    "Nikole Guerrero|02_Febrero": {
       "total": 240,
       "cne": 16,
       "ctrl": 224,
@@ -1929,7 +1929,7 @@
         "Viernes": 40
       }
     },
-    "Paula Besnier|Febrero": {
+    "Paula Besnier|02_Febrero": {
       "total": 88,
       "cne": 16,
       "ctrl": 72,
@@ -1939,7 +1939,7 @@
         "Miercoles": 40
       }
     },
-    "Roberto Munoz|Febrero": {
+    "Roberto Munoz|02_Febrero": {
       "total": 168,
       "cne": 0,
       "ctrl": 168,
@@ -1950,7 +1950,7 @@
         "Lunes": 24
       }
     },
-    "Rodolfo Olivares|Febrero": {
+    "Rodolfo Olivares|02_Febrero": {
       "total": 144,
       "cne": 0,
       "ctrl": 144,
@@ -1960,7 +1960,7 @@
         "Miercoles": 8
       }
     },
-    "Sebastian Godoy|Febrero": {
+    "Sebastian Godoy|02_Febrero": {
       "total": 152,
       "cne": 56,
       "ctrl": 96,
@@ -1972,7 +1972,7 @@
         "Viernes": 32
       }
     },
-    "Andres Caballero|Enero": {
+    "Andres Caballero|01_Enero": {
       "total": 315,
       "cne": 133,
       "ctrl": 182,
@@ -1983,7 +1983,7 @@
         "Jueves": 21
       }
     },
-    "Carlos Humeres|Enero": {
+    "Carlos Humeres|01_Enero": {
       "total": 77,
       "cne": 21,
       "ctrl": 56,
@@ -1995,7 +1995,7 @@
         "Viernes": 7
       }
     },
-    "Jimena Carrasco|Enero": {
+    "Jimena Carrasco|01_Enero": {
       "total": 504,
       "cne": 182,
       "ctrl": 322,
@@ -2007,7 +2007,7 @@
         "Lunes": 91
       }
     },
-    "Jorge Ferrada|Enero": {
+    "Jorge Ferrada|01_Enero": {
       "total": 196,
       "cne": 21,
       "ctrl": 175,
@@ -2017,13 +2017,13 @@
         "Jueves": 49
       }
     },
-    "Luis Amengual|Enero": {
+    "Luis Amengual|01_Enero": {
       "total": 98,
       "cne": 42,
       "ctrl": 56,
       "dias": {}
     },
-    "Paula Besnier|Enero": {
+    "Paula Besnier|01_Enero": {
       "total": 126,
       "cne": 56,
       "ctrl": 70,
@@ -2033,13 +2033,13 @@
         "Martes": 21
       }
     },
-    "Paulina Gonzalez|Enero": {
+    "Paulina Gonzalez|01_Enero": {
       "total": 49,
       "cne": 35,
       "ctrl": 14,
       "dias": {}
     },
-    "Yasna Covarrubias|Enero": {
+    "Yasna Covarrubias|01_Enero": {
       "total": 483,
       "cne": 154,
       "ctrl": 329,
@@ -2049,7 +2049,7 @@
         "Lunes": 154
       }
     },
-    "Andres Caballero|Febrero": {
+    "Andres Caballero|02_Febrero": {
       "total": 168,
       "cne": 119,
       "ctrl": 49,
@@ -2060,7 +2060,7 @@
         "Jueves": 28
       }
     },
-    "Carlos Humeres|Febrero": {
+    "Carlos Humeres|02_Febrero": {
       "total": 35,
       "cne": 14,
       "ctrl": 21,
@@ -2069,7 +2069,7 @@
         "Martes": 14
       }
     },
-    "Gabriela Ovando|Febrero": {
+    "Gabriela Ovando|02_Febrero": {
       "total": 210,
       "cne": 119,
       "ctrl": 91,
@@ -2079,7 +2079,7 @@
         "Viernes": 84
       }
     },
-    "Irene Gutierrez|Febrero": {
+    "Irene Gutierrez|02_Febrero": {
       "total": 168,
       "cne": 49,
       "ctrl": 119,
@@ -2091,7 +2091,7 @@
         "Jueves": 28
       }
     },
-    "Jimena Carrasco|Febrero": {
+    "Jimena Carrasco|02_Febrero": {
       "total": 497,
       "cne": 210,
       "ctrl": 287,
@@ -2103,7 +2103,7 @@
         "Viernes": 63
       }
     },
-    "Fernando Duran|Enero": {
+    "Fernando Duran|01_Enero": {
       "total": 294,
       "cne": 138,
       "ctrl": 156,
@@ -2114,7 +2114,7 @@
         "Viernes": 42
       }
     },
-    "Irene Gutierrez|Enero": {
+    "Irene Gutierrez|01_Enero": {
       "total": 150,
       "cne": 36,
       "ctrl": 114,
@@ -2126,7 +2126,7 @@
         "Martes": 24
       }
     },
-    "Fernando Duran|Febrero": {
+    "Fernando Duran|02_Febrero": {
       "total": 48,
       "cne": 48,
       "ctrl": 0,
@@ -2136,7 +2136,7 @@
         "Viernes": 24
       }
     },
-    "Pablo Spencer|Febrero": {
+    "Pablo Spencer|02_Febrero": {
       "total": 60,
       "cne": 12,
       "ctrl": 48,
@@ -2146,7 +2146,7 @@
         "Viernes": 12
       }
     },
-    "Yasna Covarrubias|Febrero": {
+    "Yasna Covarrubias|02_Febrero": {
       "total": 138,
       "cne": 30,
       "ctrl": 108,
@@ -2157,7 +2157,7 @@
         "Miercoles": 18
       }
     },
-    "Andres Caballero|Marzo": {
+    "Andres Caballero|03_Marzo": {
       "total": 240,
       "cne": 132,
       "ctrl": 108,
@@ -2168,7 +2168,7 @@
         "Jueves": 36
       }
     },
-    "Fernando Duran|Marzo": {
+    "Fernando Duran|03_Marzo": {
       "total": 276,
       "cne": 144,
       "ctrl": 132,
@@ -2179,7 +2179,7 @@
         "Viernes": 30
       }
     },
-    "Gabriela Ovando|Marzo": {
+    "Gabriela Ovando|03_Marzo": {
       "total": 204,
       "cne": 96,
       "ctrl": 108,
@@ -2190,7 +2190,7 @@
         "Miercoles": 24
       }
     },
-    "Irene Gutierrez|Marzo": {
+    "Irene Gutierrez|03_Marzo": {
       "total": 180,
       "cne": 42,
       "ctrl": 132,
@@ -2202,7 +2202,7 @@
         "Viernes": 36
       }
     },
-    "Jimena Carrasco|Marzo": {
+    "Jimena Carrasco|03_Marzo": {
       "total": 318,
       "cne": 150,
       "ctrl": 168,
@@ -2214,7 +2214,7 @@
         "Viernes": 30
       }
     },
-    "Pablo Spencer|Marzo": {
+    "Pablo Spencer|03_Marzo": {
       "total": 216,
       "cne": 42,
       "ctrl": 174,
@@ -2224,13 +2224,13 @@
         "Viernes": 66
       }
     },
-    "Paulina Gonzalez|Marzo": {
+    "Paulina Gonzalez|03_Marzo": {
       "total": 18,
       "cne": 18,
       "ctrl": 0,
       "dias": {}
     },
-    "Yasna Covarrubias|Marzo": {
+    "Yasna Covarrubias|03_Marzo": {
       "total": 306,
       "cne": 72,
       "ctrl": 234,
@@ -2241,13 +2241,13 @@
         "Miercoles": 66
       }
     },
-    "Juan Cortes|Enero": {
+    "Juan Cortes|01_Enero": {
       "total": 60,
       "cne": 40,
       "ctrl": 20,
       "dias": {}
     },
-    "Juan Cortes|Febrero": {
+    "Juan Cortes|02_Febrero": {
       "total": 320,
       "cne": 170,
       "ctrl": 145,
@@ -2255,13 +2255,13 @@
         "Lunes": 35
       }
     },
-    "Juan Cortes|Marzo": {
+    "Juan Cortes|03_Marzo": {
       "total": 60,
       "cne": 40,
       "ctrl": 20,
       "dias": {}
     },
-    "Irene Gutierrez|Abril": {
+    "Irene Gutierrez|04_Abril": {
       "total": 296,
       "cne": 96,
       "ctrl": 192,
@@ -2273,7 +2273,7 @@
         "Viernes": 32
       }
     },
-    "Jorge Ferrada|Abril": {
+    "Jorge Ferrada|04_Abril": {
       "total": 320,
       "cne": 32,
       "ctrl": 288,
@@ -2283,7 +2283,7 @@
         "Lunes": 88
       }
     },
-    "Nikole Guerrero|Abril": {
+    "Nikole Guerrero|04_Abril": {
       "total": 168,
       "cne": 16,
       "ctrl": 152,
@@ -2295,7 +2295,7 @@
         "Viernes": 8
       }
     },
-    "Roberto Munoz|Abril": {
+    "Roberto Munoz|04_Abril": {
       "total": 280,
       "cne": 24,
       "ctrl": 256,
@@ -2306,7 +2306,7 @@
         "Viernes": 32
       }
     },
-    "Rodolfo Olivares|Abril": {
+    "Rodolfo Olivares|04_Abril": {
       "total": 224,
       "cne": 32,
       "ctrl": 192,
@@ -2317,7 +2317,7 @@
         "Martes": 8
       }
     },
-    "Yasna Covarrubias|Abril": {
+    "Yasna Covarrubias|04_Abril": {
       "total": 396,
       "cne": 90,
       "ctrl": 306,
@@ -2328,7 +2328,7 @@
         "Martes": 45
       }
     },
-    "Carlos Humeres|Abril": {
+    "Carlos Humeres|04_Abril": {
       "total": 288,
       "cne": 64,
       "ctrl": 224,
@@ -2340,7 +2340,7 @@
         "Viernes": 24
       }
     },
-    "Fernando Duran|Abril": {
+    "Fernando Duran|04_Abril": {
       "total": 152,
       "cne": 68,
       "ctrl": 84,
@@ -2352,7 +2352,7 @@
         "Lunes": 32
       }
     },
-    "Gabriela Ovando|Abril": {
+    "Gabriela Ovando|04_Abril": {
       "total": 72,
       "cne": 24,
       "ctrl": 48,
@@ -2362,7 +2362,7 @@
         "Viernes": 24
       }
     },
-    "Giselle Garrido|Abril": {
+    "Giselle Garrido|04_Abril": {
       "total": 272,
       "cne": 96,
       "ctrl": 176,
@@ -2374,7 +2374,7 @@
         "Viernes": 24
       }
     },
-    "Jimena Carrasco|Abril": {
+    "Jimena Carrasco|04_Abril": {
       "total": 180,
       "cne": 116,
       "ctrl": 64,
@@ -2386,13 +2386,13 @@
         "Viernes": 16
       }
     },
-    "Juan Bugueno|Abril": {
+    "Juan Bugueno|04_Abril": {
       "total": 396,
       "cne": 264,
       "ctrl": 132,
       "dias": {}
     },
-    "Manuel Campana|Abril": {
+    "Manuel Campana|04_Abril": {
       "total": 176,
       "cne": 76,
       "ctrl": 100,
@@ -2404,7 +2404,7 @@
         "Martes": 24
       }
     },
-    "Pablo Spencer|Abril": {
+    "Pablo Spencer|04_Abril": {
       "total": 128,
       "cne": 56,
       "ctrl": 72,
@@ -2414,7 +2414,7 @@
         "Viernes": 20
       }
     },
-    "Paula Besnier|Abril": {
+    "Paula Besnier|04_Abril": {
       "total": 132,
       "cne": 16,
       "ctrl": 116,
@@ -2424,7 +2424,7 @@
         "Martes": 12
       }
     },
-    "Sebastian Godoy|Abril": {
+    "Sebastian Godoy|04_Abril": {
       "total": 240,
       "cne": 68,
       "ctrl": 172,
@@ -2436,7 +2436,7 @@
         "Viernes": 28
       }
     },
-    "Juan Cortes|Abril": {
+    "Juan Cortes|04_Abril": {
       "total": 54,
       "cne": 9,
       "ctrl": 45,
@@ -2444,436 +2444,1871 @@
     }
   },
   "inasistencias_cruzadas": {
-    "Ortodoncia": {
-      "Control": {
-        "dias": {
-          "Viernes": 408,
-          "Lunes": 469,
-          "Miercoles": 509,
-          "Jueves": 468,
-          "Martes": 200
+    "03_Marzo": {
+      "Ortodoncia": {
+        "Control": {
+          "dias": {
+            "Viernes": 120,
+            "Lunes": 149,
+            "Miercoles": 125,
+            "Jueves": 132,
+            "Martes": 32
+          },
+          "sexo": {
+            "H": 256,
+            "M": 302,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 350,
+            "18-39": 169,
+            "40-59": 7,
+            "60+": 0,
+            "Sin dato": 32
+          },
+          "total": 558
         },
-        "sexo": {
-          "H": 1024,
-          "M": 1046,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 1430,
-          "18-39": 577,
-          "40-59": 15,
-          "60+": 0,
-          "Sin dato": 48
-        },
-        "total": 2070
+        "CNE": {
+          "dias": {
+            "Jueves": 14,
+            "Lunes": 7,
+            "Viernes": 7
+          },
+          "sexo": {
+            "H": 21,
+            "M": 7,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 28,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 28
+        }
       },
-      "CNE": {
-        "dias": {
-          "Miercoles": 40,
-          "Jueves": 22,
-          "Lunes": 7,
-          "Viernes": 23
+      "Rehabilitacion Oral": {
+        "CNE": {
+          "dias": {
+            "Lunes": 98,
+            "Jueves": 133,
+            "Martes": 91,
+            "Miercoles": 105,
+            "Viernes": 35
+          },
+          "sexo": {
+            "H": 154,
+            "M": 287,
+            "Otro": 21
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 42,
+            "40-59": 70,
+            "60+": 329,
+            "Sin dato": 21
+          },
+          "total": 462
         },
-        "sexo": {
-          "H": 69,
-          "M": 23,
-          "Otro": 0
+        "Control": {
+          "dias": {
+            "Lunes": 399,
+            "Miercoles": 133,
+            "Jueves": 182,
+            "Martes": 350,
+            "Viernes": 70
+          },
+          "sexo": {
+            "H": 350,
+            "M": 777,
+            "Otro": 7
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 35,
+            "40-59": 224,
+            "60+": 868,
+            "Sin dato": 7
+          },
+          "total": 1134
+        }
+      },
+      "Periodoncia": {
+        "Control": {
+          "dias": {
+            "Lunes": 28,
+            "Miercoles": 34,
+            "Martes": 78,
+            "Jueves": 18,
+            "Viernes": 6
+          },
+          "sexo": {
+            "H": 40,
+            "M": 124,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 12,
+            "18-39": 30,
+            "40-59": 69,
+            "60+": 53,
+            "Sin dato": 0
+          },
+          "total": 164
         },
-        "edades": {
-          "<18": 92,
-          "18-39": 0,
-          "40-59": 0,
-          "60+": 0,
-          "Sin dato": 0
+        "CNE": {
+          "dias": {
+            "Miercoles": 39,
+            "Martes": 54,
+            "Jueves": 6,
+            "Viernes": 18
+          },
+          "sexo": {
+            "H": 61,
+            "M": 56,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 26,
+            "40-59": 43,
+            "60+": 48,
+            "Sin dato": 0
+          },
+          "total": 117
+        }
+      },
+      "Odontopediatria": {
+        "Control": {
+          "dias": {
+            "Martes": 134,
+            "Miercoles": 70,
+            "Lunes": 112,
+            "Jueves": 54,
+            "Viernes": 90
+          },
+          "sexo": {
+            "H": 279,
+            "M": 181,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 440,
+            "18-39": 20,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 460
         },
-        "total": 92
+        "CNE": {
+          "dias": {
+            "Miercoles": 26,
+            "Martes": 30,
+            "Viernes": 12,
+            "Jueves": 30
+          },
+          "sexo": {
+            "H": 55,
+            "M": 43,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 92,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 6
+          },
+          "total": 98
+        },
+        "Sin especificar": {
+          "dias": {
+            "Lunes": 6
+          },
+          "sexo": {
+            "H": 6,
+            "M": 0,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 6,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 6
+        }
+      },
+      "Endodoncia": {
+        "CNE": {
+          "dias": {
+            "Lunes": 150,
+            "Martes": 90,
+            "Miercoles": 84,
+            "Jueves": 96,
+            "Viernes": 6
+          },
+          "sexo": {
+            "H": 96,
+            "M": 330,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 54,
+            "18-39": 204,
+            "40-59": 102,
+            "60+": 60,
+            "Sin dato": 6
+          },
+          "total": 426
+        },
+        "Control": {
+          "dias": {
+            "Lunes": 144,
+            "Martes": 54,
+            "Miercoles": 114,
+            "Jueves": 42,
+            "Viernes": 54
+          },
+          "sexo": {
+            "H": 72,
+            "M": 312,
+            "Otro": 24
+          },
+          "edades": {
+            "<18": 66,
+            "18-39": 174,
+            "40-59": 96,
+            "60+": 72,
+            "Sin dato": 0
+          },
+          "total": 408
+        }
+      },
+      "Cirugia Maxilofacial": {
+        "CNE": {
+          "dias": {},
+          "sexo": {
+            "H": 16,
+            "M": 42,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 11,
+            "18-39": 41,
+            "40-59": 0,
+            "60+": 6,
+            "Sin dato": 0
+          },
+          "total": 58
+        },
+        "Control": {
+          "dias": {},
+          "sexo": {
+            "H": 5,
+            "M": 15,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 5,
+            "18-39": 15,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 20
+        }
+      },
+      "TTM": {
+        "CNE": {
+          "dias": {
+            "Viernes": 18,
+            "Lunes": 36,
+            "Miercoles": 12,
+            "Martes": 6
+          },
+          "sexo": {
+            "H": 6,
+            "M": 66,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 18,
+            "40-59": 30,
+            "60+": 24,
+            "Sin dato": 0
+          },
+          "total": 72
+        },
+        "Control": {
+          "dias": {
+            "Lunes": 78,
+            "Martes": 72,
+            "Miercoles": 54,
+            "Viernes": 30
+          },
+          "sexo": {
+            "H": 12,
+            "M": 222,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 18,
+            "18-39": 72,
+            "40-59": 84,
+            "60+": 60,
+            "Sin dato": 0
+          },
+          "total": 234
+        }
       }
     },
-    "Rehabilitacion Oral": {
-      "Control": {
-        "dias": {
-          "Lunes": 859,
-          "Martes": 854,
-          "Miercoles": 689,
-          "Jueves": 754,
-          "Viernes": 362
+    "01_Enero": {
+      "Ortodoncia": {
+        "Control": {
+          "dias": {
+            "Viernes": 176,
+            "Martes": 104,
+            "Jueves": 88,
+            "Lunes": 192,
+            "Miercoles": 152
+          },
+          "sexo": {
+            "H": 360,
+            "M": 352,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 552,
+            "18-39": 152,
+            "40-59": 8,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 712
         },
-        "sexo": {
-          "H": 1050,
-          "M": 2485,
-          "Otro": 15
-        },
-        "edades": {
-          "<18": 0,
-          "18-39": 115,
-          "40-59": 700,
-          "60+": 2720,
-          "Sin dato": 15
-        },
-        "total": 3550
+        "CNE": {
+          "dias": {
+            "Miercoles": 8
+          },
+          "sexo": {
+            "H": 0,
+            "M": 8,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 8,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 8
+        }
       },
-      "CNE": {
-        "dias": {
-          "Lunes": 246,
-          "Viernes": 155,
-          "Miercoles": 349,
-          "Jueves": 261,
-          "Martes": 219
+      "Rehabilitacion Oral": {
+        "Control": {
+          "dias": {
+            "Lunes": 104,
+            "Martes": 184,
+            "Miercoles": 232,
+            "Jueves": 192,
+            "Viernes": 128
+          },
+          "sexo": {
+            "H": 216,
+            "M": 624,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 32,
+            "40-59": 184,
+            "60+": 624,
+            "Sin dato": 0
+          },
+          "total": 840
         },
-        "sexo": {
-          "H": 450,
-          "M": 735,
-          "Otro": 45
+        "CNE": {
+          "dias": {
+            "Lunes": 32,
+            "Viernes": 16,
+            "Miercoles": 48,
+            "Jueves": 16,
+            "Martes": 32
+          },
+          "sexo": {
+            "H": 48,
+            "M": 96,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 16,
+            "40-59": 16,
+            "60+": 112,
+            "Sin dato": 0
+          },
+          "total": 144
+        }
+      },
+      "Cirugia Maxilofacial": {
+        "CNE": {
+          "dias": {
+            "Miercoles": 8,
+            "Martes": 8
+          },
+          "sexo": {
+            "H": 47,
+            "M": 76,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 5,
+            "18-39": 56,
+            "40-59": 0,
+            "60+": 14,
+            "Sin dato": 48
+          },
+          "total": 123
         },
-        "edades": {
-          "<18": 0,
-          "18-39": 118,
-          "40-59": 250,
-          "60+": 809,
-          "Sin dato": 53
+        "Control": {
+          "dias": {},
+          "sexo": {
+            "H": 5,
+            "M": 29,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 5,
+            "18-39": 29,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 34
+        }
+      },
+      "Odontopediatria": {
+        "CNE": {
+          "dias": {
+            "Martes": 37,
+            "Jueves": 30,
+            "Miercoles": 55,
+            "Viernes": 12,
+            "Lunes": 6
+          },
+          "sexo": {
+            "H": 49,
+            "M": 91,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 140,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 140
         },
-        "total": 1230
+        "Control": {
+          "dias": {
+            "Jueves": 92,
+            "Viernes": 40,
+            "Martes": 64,
+            "Lunes": 83,
+            "Miercoles": 57
+          },
+          "sexo": {
+            "H": 188,
+            "M": 148,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 303,
+            "18-39": 20,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 13
+          },
+          "total": 336
+        }
+      },
+      "Endodoncia": {
+        "Control": {
+          "dias": {
+            "Lunes": 153,
+            "Martes": 140,
+            "Miercoles": 196,
+            "Jueves": 99,
+            "Viernes": 72
+          },
+          "sexo": {
+            "H": 229,
+            "M": 431,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 109,
+            "18-39": 286,
+            "40-59": 115,
+            "60+": 150,
+            "Sin dato": 0
+          },
+          "total": 660
+        },
+        "CNE": {
+          "dias": {
+            "Lunes": 118,
+            "Martes": 70,
+            "Jueves": 98,
+            "Miercoles": 113,
+            "Viernes": 54
+          },
+          "sexo": {
+            "H": 171,
+            "M": 282,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 46,
+            "18-39": 215,
+            "40-59": 137,
+            "60+": 55,
+            "Sin dato": 0
+          },
+          "total": 453
+        }
+      },
+      "Patologia Oral": {
+        "Control": {
+          "dias": {
+            "Lunes": 7,
+            "Martes": 21,
+            "Miercoles": 21,
+            "Viernes": 7
+          },
+          "sexo": {
+            "H": 14,
+            "M": 42,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 0,
+            "40-59": 28,
+            "60+": 28,
+            "Sin dato": 0
+          },
+          "total": 56
+        },
+        "CNE": {
+          "dias": {
+            "Miercoles": 7,
+            "Jueves": 7,
+            "Lunes": 7
+          },
+          "sexo": {
+            "H": 7,
+            "M": 14,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 7,
+            "18-39": 7,
+            "40-59": 7,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 21
+        }
+      },
+      "Periodoncia": {
+        "CNE": {
+          "dias": {
+            "Lunes": 14,
+            "Miercoles": 7
+          },
+          "sexo": {
+            "H": 0,
+            "M": 21,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 7,
+            "40-59": 14,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 21
+        },
+        "Control": {
+          "dias": {
+            "Lunes": 70,
+            "Miercoles": 56,
+            "Jueves": 49
+          },
+          "sexo": {
+            "H": 49,
+            "M": 126,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 21,
+            "40-59": 91,
+            "60+": 63,
+            "Sin dato": 0
+          },
+          "total": 175
+        }
+      },
+      "Implantologia": {
+        "Control": {
+          "dias": {},
+          "sexo": {
+            "H": 7,
+            "M": 49,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 14,
+            "40-59": 35,
+            "60+": 7,
+            "Sin dato": 0
+          },
+          "total": 56
+        },
+        "CNE": {
+          "dias": {},
+          "sexo": {
+            "H": 14,
+            "M": 28,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 7,
+            "18-39": 14,
+            "40-59": 21,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 42
+        }
+      },
+      "TTM": {
+        "CNE": {
+          "dias": {
+            "Martes": 77,
+            "Miercoles": 21,
+            "Lunes": 49
+          },
+          "sexo": {
+            "H": 28,
+            "M": 126,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 21,
+            "18-39": 35,
+            "40-59": 84,
+            "60+": 14,
+            "Sin dato": 0
+          },
+          "total": 154
+        },
+        "Control": {
+          "dias": {
+            "Martes": 119,
+            "Miercoles": 105,
+            "Lunes": 105
+          },
+          "sexo": {
+            "H": 56,
+            "M": 273,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 49,
+            "18-39": 133,
+            "40-59": 70,
+            "60+": 70,
+            "Sin dato": 7
+          },
+          "total": 329
+        }
       }
     },
-    "Cirugia Maxilofacial": {
-      "CNE": {
-        "dias": {
-          "Miercoles": 8,
-          "Martes": 8,
-          "Lunes": 25
+    "02_Febrero": {
+      "Rehabilitacion Oral": {
+        "Control": {
+          "dias": {
+            "Lunes": 248,
+            "Miercoles": 120,
+            "Jueves": 216,
+            "Martes": 240,
+            "Viernes": 112
+          },
+          "sexo": {
+            "H": 296,
+            "M": 640,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 40,
+            "40-59": 200,
+            "60+": 696,
+            "Sin dato": 0
+          },
+          "total": 936
         },
-        "sexo": {
-          "H": 226,
-          "M": 398,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 54,
-          "18-39": 449,
-          "40-59": 31,
-          "60+": 42,
-          "Sin dato": 48
-        },
-        "total": 624
+        "CNE": {
+          "dias": {
+            "Martes": 64,
+            "Jueves": 72,
+            "Viernes": 80,
+            "Miercoles": 72,
+            "Lunes": 64
+          },
+          "sexo": {
+            "H": 168,
+            "M": 184,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 32,
+            "40-59": 88,
+            "60+": 232,
+            "Sin dato": 0
+          },
+          "total": 352
+        }
       },
-      "Control": {
-        "dias": {
-          "Lunes": 10
+      "Ortodoncia": {
+        "Control": {
+          "dias": {
+            "Lunes": 56,
+            "Martes": 24,
+            "Miercoles": 88,
+            "Jueves": 128,
+            "Viernes": 80
+          },
+          "sexo": {
+            "H": 208,
+            "M": 184,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 248,
+            "18-39": 136,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 8
+          },
+          "total": 392
         },
-        "sexo": {
-          "H": 193,
-          "M": 183,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 46,
-          "18-39": 264,
-          "40-59": 38,
-          "60+": 28,
-          "Sin dato": 0
-        },
-        "total": 376
+        "CNE": {
+          "dias": {
+            "Miercoles": 8,
+            "Viernes": 8
+          },
+          "sexo": {
+            "H": 8,
+            "M": 8,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 16,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 16
+        }
       },
-      "Sin especificar": {
-        "dias": {},
-        "sexo": {
-          "H": 0,
-          "M": 5,
-          "Otro": 0
+      "Odontopediatria": {
+        "Control": {
+          "dias": {
+            "Lunes": 68,
+            "Martes": 42,
+            "Miercoles": 45,
+            "Viernes": 40,
+            "Jueves": 44
+          },
+          "sexo": {
+            "H": 147,
+            "M": 92,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 224,
+            "18-39": 7,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 8
+          },
+          "total": 239
         },
-        "edades": {
-          "<18": 0,
-          "18-39": 0,
-          "40-59": 5,
-          "60+": 0,
-          "Sin dato": 0
+        "CNE": {
+          "dias": {
+            "Miercoles": 30,
+            "Viernes": 21,
+            "Jueves": 26
+          },
+          "sexo": {
+            "H": 37,
+            "M": 40,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 71,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 6
+          },
+          "total": 77
+        }
+      },
+      "Endodoncia": {
+        "CNE": {
+          "dias": {
+            "Lunes": 103,
+            "Martes": 77,
+            "Miercoles": 56,
+            "Jueves": 75,
+            "Viernes": 66
+          },
+          "sexo": {
+            "H": 165,
+            "M": 212,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 56,
+            "18-39": 176,
+            "40-59": 97,
+            "60+": 48,
+            "Sin dato": 0
+          },
+          "total": 377
         },
-        "total": 5
+        "Control": {
+          "dias": {
+            "Lunes": 105,
+            "Martes": 84,
+            "Miercoles": 63,
+            "Jueves": 63,
+            "Viernes": 21
+          },
+          "sexo": {
+            "H": 105,
+            "M": 231,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 49,
+            "18-39": 168,
+            "40-59": 42,
+            "60+": 77,
+            "Sin dato": 0
+          },
+          "total": 336
+        }
+      },
+      "Patologia Oral": {
+        "Control": {
+          "dias": {
+            "Lunes": 14,
+            "Martes": 7
+          },
+          "sexo": {
+            "H": 21,
+            "M": 0,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 21,
+            "Sin dato": 0
+          },
+          "total": 21
+        },
+        "CNE": {
+          "dias": {
+            "Lunes": 7,
+            "Martes": 7
+          },
+          "sexo": {
+            "H": 7,
+            "M": 7,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 14,
+            "Sin dato": 0
+          },
+          "total": 14
+        }
+      },
+      "Periodoncia": {
+        "CNE": {
+          "dias": {
+            "Martes": 42,
+            "Miercoles": 42,
+            "Viernes": 35
+          },
+          "sexo": {
+            "H": 35,
+            "M": 84,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 21,
+            "40-59": 42,
+            "60+": 56,
+            "Sin dato": 0
+          },
+          "total": 119
+        },
+        "Control": {
+          "dias": {
+            "Martes": 42,
+            "Viernes": 49
+          },
+          "sexo": {
+            "H": 35,
+            "M": 56,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 14,
+            "18-39": 21,
+            "40-59": 28,
+            "60+": 28,
+            "Sin dato": 0
+          },
+          "total": 91
+        }
+      },
+      "TTM": {
+        "CNE": {
+          "dias": {
+            "Lunes": 18,
+            "Martes": 6,
+            "Domingo": 6
+          },
+          "sexo": {
+            "H": 0,
+            "M": 30,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 24,
+            "40-59": 6,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 30
+        },
+        "Control": {
+          "dias": {
+            "Lunes": 30,
+            "Martes": 30,
+            "Domingo": 30,
+            "Miercoles": 18
+          },
+          "sexo": {
+            "H": 6,
+            "M": 102,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 6,
+            "18-39": 42,
+            "40-59": 18,
+            "60+": 42,
+            "Sin dato": 0
+          },
+          "total": 108
+        }
+      },
+      "Cirugia Maxilofacial": {
+        "CNE": {
+          "dias": {
+            "Lunes": 25
+          },
+          "sexo": {
+            "H": 75,
+            "M": 95,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 10,
+            "18-39": 135,
+            "40-59": 15,
+            "60+": 10,
+            "Sin dato": 0
+          },
+          "total": 170
+        },
+        "Control": {
+          "dias": {
+            "Lunes": 10
+          },
+          "sexo": {
+            "H": 80,
+            "M": 65,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 25,
+            "18-39": 110,
+            "40-59": 10,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 145
+        },
+        "Sin especificar": {
+          "dias": {},
+          "sexo": {
+            "H": 0,
+            "M": 5,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 0,
+            "40-59": 5,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 5
+        }
       }
     },
-    "Odontopediatria": {
-      "CNE": {
-        "dias": {
-          "Martes": 95,
-          "Jueves": 158,
-          "Miercoles": 143,
-          "Viernes": 65,
-          "Lunes": 22
+    "04_Abril": {
+      "Odontopediatria": {
+        "CNE": {
+          "dias": {
+            "Miercoles": 32,
+            "Lunes": 16,
+            "Martes": 28,
+            "Jueves": 72,
+            "Viernes": 20
+          },
+          "sexo": {
+            "H": 96,
+            "M": 72,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 144,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 24
+          },
+          "total": 168
         },
-        "sexo": {
-          "H": 237,
-          "M": 246,
-          "Otro": 0
+        "Control": {
+          "dias": {
+            "Miercoles": 112,
+            "Jueves": 84,
+            "Lunes": 104,
+            "Martes": 56,
+            "Viernes": 24
+          },
+          "sexo": {
+            "H": 212,
+            "M": 168,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 364,
+            "18-39": 0,
+            "40-59": 8,
+            "60+": 0,
+            "Sin dato": 8
+          },
+          "total": 380
         },
-        "edades": {
-          "<18": 447,
-          "18-39": 0,
-          "40-59": 0,
-          "60+": 0,
-          "Sin dato": 36
-        },
-        "total": 483
+        "Sin especificar": {
+          "dias": {
+            "Viernes": 8
+          },
+          "sexo": {
+            "H": 0,
+            "M": 8,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 8,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 8
+        }
       },
-      "Control": {
-        "dias": {
-          "Jueves": 274,
-          "Viernes": 194,
-          "Martes": 296,
-          "Miercoles": 284,
-          "Lunes": 367
+      "Periodoncia": {
+        "Control": {
+          "dias": {
+            "Miercoles": 88,
+            "Jueves": 136,
+            "Lunes": 72,
+            "Martes": 24,
+            "Viernes": 16
+          },
+          "sexo": {
+            "H": 136,
+            "M": 200,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 4,
+            "18-39": 104,
+            "40-59": 112,
+            "60+": 116,
+            "Sin dato": 0
+          },
+          "total": 336
         },
-        "sexo": {
-          "H": 826,
-          "M": 589,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 1331,
-          "18-39": 47,
-          "40-59": 8,
-          "60+": 0,
-          "Sin dato": 29
-        },
-        "total": 1415
+        "CNE": {
+          "dias": {
+            "Miercoles": 20,
+            "Lunes": 16,
+            "Martes": 12,
+            "Viernes": 8
+          },
+          "sexo": {
+            "H": 28,
+            "M": 28,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 0,
+            "40-59": 36,
+            "60+": 20,
+            "Sin dato": 0
+          },
+          "total": 56
+        }
       },
-      "Sin especificar": {
-        "dias": {
-          "Lunes": 6,
-          "Viernes": 8
+      "Ortodoncia": {
+        "Control": {
+          "dias": {
+            "Jueves": 120,
+            "Lunes": 72,
+            "Martes": 40,
+            "Miercoles": 144,
+            "Viernes": 32
+          },
+          "sexo": {
+            "H": 200,
+            "M": 208,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 280,
+            "18-39": 120,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 8
+          },
+          "total": 408
         },
-        "sexo": {
-          "H": 6,
-          "M": 8,
-          "Otro": 0
+        "CNE": {
+          "dias": {
+            "Miercoles": 24,
+            "Viernes": 8,
+            "Jueves": 8
+          },
+          "sexo": {
+            "H": 40,
+            "M": 0,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 40,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 40
+        }
+      },
+      "Rehabilitacion Oral": {
+        "Control": {
+          "dias": {
+            "Miercoles": 204,
+            "Jueves": 164,
+            "Lunes": 108,
+            "Martes": 80,
+            "Viernes": 52
+          },
+          "sexo": {
+            "H": 188,
+            "M": 444,
+            "Otro": 8
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 8,
+            "40-59": 92,
+            "60+": 532,
+            "Sin dato": 8
+          },
+          "total": 640
         },
-        "edades": {
-          "<18": 14,
-          "18-39": 0,
-          "40-59": 0,
-          "60+": 0,
-          "Sin dato": 0
+        "CNE": {
+          "dias": {
+            "Miercoles": 124,
+            "Jueves": 40,
+            "Lunes": 52,
+            "Martes": 32,
+            "Viernes": 24
+          },
+          "sexo": {
+            "H": 80,
+            "M": 168,
+            "Otro": 24
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 28,
+            "40-59": 76,
+            "60+": 136,
+            "Sin dato": 32
+          },
+          "total": 272
+        }
+      },
+      "TTM": {
+        "Control": {
+          "dias": {
+            "Miercoles": 90,
+            "Lunes": 81,
+            "Viernes": 90,
+            "Martes": 45
+          },
+          "sexo": {
+            "H": 36,
+            "M": 270,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 45,
+            "18-39": 135,
+            "40-59": 45,
+            "60+": 81,
+            "Sin dato": 0
+          },
+          "total": 306
         },
-        "total": 14
+        "CNE": {
+          "dias": {
+            "Miercoles": 27,
+            "Lunes": 45,
+            "Viernes": 18
+          },
+          "sexo": {
+            "H": 9,
+            "M": 81,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 9,
+            "18-39": 36,
+            "40-59": 18,
+            "60+": 27,
+            "Sin dato": 0
+          },
+          "total": 90
+        }
+      },
+      "Patologia Oral": {
+        "Control": {
+          "dias": {
+            "Martes": 28,
+            "Miercoles": 64,
+            "Jueves": 64,
+            "Lunes": 48,
+            "Viernes": 20
+          },
+          "sexo": {
+            "H": 88,
+            "M": 136,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 20,
+            "18-39": 24,
+            "40-59": 52,
+            "60+": 128,
+            "Sin dato": 0
+          },
+          "total": 224
+        },
+        "CNE": {
+          "dias": {
+            "Miercoles": 16,
+            "Jueves": 32,
+            "Martes": 12,
+            "Viernes": 4
+          },
+          "sexo": {
+            "H": 28,
+            "M": 36,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 4,
+            "18-39": 4,
+            "40-59": 24,
+            "60+": 32,
+            "Sin dato": 0
+          },
+          "total": 64
+        }
+      },
+      "Endodoncia": {
+        "CNE": {
+          "dias": {
+            "Miercoles": 60,
+            "Jueves": 20,
+            "Domingo": 8,
+            "Viernes": 24,
+            "Lunes": 48,
+            "Martes": 24
+          },
+          "sexo": {
+            "H": 52,
+            "M": 132,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 4,
+            "18-39": 104,
+            "40-59": 40,
+            "60+": 36,
+            "Sin dato": 0
+          },
+          "total": 184
+        },
+        "Control": {
+          "dias": {
+            "Miercoles": 24,
+            "Jueves": 44,
+            "Domingo": 8,
+            "Viernes": 28,
+            "Lunes": 28,
+            "Martes": 16
+          },
+          "sexo": {
+            "H": 44,
+            "M": 104,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 24,
+            "18-39": 48,
+            "40-59": 52,
+            "60+": 24,
+            "Sin dato": 0
+          },
+          "total": 148
+        }
+      },
+      "Cirugia Maxilofacial": {
+        "Control": {
+          "dias": {},
+          "sexo": {
+            "H": 103,
+            "M": 74,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 11,
+            "18-39": 110,
+            "40-59": 28,
+            "60+": 28,
+            "Sin dato": 0
+          },
+          "total": 177
+        },
+        "CNE": {
+          "dias": {},
+          "sexo": {
+            "H": 88,
+            "M": 185,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 28,
+            "18-39": 217,
+            "40-59": 16,
+            "60+": 12,
+            "Sin dato": 0
+          },
+          "total": 273
+        }
       }
     },
-    "Periodoncia": {
-      "Control": {
-        "dias": {
-          "Lunes": 170,
-          "Miercoles": 178,
-          "Jueves": 203,
-          "Martes": 144,
-          "Viernes": 71
+    "acum": {
+      "Ortodoncia": {
+        "Control": {
+          "dias": {
+            "Viernes": 816,
+            "Lunes": 938,
+            "Miercoles": 1018,
+            "Jueves": 936,
+            "Martes": 400
+          },
+          "sexo": {
+            "H": 2048,
+            "M": 2092,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 2860,
+            "18-39": 1154,
+            "40-59": 30,
+            "60+": 0,
+            "Sin dato": 96
+          },
+          "total": 4140
         },
-        "sexo": {
-          "H": 260,
-          "M": 506,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 30,
-          "18-39": 176,
-          "40-59": 300,
-          "60+": 260,
-          "Sin dato": 0
-        },
-        "total": 766
+        "CNE": {
+          "dias": {
+            "Jueves": 44,
+            "Lunes": 14,
+            "Viernes": 46,
+            "Miercoles": 80
+          },
+          "sexo": {
+            "H": 138,
+            "M": 46,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 184,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 184
+        }
       },
-      "CNE": {
-        "dias": {
-          "Miercoles": 108,
-          "Lunes": 30,
-          "Martes": 108,
-          "Viernes": 61,
-          "Jueves": 6
+      "Rehabilitacion Oral": {
+        "CNE": {
+          "dias": {
+            "Lunes": 492,
+            "Jueves": 522,
+            "Martes": 438,
+            "Miercoles": 698,
+            "Viernes": 310
+          },
+          "sexo": {
+            "H": 900,
+            "M": 1470,
+            "Otro": 90
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 236,
+            "40-59": 500,
+            "60+": 1618,
+            "Sin dato": 106
+          },
+          "total": 2460
         },
-        "sexo": {
-          "H": 124,
-          "M": 189,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 0,
-          "18-39": 54,
-          "40-59": 135,
-          "60+": 124,
-          "Sin dato": 0
-        },
-        "total": 313
-      }
-    },
-    "Endodoncia": {
-      "Control": {
-        "dias": {
-          "Lunes": 430,
-          "Martes": 294,
-          "Miercoles": 397,
-          "Jueves": 248,
-          "Viernes": 175,
-          "Domingo": 8
-        },
-        "sexo": {
-          "H": 450,
-          "M": 1078,
-          "Otro": 24
-        },
-        "edades": {
-          "<18": 248,
-          "18-39": 676,
-          "40-59": 305,
-          "60+": 323,
-          "Sin dato": 0
-        },
-        "total": 1552
+        "Control": {
+          "dias": {
+            "Lunes": 1718,
+            "Miercoles": 1378,
+            "Jueves": 1508,
+            "Martes": 1708,
+            "Viernes": 724
+          },
+          "sexo": {
+            "H": 2100,
+            "M": 4970,
+            "Otro": 30
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 230,
+            "40-59": 1400,
+            "60+": 5440,
+            "Sin dato": 30
+          },
+          "total": 7100
+        }
       },
-      "CNE": {
-        "dias": {
-          "Lunes": 419,
-          "Martes": 261,
-          "Jueves": 289,
-          "Miercoles": 313,
-          "Viernes": 150,
-          "Domingo": 8
+      "Periodoncia": {
+        "Control": {
+          "dias": {
+            "Lunes": 340,
+            "Miercoles": 356,
+            "Martes": 288,
+            "Jueves": 406,
+            "Viernes": 142
+          },
+          "sexo": {
+            "H": 520,
+            "M": 1012,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 60,
+            "18-39": 352,
+            "40-59": 600,
+            "60+": 520,
+            "Sin dato": 0
+          },
+          "total": 1532
         },
-        "sexo": {
-          "H": 484,
-          "M": 956,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 160,
-          "18-39": 699,
-          "40-59": 376,
-          "60+": 199,
-          "Sin dato": 6
-        },
-        "total": 1440
-      }
-    },
-    "Patologia Oral": {
-      "Control": {
-        "dias": {
-          "Lunes": 69,
-          "Martes": 56,
-          "Miercoles": 85,
-          "Viernes": 27,
-          "Jueves": 64
-        },
-        "sexo": {
-          "H": 123,
-          "M": 178,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 20,
-          "18-39": 24,
-          "40-59": 80,
-          "60+": 177,
-          "Sin dato": 0
-        },
-        "total": 301
+        "CNE": {
+          "dias": {
+            "Miercoles": 216,
+            "Martes": 216,
+            "Jueves": 12,
+            "Viernes": 122,
+            "Lunes": 60
+          },
+          "sexo": {
+            "H": 248,
+            "M": 378,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 108,
+            "40-59": 270,
+            "60+": 248,
+            "Sin dato": 0
+          },
+          "total": 626
+        }
       },
-      "CNE": {
-        "dias": {
-          "Miercoles": 23,
-          "Jueves": 39,
-          "Lunes": 14,
-          "Martes": 19,
-          "Viernes": 4
+      "Odontopediatria": {
+        "Control": {
+          "dias": {
+            "Martes": 592,
+            "Miercoles": 568,
+            "Lunes": 734,
+            "Jueves": 548,
+            "Viernes": 388
+          },
+          "sexo": {
+            "H": 1652,
+            "M": 1178,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 2662,
+            "18-39": 94,
+            "40-59": 16,
+            "60+": 0,
+            "Sin dato": 58
+          },
+          "total": 2830
         },
-        "sexo": {
-          "H": 42,
-          "M": 57,
-          "Otro": 0
+        "CNE": {
+          "dias": {
+            "Miercoles": 286,
+            "Martes": 190,
+            "Viernes": 130,
+            "Jueves": 316,
+            "Lunes": 44
+          },
+          "sexo": {
+            "H": 474,
+            "M": 492,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 894,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 72
+          },
+          "total": 966
         },
-        "edades": {
-          "<18": 11,
-          "18-39": 11,
-          "40-59": 31,
-          "60+": 46,
-          "Sin dato": 0
-        },
-        "total": 99
-      }
-    },
-    "Implantologia": {
-      "Control": {
-        "dias": {},
-        "sexo": {
-          "H": 7,
-          "M": 49,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 0,
-          "18-39": 14,
-          "40-59": 35,
-          "60+": 7,
-          "Sin dato": 0
-        },
-        "total": 56
+        "Sin especificar": {
+          "dias": {
+            "Lunes": 12,
+            "Viernes": 16
+          },
+          "sexo": {
+            "H": 12,
+            "M": 16,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 28,
+            "18-39": 0,
+            "40-59": 0,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 28
+        }
       },
-      "CNE": {
-        "dias": {},
-        "sexo": {
-          "H": 14,
-          "M": 28,
-          "Otro": 0
+      "Endodoncia": {
+        "CNE": {
+          "dias": {
+            "Lunes": 838,
+            "Martes": 522,
+            "Miercoles": 626,
+            "Jueves": 578,
+            "Viernes": 300,
+            "Domingo": 16
+          },
+          "sexo": {
+            "H": 968,
+            "M": 1912,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 320,
+            "18-39": 1398,
+            "40-59": 752,
+            "60+": 398,
+            "Sin dato": 12
+          },
+          "total": 2880
         },
-        "edades": {
-          "<18": 7,
-          "18-39": 14,
-          "40-59": 21,
-          "60+": 0,
-          "Sin dato": 0
-        },
-        "total": 42
-      }
-    },
-    "TTM": {
-      "CNE": {
-        "dias": {
-          "Martes": 89,
-          "Miercoles": 60,
-          "Lunes": 148,
-          "Domingo": 6,
-          "Viernes": 36
-        },
-        "sexo": {
-          "H": 43,
-          "M": 303,
-          "Otro": 0
-        },
-        "edades": {
-          "<18": 30,
-          "18-39": 113,
-          "40-59": 138,
-          "60+": 65,
-          "Sin dato": 0
-        },
-        "total": 346
+        "Control": {
+          "dias": {
+            "Lunes": 860,
+            "Martes": 588,
+            "Miercoles": 794,
+            "Jueves": 496,
+            "Viernes": 350,
+            "Domingo": 16
+          },
+          "sexo": {
+            "H": 900,
+            "M": 2156,
+            "Otro": 48
+          },
+          "edades": {
+            "<18": 496,
+            "18-39": 1352,
+            "40-59": 610,
+            "60+": 646,
+            "Sin dato": 0
+          },
+          "total": 3104
+        }
       },
-      "Control": {
-        "dias": {
-          "Martes": 266,
-          "Miercoles": 267,
-          "Lunes": 294,
-          "Domingo": 30,
-          "Viernes": 120
+      "Cirugia Maxilofacial": {
+        "CNE": {
+          "dias": {
+            "Miercoles": 16,
+            "Martes": 16,
+            "Lunes": 50
+          },
+          "sexo": {
+            "H": 452,
+            "M": 796,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 108,
+            "18-39": 898,
+            "40-59": 62,
+            "60+": 84,
+            "Sin dato": 96
+          },
+          "total": 1248
         },
-        "sexo": {
-          "H": 110,
-          "M": 867,
-          "Otro": 0
+        "Control": {
+          "dias": {
+            "Lunes": 20
+          },
+          "sexo": {
+            "H": 386,
+            "M": 366,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 92,
+            "18-39": 528,
+            "40-59": 76,
+            "60+": 56,
+            "Sin dato": 0
+          },
+          "total": 752
         },
-        "edades": {
-          "<18": 118,
-          "18-39": 382,
-          "40-59": 217,
-          "60+": 253,
-          "Sin dato": 7
+        "Sin especificar": {
+          "dias": {},
+          "sexo": {
+            "H": 0,
+            "M": 10,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 0,
+            "40-59": 10,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 10
+        }
+      },
+      "TTM": {
+        "CNE": {
+          "dias": {
+            "Viernes": 72,
+            "Lunes": 296,
+            "Miercoles": 120,
+            "Martes": 178,
+            "Domingo": 12
+          },
+          "sexo": {
+            "H": 86,
+            "M": 606,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 60,
+            "18-39": 226,
+            "40-59": 276,
+            "60+": 130,
+            "Sin dato": 0
+          },
+          "total": 692
         },
-        "total": 977
+        "Control": {
+          "dias": {
+            "Lunes": 588,
+            "Martes": 532,
+            "Miercoles": 534,
+            "Viernes": 240,
+            "Domingo": 60
+          },
+          "sexo": {
+            "H": 220,
+            "M": 1734,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 236,
+            "18-39": 764,
+            "40-59": 434,
+            "60+": 506,
+            "Sin dato": 14
+          },
+          "total": 1954
+        }
+      },
+      "Patologia Oral": {
+        "Control": {
+          "dias": {
+            "Lunes": 138,
+            "Martes": 112,
+            "Miercoles": 170,
+            "Viernes": 54,
+            "Jueves": 128
+          },
+          "sexo": {
+            "H": 246,
+            "M": 356,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 40,
+            "18-39": 48,
+            "40-59": 160,
+            "60+": 354,
+            "Sin dato": 0
+          },
+          "total": 602
+        },
+        "CNE": {
+          "dias": {
+            "Miercoles": 46,
+            "Jueves": 78,
+            "Lunes": 28,
+            "Martes": 38,
+            "Viernes": 8
+          },
+          "sexo": {
+            "H": 84,
+            "M": 114,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 22,
+            "18-39": 22,
+            "40-59": 62,
+            "60+": 92,
+            "Sin dato": 0
+          },
+          "total": 198
+        }
+      },
+      "Implantologia": {
+        "Control": {
+          "dias": {},
+          "sexo": {
+            "H": 14,
+            "M": 98,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 0,
+            "18-39": 28,
+            "40-59": 70,
+            "60+": 14,
+            "Sin dato": 0
+          },
+          "total": 112
+        },
+        "CNE": {
+          "dias": {},
+          "sexo": {
+            "H": 28,
+            "M": 56,
+            "Otro": 0
+          },
+          "edades": {
+            "<18": 14,
+            "18-39": 28,
+            "40-59": 42,
+            "60+": 0,
+            "Sin dato": 0
+          },
+          "total": 84
+        }
       }
     }
   }
