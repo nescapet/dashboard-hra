@@ -119,8 +119,6 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo
     <button class="nb on" onclick="setVista('general',this)">General</button>
     <button class="nb" onclick="setVista('especialistas',this)">Especialidad</button>
     <button class="nb" onclick="setVista('profesional',this)">Profesional</button>
-    <button class="nb" onclick="setVista('inasistencia',this)">Inasistencia</button>
-    <button class="nb" onclick="setVista('financiero',this)">Financiero</button>
   </div>
   <div class="hdr-r">
     <select class="sel" id="sel-mes" onchange="render()"></select>
@@ -328,7 +326,17 @@ function renderGeneral(mes){
 </div>
 <div class="krow krow3">
   ${kpiSemaforo('Consultas nuevas (CNE)', t.cne.toLocaleString('es-CL'), 'Meta anual: '+META_CNE_ANUAL.toLocaleString('es-CL'), pC, pEsperado)}
-  ${kpiSemaforo('Altas de tratamiento', t.altas.toLocaleString('es-CL'), 'Meta anual: '+META_ALTAS_ANUAL.toLocaleString('es-CL'), pA, pEsperado)}
+  <div class="kc fu">
+    <div class="kc-bar" style="background:${colorCumpl}"></div>
+    <div class="klbl">Cumplimiento programación</div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="kval" style="color:${colorCumpl}">${pCumpl}%</div>
+      <span style="font-size:22px;font-weight:900;color:${colorCumpl}">${iconoCumpl}</span>
+    </div>
+    <div class="ksub">CNE ${pC}% · Altas ${pA}%</div>
+    <div class="pbar"><div class="pbf" style="background:${colorCumpl}" data-w="${Math.min(pCumpl,100)}"></div></div>
+    <div class="ppct">Esperado al corte: ${pEsperado}% <span class="bdg ${bdgCumpl}">${estadoCumpl}</span></div>
+  </div>
   ${(()=>{
     // Top 2 especialidades por ausentismo CNE
     const espInasCNE = Object.entries(DB.especialistas).map(([n,e])=>{
@@ -346,6 +354,7 @@ function renderGeneral(mes){
   })()}
 </div>
 <div class="krow krow3" style="margin-top:-8px">
+  ${kpiSemaforo('Altas de tratamiento', t.altas.toLocaleString('es-CL'), 'Meta anual: '+META_ALTAS_ANUAL.toLocaleString('es-CL'), pA, pEsperado)}
   ${(()=>{
     const espInasCtrl = Object.entries(DB.especialistas).map(([n,e])=>{
       const d=getDatoEsp(n,mes);
@@ -374,20 +383,7 @@ function renderGeneral(mes){
     const subPPV=top2ppv.map(x=>`${x.e}: ${t.ppv>0?Math.round(x.ppv/t.ppv*100):0}%`).concat(`Restantes: ${restoPPV}%`).join(' · ');
     return kpi('#0E7A5A','Registro Financiero PPV', fmt(t.ppv), subPPV);
   })()}
-  <div class="kc fu">
-    <div class="kc-bar" style="background:${colorCumpl}"></div>
-    <div class="klbl">Cumplimiento programación</div>
-    <div style="display:flex;align-items:center;gap:8px">
-      <div class="kval" style="color:${colorCumpl}">${pCumpl}%</div>
-      <span style="font-size:22px;font-weight:900;color:${colorCumpl}">${iconoCumpl}</span>
-    </div>
-    <div class="ksub">CNE ${pC}% · Altas ${pA}%</div>
-    <div class="pbar"><div class="pbf" style="background:${colorCumpl}" data-w="${Math.min(pCumpl,100)}"></div></div>
-    <div class="ppct">Esperado al corte: ${pEsperado}% <span class="bdg ${bdgCumpl}">${estadoCumpl}</span></div>
-  </div>
-</div>
-</div>
-</div>
+
 <div class="g2" style="grid-template-columns:1fr">
   <div class="card">
     <div class="card-h">
@@ -831,7 +827,7 @@ function renderPanelCruzado(){
     data = DB.inasistencias_cruzadas?.[espActiva]?.[tipo] || null;
   } else {
     // Todos — sumar todas las especialidades
-    titulo = 'Servicio Dental completo';
+    titulo = 'Para el Servicio Dental';
     const allEsps = Object.keys(DB.inasistencias_cruzadas || {});
     if(allEsps.length > 0){
       data = {total:0, dias:{}, sexo:{H:0,M:0,Otro:0}, edades:{'<18':0,'18-39':0,'40-59':0,'60+':0,'Sin dato':0}};
@@ -851,7 +847,7 @@ function renderPanelCruzado(){
     return;
   }
 
-  const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'];
+  const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
   const maxDia = Math.max(...Object.values(data.dias),1);
   const topDia = Object.entries(data.dias).sort((a,b)=>b[1]-a[1])[0];
   const totSexo = data.sexo.H + data.sexo.M + data.sexo.Otro || 1;
@@ -902,17 +898,17 @@ function renderPanelCruzado(){
         ${barDias}
       </div>
       <div>
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Por sexo</div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Por género</div>
         ${barSexo}
         <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin:14px 0 10px">Por rango etario</div>
         ${barEdad}
       </div>
       <div>
         <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Resumen</div>
-        <div style="font-size:13px;font-weight:700;color:${colorTipo};margin-bottom:4px">${data.total} inasistencias</div>
+        <div style="font-size:13px;font-weight:700;color:${colorTipo};margin-bottom:4px">${tipo==='CNE'?t.ic.toLocaleString('es-CL'):t.ik.toLocaleString('es-CL')} inasistencias</div>
         <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Total registradas · ${tipo}</div>
         <div style="font-size:11px;color:var(--muted)">Día crítico: <strong>${topDia?.[0]||'—'}</strong> (${topDia?.[1]||0} casos)</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px">Sexo predominante: <strong>${topSexo}</strong></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">Género predominante: <strong>${topSexo}</strong></div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px">Edad predominante: <strong>${topEdad?.[0]||'—'}</strong></div>
       </div>
     </div>
