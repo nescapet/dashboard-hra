@@ -228,6 +228,7 @@ function render(){
   else if(vista==='inasistencia')  cnt.innerHTML = renderInasistencia(mes);
   else cnt.innerHTML = renderFinanciero(mes);
   setTimeout(()=>drawCharts(mes), 80);
+  if(vista==='general') setTimeout(renderPanelCruzado, 200);
 }
 
 // ── KPI CARD SIMPLE ──
@@ -756,7 +757,7 @@ function drawCharts(mes){
   // Paneles ausentismo en vista general
   if(vista==='general'){
     poblarSelectorEsp();
-    setTimeout(renderPanelCruzado, 100);
+    setTimeout(renderPanelCruzado, 150);
   }
 }
 
