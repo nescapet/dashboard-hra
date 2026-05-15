@@ -859,15 +859,16 @@ function renderPanelCruzado(){
   const topEdad = Object.entries(data.edades).sort((a,b)=>b[1]-a[1])[0];
   const colorTipo = tipo==='CNE' ? '#C0392B' : '#E67E22';
 
-  const insight = `En <strong>${titulo}</strong>, el mayor ausentismo a <strong>${tipo}</strong> ocurre los <strong>${topDia?.[0]||'—'}</strong>, concentrado en <strong>${topSexo}</strong> de <strong>${topEdad?.[0]||'—'}</strong> años.`;
+  const insight = `<strong>${titulo}</strong>: el mayor ausentismo a <strong>${tipo}</strong> ocurre los <strong>${topDia?.[0]||'—'}</strong>, concentrado en <strong>${topSexo}</strong> de <strong>${topEdad?.[0]||'—'}</strong> años.`;
 
+  const totDias = Object.values(data.dias).reduce((a,b)=>a+b,0)||1;
   const barDias = diasOrden.filter(d=>data.dias[d]!==undefined).map(d=>`
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
       <div style="width:75px;font-size:11px;color:var(--muted)">${d}</div>
       <div style="flex:1;background:var(--borde);border-radius:3px;height:16px;overflow:hidden">
         <div style="width:${Math.round((data.dias[d]||0)/maxDia*100)}%;background:${colorTipo};height:100%;border-radius:3px;transition:width .8s"></div>
       </div>
-      <div style="width:30px;text-align:right;font-size:11px;font-weight:700;color:${colorTipo}">${data.dias[d]||0}</div>
+      <div style="width:44px;text-align:right;font-size:11px;font-weight:700;color:${colorTipo}">${Math.round((data.dias[d]||0)/totDias*100)}%</div>
     </div>`).join('');
 
   const barSexo = ['H','M'].map(s=>`
@@ -908,9 +909,9 @@ function renderPanelCruzado(){
       </div>
       <div>
         <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Resumen</div>
-        <div style="font-size:13px;font-weight:700;color:${colorTipo};margin-bottom:4px">${tipo==='CNE'?t.ic.toLocaleString('es-CL'):t.ik.toLocaleString('es-CL')} inasistencias</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Total registradas · ${tipo}</div>
-        <div style="font-size:11px;color:var(--muted)">Día crítico: <strong>${topDia?.[0]||'—'}</strong> (${topDia?.[1]||0} casos)</div>
+        <div style="font-size:13px;font-weight:700;color:${colorTipo};margin-bottom:4px">${data.total.toLocaleString('es-CL')} inasistencias</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Total con detalle registrado · ${tipo}</div>
+        <div style="font-size:11px;color:var(--muted)">Día crítico: <strong>${topDia?.[0]||'—'}</strong> (${Math.round((topDia?.[1]||0)/totDias*100)}% del total)</div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px">Género predominante: <strong>${topSexo}</strong></div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px">Edad predominante: <strong>${topEdad?.[0]||'—'}</strong></div>
       </div>
