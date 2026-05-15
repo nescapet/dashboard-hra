@@ -812,37 +812,48 @@ function renderPanelCruzado(){
   const pan = document.getElementById('panel-cruzado');
   if(!pan) return;
 
-  // Determine context: profesional > especialidad > todos
-  let titulo = 'Servicio Dental';
+  // Nueva estructura: inas_cruzadas[mes][esp][tipo]
+  // mes puede ser "acum", "03_Marzo", etc.
+  const cruzadas = DB.inasistencias_cruzadas || {};
+  const mesKey = mes; // viene del selector: "acum" o "03_Marzo" etc.
+  const cruzMes = cruzadas[mesKey] || cruzadas['acum'] || {};
+
+  let titulo = 'Para el Servicio Dental';
   let data = null;
 
+  function sumarEsps(espsObj){
+    const acc = {total:0, dias:{}, sexo:{H:0,M:0,Otro:0}, edades:{'<18':0,'18-39':0,'40-59':0,'60+':0,'Sin dato':0}};
+    Object.values(espsObj).forEach(tipos=>{
+      const d = tipos?.[tipo];
+      if(!d) return;
+      acc.total += d.total;
+      Object.entries(d.dias).forEach(([k,v])=>{ acc.dias[k]=(acc.dias[k]||0)+v; });
+      Object.entries(d.sexo).forEach(([k,v])=>{ acc.sexo[k]=(acc.sexo[k]||0)+v; });
+      Object.entries(d.edades).forEach(([k,v])=>{ acc.edades[k]=(acc.edades[k]||0)+v; });
+    });
+    return acc.total > 0 ? acc : null;
+  }
+
   if(profActivo && profActivo !== 'todos'){
-    // Profesional específico
     const eProf = DB.especialistas[profActivo];
     const espProf = eProf ? eProf.especialidad : '';
     titulo = profActivo;
-    data = DB.inasistencias_cruzadas?.[espProf]?.[tipo] || null;
-    // Si no hay datos cruzados por especialidad, intentar buscar por nombre
-    // (los datos cruzados están agrupados por especialidad, no por profesional)
+    // Buscar en todos los subtipos que correspondan a esa especialidad
+    const espsMatch = {};
+    Object.entries(cruzMes).forEach(([k,v])=>{
+      if(k === espProf || k.startsWith(espProf)) espsMatch[k] = v;
+    });
+    data = sumarEsps(espsMatch);
   } else if(espActiva && espActiva !== 'todas'){
-    // Especialidad seleccionada
     titulo = espActiva;
-    data = DB.inasistencias_cruzadas?.[espActiva]?.[tipo] || null;
+    const espsMatch = {};
+    Object.entries(cruzMes).forEach(([k,v])=>{
+      if(k === espActiva || k.startsWith(espActiva)) espsMatch[k] = v;
+    });
+    data = sumarEsps(espsMatch);
   } else {
-    // Todos — sumar todas las especialidades
     titulo = 'Para el Servicio Dental';
-    const allEsps = Object.keys(DB.inasistencias_cruzadas || {});
-    if(allEsps.length > 0){
-      data = {total:0, dias:{}, sexo:{H:0,M:0,Otro:0}, edades:{'<18':0,'18-39':0,'40-59':0,'60+':0,'Sin dato':0}};
-      allEsps.forEach(esp=>{
-        const d = DB.inasistencias_cruzadas[esp]?.[tipo];
-        if(!d) return;
-        data.total += d.total;
-        Object.entries(d.dias).forEach(([k,v])=>{ data.dias[k]=(data.dias[k]||0)+v; });
-        Object.entries(d.sexo).forEach(([k,v])=>{ data.sexo[k]=(data.sexo[k]||0)+v; });
-        Object.entries(d.edades).forEach(([k,v])=>{ data.edades[k]=(data.edades[k]||0)+v; });
-      });
-    }
+    data = sumarEsps(cruzMes);
   }
 
   if(!data || data.total === 0){
