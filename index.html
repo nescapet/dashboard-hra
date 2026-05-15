@@ -802,10 +802,12 @@ function renderPanelDias(){
 // renderPanelEsp removido - reemplazado por renderPanelCruzado
 
 function renderPanelCruzado(){
-  if(!DB.inasistencias_cruzadas) return;
+  if(!DB || !DB.inasistencias_cruzadas) return;
   const selTipo = document.getElementById('sel-tipo-inas');
   if(!selTipo) return;
 
+  const mes = document.getElementById('sel-mes')?.value || 'acum';
+  const t = getTotales(mes, espActiva, profActivo);
   const tipo = selTipo.value;
   const pan = document.getElementById('panel-cruzado');
   if(!pan) return;
