@@ -228,7 +228,7 @@ function render(){
   else if(vista==='inasistencia')  cnt.innerHTML = renderInasistencia(mes);
   else cnt.innerHTML = renderFinanciero(mes);
   setTimeout(()=>drawCharts(mes), 80);
-  if(vista==='general') setTimeout(renderPanelCruzado, 200);
+
 }
 
 // ── KPI CARD SIMPLE ──
@@ -357,20 +357,6 @@ function renderGeneral(mes){
 <div class="krow krow3" style="margin-top:-8px">
   ${kpiSemaforo('Altas de tratamiento', t.altas.toLocaleString('es-CL'), 'Meta anual: '+META_ALTAS_ANUAL.toLocaleString('es-CL'), pA, pEsperado)}
   ${(()=>{
-    const espInasCtrl = Object.entries(DB.especialistas).map(([n,e])=>{
-      const d=getDatoEsp(n,mes);
-      return {esp:e.especialidad, ik:d.inasist_ctrl, ctrl:d.control};
-    }).reduce((acc,x)=>{
-      if(!acc[x.esp]) acc[x.esp]={ik:0,ctrl:0};
-      acc[x.esp].ik+=x.ik; acc[x.esp].ctrl+=x.ctrl; return acc;
-    },{});
-    const sortedCtrl=Object.entries(espInasCtrl).map(([e,v])=>({e,p:v.ctrl>0?Math.round(v.ik/v.ctrl*100):0,ik:v.ik})).filter(x=>x.ik>0).sort((a,b)=>b.p-a.p);
-    const top2ctrl=sortedCtrl.slice(0,2);
-    const restoCtrl=100-top2ctrl.reduce((s,x)=>s+x.p,0);
-    const subCtrl=top2ctrl.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCtrl)}%`).join(' · ');
-    const pCtrl=t.ctrl>0?Math.round(t.ik/t.ctrl*100):0; return kpi('#E67E22','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl);
-  })()}
-  ${(()=>{
     const espPPV = Object.entries(DB.especialistas).map(([n,e])=>{
       const d=getDatoEsp(n,mes);
       return {esp:e.especialidad, ppv:d.ppv};
@@ -384,21 +370,21 @@ function renderGeneral(mes){
     const subPPV=top2ppv.map(x=>`${x.e}: ${t.ppv>0?Math.round(x.ppv/t.ppv*100):0}%`).concat(`Restantes: ${restoPPV}%`).join(' · ');
     return kpi('#0E7A5A','Registro Financiero PPV', fmt(t.ppv), subPPV);
   })()}
-
-<div class="g2" style="grid-template-columns:1fr">
-  <div class="card">
-    <div class="card-h">
-      <div><div class="ct">Análisis de ausentismo</div><div class="cs">Según especialidad seleccionada arriba</div></div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <select id="sel-tipo-inas" onchange="renderPanelCruzado()" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:5px 10px;cursor:pointer;outline:none">
-          <option value="CNE">Inasistencia a CNE</option>
-          <option value="Control">Inasistencia a Control</option>
-        </select>
-      </div>
-    </div>
-    <div id="panel-cruzado"></div>
-  </div>
-</div>`;
+  ${(()=>{
+    const espInasCtrl = Object.entries(DB.especialistas).map(([n,e])=>{
+      const d=getDatoEsp(n,mes);
+      return {esp:e.especialidad, ik:d.inasist_ctrl, ctrl:d.control};
+    }).reduce((acc,x)=>{
+      if(!acc[x.esp]) acc[x.esp]={ik:0,ctrl:0};
+      acc[x.esp].ik+=x.ik; acc[x.esp].ctrl+=x.ctrl; return acc;
+    },{});
+    const sortedCtrl=Object.entries(espInasCtrl).map(([e,v])=>({e,p:v.ctrl>0?Math.round(v.ik/v.ctrl*100):0,ik:v.ik})).filter(x=>x.ik>0).sort((a,b)=>b.p-a.p);
+    const top2ctrl=sortedCtrl.slice(0,2);
+    const restoCtrl=100-top2ctrl.reduce((s,x)=>s+x.p,0);
+    const subCtrl=top2ctrl.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCtrl)}%`).join(' · ');
+    const pCtrl=t.ctrl>0?Math.round(t.ik/t.ctrl*100):0; return kpi('#E67E22','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl);
+  })()}
+`;
 }
 
 // ── VISTA ESPECIALISTAS ──
@@ -457,8 +443,6 @@ function filtrarGeneral(btn, esp){
   espActiva = esp;
   document.querySelectorAll('.frow .chip').forEach(c=>c.classList.remove('on'));
   btn.classList.add('on');
-  poblarSelectorEsp();
-  setTimeout(renderPanelCruzado, 50);
 }
 
 function setEspActiva(val){
@@ -754,11 +738,6 @@ function drawCharts(mes){
   // Animar barras
   setTimeout(()=>{document.querySelectorAll('.pbf[data-w]').forEach(el=>{el.style.width=el.getAttribute('data-w')+'%';});},150);
 
-  // Paneles ausentismo en vista general
-  if(vista==='general'){
-    poblarSelectorEsp();
-    setTimeout(renderPanelCruzado, 150);
-  }
 }
 
 function poblarSelectorEsp(){
@@ -797,138 +776,6 @@ function renderPanelDias(){
   const panCtrl = document.getElementById('panel-inas-ctrl');
   if(panCNE) panCNE.innerHTML = barHtml(diasOrden, cntCNE, maxCNE, '#C0392B');
   if(panCtrl) panCtrl.innerHTML = barHtml(diasOrden, cntCtrl, maxCtrl, '#E67E22');
-}
-
-// renderPanelEsp removido - reemplazado por renderPanelCruzado
-
-function renderPanelCruzado(){
-  if(!DB || !DB.inasistencias_cruzadas) return;
-  const selTipo = document.getElementById('sel-tipo-inas');
-  if(!selTipo) return;
-
-  const mes = document.getElementById('sel-mes')?.value || 'acum';
-  const t = getTotales(mes, espActiva, profActivo);
-  const tipo = selTipo.value;
-  const pan = document.getElementById('panel-cruzado');
-  if(!pan) return;
-
-  // Nueva estructura: inas_cruzadas[mes][esp][tipo]
-  // mes puede ser "acum", "03_Marzo", etc.
-  const cruzadas = DB.inasistencias_cruzadas || {};
-  const mesKey = mes; // viene del selector: "acum" o "03_Marzo" etc.
-  const cruzMes = cruzadas[mesKey] || cruzadas['acum'] || {};
-
-  let titulo = 'Para el Servicio Dental';
-  let data = null;
-
-  function sumarEsps(espsObj){
-    const acc = {total:0, dias:{}, sexo:{H:0,M:0,Otro:0}, edades:{'<18':0,'18-39':0,'40-59':0,'60+':0,'Sin dato':0}};
-    Object.values(espsObj).forEach(tipos=>{
-      const d = tipos?.[tipo];
-      if(!d) return;
-      acc.total += d.total;
-      Object.entries(d.dias).forEach(([k,v])=>{ acc.dias[k]=(acc.dias[k]||0)+v; });
-      Object.entries(d.sexo).forEach(([k,v])=>{ acc.sexo[k]=(acc.sexo[k]||0)+v; });
-      Object.entries(d.edades).forEach(([k,v])=>{ acc.edades[k]=(acc.edades[k]||0)+v; });
-    });
-    return acc.total > 0 ? acc : null;
-  }
-
-  if(profActivo && profActivo !== 'todos'){
-    const eProf = DB.especialistas[profActivo];
-    const espProf = eProf ? eProf.especialidad : '';
-    titulo = profActivo;
-    // Buscar en todos los subtipos que correspondan a esa especialidad
-    const espsMatch = {};
-    Object.entries(cruzMes).forEach(([k,v])=>{
-      if(k === espProf || k.startsWith(espProf)) espsMatch[k] = v;
-    });
-    data = sumarEsps(espsMatch);
-  } else if(espActiva && espActiva !== 'todas'){
-    titulo = espActiva;
-    const espsMatch = {};
-    Object.entries(cruzMes).forEach(([k,v])=>{
-      if(k === espActiva || k.startsWith(espActiva)) espsMatch[k] = v;
-    });
-    data = sumarEsps(espsMatch);
-  } else {
-    titulo = 'Para el Servicio Dental';
-    data = sumarEsps(cruzMes);
-  }
-
-  if(!data || data.total === 0){
-    pan.innerHTML = '<div style="color:var(--muted);font-size:12px;padding:16px">Sin datos de inasistencia para esta selección.</div>';
-    return;
-  }
-
-  const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
-  const maxDia = Math.max(...Object.values(data.dias),1);
-  const topDia = Object.entries(data.dias).sort((a,b)=>b[1]-a[1])[0];
-  const totSexo = data.sexo.H + data.sexo.M + data.sexo.Otro || 1;
-  const topSexo = data.sexo.H >= data.sexo.M ? 'Hombres' : 'Mujeres';
-  const totEdad = Object.values(data.edades).reduce((a,b)=>a+b,0)||1;
-  const topEdad = Object.entries(data.edades).sort((a,b)=>b[1]-a[1])[0];
-  const colorTipo = tipo==='CNE' ? '#C0392B' : '#E67E22';
-
-  const insight = `<strong>${titulo}</strong>: el mayor ausentismo a <strong>${tipo}</strong> ocurre los <strong>${topDia?.[0]||'—'}</strong>, concentrado en <strong>${topSexo}</strong> de <strong>${topEdad?.[0]||'—'}</strong> años.`;
-
-  const totDias = Object.values(data.dias).reduce((a,b)=>a+b,0)||1;
-  const barDias = diasOrden.filter(d=>data.dias[d]!==undefined).map(d=>`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
-      <div style="width:75px;font-size:11px;color:var(--muted)">${d}</div>
-      <div style="flex:1;background:var(--borde);border-radius:3px;height:16px;overflow:hidden">
-        <div style="width:${Math.round((data.dias[d]||0)/maxDia*100)}%;background:${colorTipo};height:100%;border-radius:3px;transition:width .8s"></div>
-      </div>
-      <div style="width:44px;text-align:right;font-size:11px;font-weight:700;color:${colorTipo}">${Math.round((data.dias[d]||0)/totDias*100)}%</div>
-    </div>`).join('');
-
-  const barSexo = ['H','M'].map(s=>`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
-      <div style="width:75px;font-size:11px;color:var(--muted)">${s==='H'?'Hombres':'Mujeres'}</div>
-      <div style="flex:1;background:var(--borde);border-radius:3px;height:16px;overflow:hidden">
-        <div style="width:${Math.round(data.sexo[s]/totSexo*100)}%;background:${s==='H'?'#1A7AAF':'#C0842D'};height:100%;border-radius:3px;transition:width .8s"></div>
-      </div>
-      <div style="width:30px;text-align:right;font-size:11px;font-weight:700">${Math.round(data.sexo[s]/totSexo*100)}%</div>
-    </div>`).join('');
-
-  const edadOrden = ['<18','18-39','40-59','60+','Sin dato'];
-  const barEdad = edadOrden.filter(e=>data.edades[e]>0).map(e=>`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
-      <div style="width:75px;font-size:11px;color:var(--muted)">${e} años</div>
-      <div style="flex:1;background:var(--borde);border-radius:3px;height:16px;overflow:hidden">
-        <div style="width:${Math.round(data.edades[e]/totEdad*100)}%;background:#0F8B8D;height:100%;border-radius:3px;transition:width .8s"></div>
-      </div>
-      <div style="width:30px;text-align:right;font-size:11px;font-weight:700;color:#0F8B8D">${Math.round(data.edades[e]/totEdad*100)}%</div>
-    </div>`).join('');
-
-  const recHtml = '';
-
-  pan.innerHTML = `
-    <div style="background:var(--azc);border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:12px;color:var(--az1);line-height:1.6">
-      💡 ${insight}
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
-      <div>
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Por día de semana</div>
-        ${barDias}
-      </div>
-      <div>
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Por género</div>
-        ${barSexo}
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin:14px 0 10px">Por rango etario</div>
-        ${barEdad}
-      </div>
-      <div>
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Resumen</div>
-        <div style="font-size:13px;font-weight:700;color:${colorTipo};margin-bottom:4px">${data.total.toLocaleString('es-CL')} inasistencias</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Total con detalle registrado · ${tipo}</div>
-        <div style="font-size:11px;color:var(--muted)">Día crítico: <strong>${topDia?.[0]||'—'}</strong> (${Math.round((topDia?.[1]||0)/totDias*100)}% del total)</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px">Género predominante: <strong>${topSexo}</strong></div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px">Edad predominante: <strong>${topEdad?.[0]||'—'}</strong></div>
-      </div>
-    </div>
-    ${recHtml}`;
-
 }
 
 
