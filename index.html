@@ -97,6 +97,44 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo
 .slval{font-size:12px;font-weight:700}
 @media(max-width:900px){.krow5{grid-template-columns:repeat(3,1fr)}.g2,.g3,.g13{grid-template-columns:1fr}}
 @media(max-width:600px){.krow5,.krow3,.krow4{grid-template-columns:1fr 1fr}.main{padding:12px 12px 40px}}
+
+/* ── RESPONSIVE MOBILE ── */
+@media(max-width:768px){
+  /* Header */
+  .hdr{height:auto;padding:10px 12px;flex-wrap:wrap;gap:8px}
+  .hdr-brand{padding-right:12px;border-right:none;border-bottom:none}
+  .hdr-brand img{width:34px;height:34px}
+  .brand-txt h1{font-size:12px}
+  .brand-txt p{font-size:9px}
+  /* Nav */
+  .hdr-nav{flex:none;width:100%;justify-content:flex-start;padding:4px 0 0;gap:4px;border-top:1px solid var(--borde)}
+  .nb{font-size:11px;padding:5px 10px}
+  /* Selector mes */
+  .hdr-r{width:100%;justify-content:space-between;border-top:1px solid var(--borde);padding-top:8px}
+  /* Main */
+  .main{padding:10px 10px 40px}
+  /* KPIs: 2 columnas en mobile */
+  .g2{grid-template-columns:repeat(2,1fr) !important}
+  /* Filtros en cascada: apilados */
+  .frow{flex-direction:column;align-items:flex-start;gap:6px}
+  .frow .arr{display:none}
+  .frow select,.frow .chip{width:100%}
+  /* Panel indicadores específicos: apilado vertical */
+  .ind-panel{grid-template-columns:1fr !important}
+  .ind-left{min-height:auto !important;flex-direction:row !important;flex-wrap:wrap;gap:12px;padding:14px !important}
+  .ind-left-info{flex:1}
+  .ind-left-profs{margin-top:0 !important}
+  /* Cards indicadores: 2 columnas en mobile */
+  .ind-cards{grid-template-columns:repeat(2,1fr) !important}
+  /* Tablas */
+  table{font-size:11px}
+  .ename{font-size:11px}
+  .espec{font-size:9px}
+}
+@media(max-width:480px){
+  .g2{grid-template-columns:1fr !important}
+  .ind-cards{grid-template-columns:1fr !important}
+}
 </style>
 </head>
 <body>
@@ -512,9 +550,9 @@ function renderIndicadoresEsp(mes){
   const nCols = items.length <= 2 ? items.length : items.length <= 4 ? 2 : items.length <= 6 ? 3 : 4;
 
   return `
-<div style="display:grid;grid-template-columns:220px 1fr;border-radius:14px;border:1px solid var(--borde);overflow:hidden;margin-top:4px">
-  <div style="background:#0B4F72;padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between;min-height:160px">
-    <div>
+<div class="ind-panel" style="display:grid;grid-template-columns:220px 1fr;border-radius:14px;border:1px solid var(--borde);overflow:hidden;margin-top:4px">
+  <div class="ind-left" style="background:#0B4F72;padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between;min-height:160px">
+    <div class="ind-left-info">
       <div style="font-size:9px;font-weight:700;color:#7FB3D3;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">${esFiltroProf?'Profesional':'Especialidad'}</div>
       <div style="font-size:16px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:3px">${titulo}</div>
       <div style="font-size:10px;color:#7FB3D3">${esFiltroProf?subtitulo:periodoLabel}</div>
@@ -526,12 +564,12 @@ function renderIndicadoresEsp(mes){
       <div style="font-size:28px;font-weight:700;color:#fff;line-height:1">${tasaPerio}x</div>
       <div style="font-size:10px;color:#7FB3D3;margin-top:3px">controles promedio por alta</div>` : ''}
     </div>
-    <div style="margin-top:16px">
+    <div class="ind-left-profs" style="margin-top:16px">
       <div style="font-size:9px;color:#7FB3D3;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em">${esFiltroProf?'Profesional':'Especialistas'}</div>
       <div style="display:flex;gap:5px;flex-wrap:wrap">${profDots}</div>
     </div>
   </div>
-  <div style="background:#F8FAFC;padding:16px;display:grid;grid-template-columns:repeat(${nCols},1fr);gap:10px;align-content:center">
+  <div class="ind-cards" style="background:#F8FAFC;padding:16px;display:grid;grid-template-columns:repeat(${nCols},1fr);gap:10px;align-content:center">
     ${cards}
   </div>
 </div>`;
