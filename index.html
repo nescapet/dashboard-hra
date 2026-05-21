@@ -134,6 +134,8 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo
 @media(max-width:480px){
   .g2{grid-template-columns:1fr !important}
   .ind-cards{grid-template-columns:1fr !important}
+  /* Vista especialidades: indicadores en 2 cols en mobile pequeño */
+  .esp-ind-grid{grid-template-columns:repeat(2,1fr) !important}
 }
 </style>
 </head>
@@ -471,12 +473,15 @@ function renderIndicadoresEsp(mes){
     'Proc Pulpar':              'Procedimiento Pulpar (Odontopediatría)',
     'Etapa Protesica':          'Etapa Protésica',
     'Estudio Histopatologico':  'Estudio Histopatológico',
+    'Estudio Clinico Lesiones': 'Estudio Clínico Lesiones Territorio Oral',
     'Prot Remov Acrilica':      'Prótesis Removible Acrílica',
     'Prot Remov Metalica':      'Prótesis Removible Metálica',
     'Prot Fija Unitaria':       'Prótesis Fija Unitaria',
     'Prot Fija InlayOnlay':     'Prótesis Fija Inlay/Onlay',
     'Instalacion Dispositivo':  'Instalación Dispositivo',
     'Terapia Fisica TTM':       'Terapia Física TTM',
+    'Implantes Instalados':     'N° Implantes Instalados',
+    'Prot Muco-Implantoasistida':'Prótesis Muco-Implantoasistida',
     'Destartraje Supragingival':'Destartraje Supragingival',
     'Destartraje Subgingival':  'Destartraje Subgingival',
   };
@@ -575,56 +580,223 @@ function renderIndicadoresEsp(mes){
 </div>`;
 }
 
-// ── VISTA ESPECIALISTAS ──
+// ── VISTA ESPECIALIDADES (agrupada) ──
 function renderEspecialistas(mes){
   const names = Object.keys(DB.especialistas);
-  const rows = names.map(n=>{
-    const e=DB.especialistas[n], d=getDatoEsp(n,mes);
-    const p=pct(d.altas,d.meta_altas_mes);
-    const pi=d.cne+d.control>0?Math.round((d.inasist_cne+d.inasist_ctrl)/(d.cne+d.control)*100):0;
-    return {n,e,d,p,pi};
-  }).sort((a,b)=>b.d.altas-a.d.altas);
+  const periodoLabel = mes==='acum'
+    ? `Acumulado ${DB.meses.length} meses`
+    : mes.replace(/^\d+_/,'') + ' 2026';
 
-  const chips = [...new Set(names.map(n=>DB.especialistas[n].especialidad))].sort();
+  // Agrupar especialistas por especialidad
+  const grupos = {};
+  names.forEach(n=>{
+    const e = DB.especialistas[n];
+    if(!grupos[e.especialidad]) grupos[e.especialidad] = {color:e.color, miembros:[]};
+    grupos[e.especialidad].miembros.push(n);
+  });
 
-  const tbody = rows.map(r=>`
-    <tr class="esp-row" data-esp="${r.e.especialidad}">
-      <td><div class="ename">${r.n}</div><div class="espec">${r.e.especialidad}</div></td>
-      <td class="r">${r.d.cne}</td>
-      <td class="r">${r.d.control}</td>
-      <td class="r"><strong>${r.d.altas}</strong></td>
-      <td class="r">
-        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end">
-          <div class="mbar"><div class="mbarf" style="width:${Math.min(r.p,100)}%;background:${r.e.color}"></div></div>
-          <span class="bdg ${pcls(r.p)}">${r.p}%</span>
+  // Chips de filtro
+  const espsOrden = Object.keys(grupos).sort();
+  let espVista = window._espVistaFiltro || 'todas';
+
+  const chips = `
+<div class="frow" style="margin-bottom:16px">
+  <span style="font-size:11px;color:var(--muted);font-weight:600">Ver:</span>
+  <button class="chip ${espVista==='todas'?'on':''}" onclick="setEspVistaFiltro('todas',this)">Todas</button>
+  ${espsOrden.map(e=>`<button class="chip ${espVista===e?'on':''}" onclick="setEspVistaFiltro('${e}',this)">${e}</button>`).join('')}
+</div>`;
+
+  // Renombres de indicadores (mismo dict que renderIndicadoresEsp)
+  const RENOMBRES = {
+    'Aparatologia Fija':'Instalación Aparato Fijo Ortodóncico',
+    'Instalacion Contencion':'Instalación Aparato de Contención Ortodóncico',
+    'Retiros':'Retiro Aparatología Ortodoncia',
+    'Proc Restaurador':'Procedimiento Restaurador (Odontopediatría)',
+    'Proc Pulpar':'Procedimiento Pulpar (Odontopediatría)',
+    'Etapa Protesica':'Etapa Protésica',
+    'Estudio Histopatologico':'Estudio Histopatológico',
+    'Estudio Clinico Lesiones':'Estudio Clínico Lesiones Territorio Oral',
+    'Prot Remov Acrilica':'Prótesis Removible Acrílica',
+    'Prot Remov Metalica':'Prótesis Removible Metálica',
+    'Prot Fija Unitaria':'Prótesis Fija Unitaria',
+    'Prot Fija InlayOnlay':'Prótesis Fija Inlay/Onlay',
+    'Instalacion Dispositivo':'Instalación Dispositivo',
+    'Terapia Fisica TTM':'Terapia Física TTM',
+    'Implantes Instalados':'N° Implantes Instalados',
+    'Prot Muco-Implantoasistida':'Prótesis Muco-Implantoasistida',
+  };
+
+  const PALETA = ['#0B4F72','#1A7AAF','#2196C4','#0E7A5A','#9A6200','#7B3F9E','#C0392B','#0F8B8D'];
+
+  // Generar una card por especialidad
+  const cards = espsOrden.filter(esp => espVista==='todas' || espVista===esp).map(esp=>{
+    const g = grupos[esp];
+    const color = g.color;
+
+    // Totales de la especialidad
+    let cne=0,ctrl=0,altas=0,ingresos=0,ppv=0,inas=0,mA=0,mC=0;
+    g.miembros.forEach(n=>{
+      const d = getDatoEsp(n, mes);
+      cne+=d.cne; ctrl+=d.control; altas+=d.altas; ingresos+=d.ingresos;
+      ppv+=d.ppv; inas+=d.inasist_cne+d.inasist_ctrl;
+      mA+=d.meta_altas_mes; mC+=d.meta_cne_mes;
+    });
+    const pA = pct(altas, mA);
+    const pC = pct(cne, mC);
+    const pInas = (cne+ctrl)>0 ? Math.round(inas/(cne+ctrl)*100) : 0;
+
+    // Indicadores específicos acumulados
+    const indAcum = {};
+    g.miembros.forEach(n=>{
+      const mesesKeys = mes==='acum' ? DB.meses : [mes];
+      mesesKeys.forEach(m=>{
+        const ind = DB.especialistas[n]?.meses?.[m]?.indicadores || '';
+        if(ind) ind.split('|').forEach(item=>{
+          const [k,v] = item.trim().split(':');
+          if(k&&v) indAcum[k.trim()] = (indAcum[k.trim()]||0) + (parseInt(v.trim())||0);
+        });
+      });
+    });
+    const indItems = Object.entries(indAcum)
+      .map(([k,v])=>([RENOMBRES[k]||k, v]))
+      .filter(([,v])=>v>0)
+      .sort((a,b)=>b[1]-a[1]);
+    const indTotal = indItems.reduce((s,[,v])=>s+v,0);
+    const indMax = indItems[0]?.[1] || 1;
+
+    // Tasa Periodoncia
+    let tasaPerio = null;
+    if(esp==='Periodoncia'){
+      let tCtrl=0,tAltas=0;
+      g.miembros.forEach(n=>{
+        const mesesKeys = mes==='acum' ? DB.meses : [mes];
+        mesesKeys.forEach(m=>{
+          const d=DB.especialistas[n]?.meses?.[m];
+          if(d){tCtrl+=d.control||0;tAltas+=d.altas||0;}
+        });
+      });
+      if(tAltas>0) tasaPerio=(tCtrl/tAltas).toFixed(1);
+    }
+
+    // Filas de especialistas individuales
+    const miembrosRows = g.miembros.map(n=>{
+      const d=getDatoEsp(n,mes);
+      const pInd=pct(d.altas,d.meta_altas_mes);
+      const ini=n.split(' ').slice(0,2).map(p=>p[0]).join('');
+      return `<tr>
+        <td style="padding:7px 10px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:24px;height:24px;border-radius:50%;background:${color}18;border:1px solid ${color}33;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:${color};flex-shrink:0">${ini}</div>
+            <span style="font-size:12px;font-weight:600;color:var(--texto)">${n}</span>
+          </div>
+        </td>
+        <td style="padding:7px 10px;text-align:right;font-size:12px">${d.cne}</td>
+        <td style="padding:7px 10px;text-align:right;font-size:12px">${d.control}</td>
+        <td style="padding:7px 10px;text-align:right;font-size:12px;font-weight:700;color:${color}">${d.altas}</td>
+        <td style="padding:7px 10px;text-align:right">
+          <div style="display:flex;align-items:center;gap:5px;justify-content:flex-end">
+            <div style="width:40px;height:4px;background:var(--borde);border-radius:2px;overflow:hidden"><div style="width:${Math.min(pInd,100)}%;height:100%;background:${color};border-radius:2px"></div></div>
+            <span class="bdg ${pcls(pInd)}" style="font-size:9px">${pInd}%</span>
+          </div>
+        </td>
+        <td style="padding:7px 10px;text-align:right;font-size:11px;color:var(--muted)">${fmt(d.ppv)}</td>
+      </tr>`;
+    }).join('');
+
+    // Panel de indicadores (solo si hay datos)
+    const indPanel = indItems.length > 0 ? `
+      <div style="border-top:1px solid var(--borde);padding:14px 18px 18px">
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px">
+          Indicadores específicos
+          ${indTotal>0?`<span style="font-weight:400;font-size:10px;color:var(--muted)"> — ${indTotal.toLocaleString('es-CL')} procedimientos</span>`:''}
+          ${tasaPerio!==null?`<span style="margin-left:12px;font-size:10px;font-weight:700;color:${color}">Tasa ctrl/alta: ${tasaPerio}x</span>`:''}
         </div>
-      </td>
-      <td class="r"><span style="color:${r.pi>25?'#C0392B':'#0E7A5A'};font-weight:700">${r.pi}%</span></td>
-      <td class="r">${fmt(r.d.ppv)}</td>
-    </tr>`).join('');
+        <div style="display:grid;grid-template-columns:repeat(${Math.min(indItems.length,4)},1fr);gap:8px">
+          ${indItems.map(([k,v],i)=>{
+            const c2=PALETA[i%PALETA.length];
+            const w=Math.round(v/indMax*100);
+            const p2=indTotal>0?Math.round(v/indTotal*100):0;
+            return `<div style="background:#F8FAFC;border-radius:10px;border:1px solid #EDF2F7;padding:10px 12px">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:7px">
+                <div style="font-size:10px;font-weight:600;color:var(--texto);line-height:1.3">${k}</div>
+                <div style="font-size:9px;font-weight:700;color:${c2};background:${c2}18;padding:2px 6px;border-radius:8px;white-space:nowrap">${p2}%</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="flex:1;height:5px;background:#E8EEF4;border-radius:3px;overflow:hidden"><div style="width:${w}%;height:100%;background:${c2};border-radius:3px"></div></div>
+                <div style="font-size:16px;font-weight:700;color:${c2};line-height:1">${v}</div>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>` : '';
 
-  return `
-<div class="frow">
-  <span style="font-size:11px;color:var(--muted);font-weight:600">Especialidad:</span>
-  <button class="chip on" onclick="filtrarEsp(this,'todas')">Todas</button>
-  ${chips.map(c=>`<button class="chip" onclick="filtrarEsp(this,'${c}')">${c}</button>`).join('')}
-</div>
-<div class="card">
-  <div class="card-h">
-    <div><div class="ct">Producción detallada — 26 especialistas</div><div class="cs">Ordenado por altas · ${mes==='acum'?'Acumulado '+DB.meses.length+' meses':mes.replace(/^\d+_/,'')}</div></div>
-    <span class="bdg binfo">26 profesionales · 10 especialidades</span>
+    return `
+<div class="card" style="padding:0;overflow:hidden;margin-bottom:16px">
+  <!-- Header especialidad -->
+  <div style="background:${color};padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="font-size:15px;font-weight:700;color:#fff">${esp}</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.7)">${g.miembros.length} especialista${g.miembros.length>1?'s':''}</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:700;color:#fff">${cne.toLocaleString('es-CL')}</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:.06em">CNE</div>
+      </div>
+      <div style="width:1px;height:28px;background:rgba(255,255,255,0.2)"></div>
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:700;color:#fff">${altas.toLocaleString('es-CL')}</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:.06em">Altas</div>
+      </div>
+      <div style="width:1px;height:28px;background:rgba(255,255,255,0.2)"></div>
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:700;color:${pA>=85?'#A8EFD0':pA>=55?'#FFE88A':'#FFB3AE'}">${pA}%</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:.06em">Cumpl.</div>
+      </div>
+      ${ppv>0?`<div style="width:1px;height:28px;background:rgba(255,255,255,0.2)"></div>
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:700;color:#fff">${fmt(ppv)}</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:.06em">PPV</div>
+      </div>`:''}
+      ${pInas>0?`<div style="width:1px;height:28px;background:rgba(255,255,255,0.2)"></div>
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:700;color:${pInas>25?'#FFB3AE':'rgba(255,255,255,0.9)'}">${pInas}%</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:.06em">Inas.</div>
+      </div>`:''}
+    </div>
   </div>
+  <!-- Tabla especialistas -->
   <div style="overflow-x:auto">
-    <table class="tbl" id="esp-tbl">
-      <thead><tr>
-        <th>Especialista</th><th class="r">CNE</th><th class="r">Ctrl</th>
-        <th class="r">Altas</th><th class="r">Cumplimiento</th>
-        <th class="r">% Inas.</th><th class="r">PPV</th>
-      </tr></thead>
-      <tbody>${tbody}</tbody>
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <thead>
+        <tr style="border-bottom:1px solid var(--borde)">
+          <th style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;text-align:left">Especialista</th>
+          <th style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;text-align:right">CNE</th>
+          <th style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;text-align:right">Ctrl</th>
+          <th style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;text-align:right">Altas</th>
+          <th style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;text-align:right">Cumpl.</th>
+          <th style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;text-align:right">PPV</th>
+        </tr>
+      </thead>
+      <tbody>${miembrosRows}</tbody>
     </table>
   </div>
+  ${indPanel}
 </div>`;
+  }).join('');
+
+  return `
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px">
+  <div style="font-size:12px;color:var(--muted)">${periodoLabel} · 26 especialistas · 10 especialidades</div>
+</div>
+${chips}
+${cards}`;
+}
+
+// ── Control filtro vista especialidades ──
+function setEspVistaFiltro(esp, btn){
+  window._espVistaFiltro = esp;
+  render();
 }
 
 function filtrarGeneral(btn, esp){
