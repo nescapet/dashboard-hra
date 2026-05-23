@@ -158,7 +158,14 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo
     <span class="upd" id="upd-lbl"></span>
   </div>
 </div>
-
+<!-- FILTRO EN CASCADA -->
+<div style="background:var(--blanco);border-bottom:1px solid var(--borde);padding:10px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+  <button id="btn-todos" onclick="resetFiltros()" style="font-family:inherit;font-size:11px;font-weight:700;background:var(--az1);color:#fff;border:1px solid var(--az1);border-radius:7px;padding:6px 14px;cursor:pointer">Servicio Dental (Todos)</button>
+  <span style="color:var(--borde);font-size:16px" class="arr">›</span>
+  <select id="sel-esp" onchange="setEspActiva(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none"></select>
+  <span style="color:var(--borde);font-size:16px" class="arr">›</span>
+  <select id="sel-prof" onchange="setProfActivo(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none"></select>
+</div>
 
 <div class="main" id="cnt"></div>
 </div>
@@ -356,23 +363,7 @@ function renderGeneral(mes){
     </div>`;
   }).join('');
 
-    const espsDisp = [...new Set(Object.values(DB.especialistas).map(e=>e.especialidad))].sort();
-  const espOpts = `<option value="todas">Todas las especialidades</option>` +
-    espsDisp.map(e=>`<option value="${e}" ${espActiva===e?'selected':''}>${e}</option>`).join('');
-  const profFiltrados = Object.keys(DB.especialistas).filter(n=>
-    espActiva==='todas' || DB.especialistas[n].especialidad===espActiva
-  ).sort();
-  const profOpts = `<option value="todos">Todos los profesionales</option>` +
-    profFiltrados.map(n=>`<option value="${n}" ${profActivo===n?'selected':''}>${n}</option>`).join('');
-
   return `
-<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:10px 14px;background:var(--blanco);border-radius:var(--r2);border:1px solid var(--borde)">
-  <button onclick="resetFiltros()" style="font-family:inherit;font-size:11px;font-weight:700;color:${espActiva==='todas'&&profActivo==='todos'?'#fff':'var(--az1)'};background:${espActiva==='todas'&&profActivo==='todos'?'var(--az1)':'var(--azc)'};border:1px solid var(--azm);border-radius:7px;padding:6px 14px;cursor:pointer">Servicio Dental (Todos)</button>
-  <span style="color:var(--borde);font-size:16px">›</span>
-  <select onchange="setEspActiva(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${espOpts}</select>
-  <span style="color:var(--borde);font-size:16px">›</span>
-  <select onchange="setProfActivo(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${profOpts}</select>
-</div>
 <div class="krow krow3">
   ${kpiSemaforo('Consultas nuevas (CNE)', t.cne.toLocaleString('es-CL'), 'Meta anual: '+META_CNE_ANUAL.toLocaleString('es-CL'), pC, pEsperado)}
   <div class="kc fu">
@@ -697,23 +688,7 @@ function renderInasistencia(mes){
       <td class="r"><span style="color:${r.p>25?'#C0392B':r.p>15?'#9A6200':'#0E7A5A'};font-weight:700">${r.p}%</span></td>
     </tr>`).join('');
 
-    const espsDisp = [...new Set(Object.values(DB.especialistas).map(e=>e.especialidad))].sort();
-  const espOpts = `<option value="todas">Todas las especialidades</option>` +
-    espsDisp.map(e=>`<option value="${e}" ${espActiva===e?'selected':''}>${e}</option>`).join('');
-  const profFiltrados = Object.keys(DB.especialistas).filter(n=>
-    espActiva==='todas' || DB.especialistas[n].especialidad===espActiva
-  ).sort();
-  const profOpts = `<option value="todos">Todos los profesionales</option>` +
-    profFiltrados.map(n=>`<option value="${n}" ${profActivo===n?'selected':''}>${n}</option>`).join('');
-
   return `
-<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:10px 14px;background:var(--blanco);border-radius:var(--r2);border:1px solid var(--borde)">
-  <button onclick="resetFiltros()" style="font-family:inherit;font-size:11px;font-weight:700;color:${espActiva==='todas'&&profActivo==='todos'?'#fff':'var(--az1)'};background:${espActiva==='todas'&&profActivo==='todos'?'var(--az1)':'var(--azc)'};border:1px solid var(--azm);border-radius:7px;padding:6px 14px;cursor:pointer">Servicio Dental (Todos)</button>
-  <span style="color:var(--borde);font-size:16px">›</span>
-  <select onchange="setEspActiva(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${espOpts}</select>
-  <span style="color:var(--borde);font-size:16px">›</span>
-  <select onchange="setProfActivo(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${profOpts}</select>
-</div>
 <div class="krow krow3">
   ${kpi('#C0392B','Total inasistencias',totInas.toLocaleString('es-CL'),mes==='acum'?'Acumulado '+DB.meses.length+' meses':'Mes seleccionado')}
   ${kpi(pGlobal>25?'#C0392B':'#0E7A5A','Tasa global',pGlobal+'%','Meta institucional: &lt;20%')}
@@ -759,23 +734,7 @@ function renderFinanciero(mes){
     </tr>`;
   }).join('');
 
-    const espsDisp = [...new Set(Object.values(DB.especialistas).map(e=>e.especialidad))].sort();
-  const espOpts = `<option value="todas">Todas las especialidades</option>` +
-    espsDisp.map(e=>`<option value="${e}" ${espActiva===e?'selected':''}>${e}</option>`).join('');
-  const profFiltrados = Object.keys(DB.especialistas).filter(n=>
-    espActiva==='todas' || DB.especialistas[n].especialidad===espActiva
-  ).sort();
-  const profOpts = `<option value="todos">Todos los profesionales</option>` +
-    profFiltrados.map(n=>`<option value="${n}" ${profActivo===n?'selected':''}>${n}</option>`).join('');
-
   return `
-<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:10px 14px;background:var(--blanco);border-radius:var(--r2);border:1px solid var(--borde)">
-  <button onclick="resetFiltros()" style="font-family:inherit;font-size:11px;font-weight:700;color:${espActiva==='todas'&&profActivo==='todos'?'#fff':'var(--az1)'};background:${espActiva==='todas'&&profActivo==='todos'?'var(--az1)':'var(--azc)'};border:1px solid var(--azm);border-radius:7px;padding:6px 14px;cursor:pointer">Servicio Dental (Todos)</button>
-  <span style="color:var(--borde);font-size:16px">›</span>
-  <select onchange="setEspActiva(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${espOpts}</select>
-  <span style="color:var(--borde);font-size:16px">›</span>
-  <select onchange="setProfActivo(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none">${profOpts}</select>
-</div>
 <div class="krow krow3">
   ${kpi('#0E7A5A','Registro Financiero PPV total',fmt(t.ppv),mes==='acum'?'Acumulado '+DB.meses.length+' meses':'Mes seleccionado')}
   ${kpi('#0B4F72','Arancel NoGES','$156.330','Por alta estándar')}
