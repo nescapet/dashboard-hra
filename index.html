@@ -158,14 +158,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo
     <span class="upd" id="upd-lbl"></span>
   </div>
 </div>
-<!-- FILTRO EN CASCADA -->
-<div style="background:var(--blanco);border-bottom:1px solid var(--borde);padding:10px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-  <button id="btn-todos" onclick="resetFiltros()" style="font-family:inherit;font-size:11px;font-weight:700;background:var(--az1);color:#fff;border:1px solid var(--az1);border-radius:7px;padding:6px 14px;cursor:pointer">Servicio Dental (Todos)</button>
-  <span style="color:var(--borde);font-size:16px" class="arr">›</span>
-  <select id="sel-esp" onchange="setEspActiva(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none"></select>
-  <span style="color:var(--borde);font-size:16px" class="arr">›</span>
-  <select id="sel-prof" onchange="setProfActivo(this.value)" style="font-family:inherit;font-size:11px;font-weight:600;color:var(--az1);background:var(--azc);border:1px solid var(--azm);border-radius:7px;padding:6px 12px;cursor:pointer;outline:none"></select>
-</div>
+
 
 <div class="main" id="cnt"></div>
 </div>
