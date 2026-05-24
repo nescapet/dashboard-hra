@@ -363,6 +363,106 @@ function renderGeneral(mes){
     </div>`;
   }).join('');
 
+  // ── Cálculo top 2 CNE
+  const espInasCNE = Object.entries(DB.especialistas).map(([n,e])=>{
+    const d=getDatoEsp(n,mes);
+    return {esp:e.especialidad, ic:d.inasist_cne, cne:d.cne};
+  }).reduce((acc,x)=>{
+    if(!acc[x.esp]) acc[x.esp]={ic:0,cne:0};
+    acc[x.esp].ic+=x.ic; acc[x.esp].cne+=x.cne; return acc;
+  },{});
+  const sortedCNE=Object.entries(espInasCNE).map(([e,v])=>({e,p:v.cne>0?Math.round(v.ic/v.cne*100):0,ic:v.ic})).filter(x=>x.ic>0).sort((a,b)=>b.p-a.p);
+  const top2cne=sortedCNE.slice(0,2);
+  const restoCNE=100-top2cne.reduce((s,x)=>s+x.p,0);
+  const subCNE=top2cne.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCNE)}%`).join(' · ');
+  const pCNE=t.cne>0?Math.round(t.ic/t.cne*100):0;
+
+  // ── Cálculo top 2 Control
+  const espInasCtrl = Object.entries(DB.especialistas).map(([n,e])=>{
+    const d=getDatoEsp(n,mes);
+    return {esp:e.especialidad, ik:d.inasist_ctrl, ctrl:d.control};
+  }).reduce((acc,x)=>{
+    if(!acc[x.esp]) acc[x.esp]={ik:0,ctrl:0};
+    acc[x.esp].ik+=x.ik; acc[x.esp].ctrl+=x.ctrl; return acc;
+  },{});
+  const sortedCtrl=Object.entries(espInasCtrl).map(([e,v])=>({e,p:v.ctrl>0?Math.round(v.ik/v.ctrl*100):0,ik:v.ik})).filter(x=>x.ik>0).sort((a,b)=>b.p-a.p);
+  const top2ctrl=sortedCtrl.slice(0,2);
+  const restoCtrl=100-top2ctrl.reduce((s,x)=>s+x.p,0);
+  const subCtrl=top2ctrl.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCtrl)}%`).join(' · ');
+  const pCtrl=t.ctrl>0?Math.round(t.ik/t.ctrl*100):0;
+
+  // ── Cálculo PPV
+  const espPPV = Object.entries(DB.especialistas).map(([n,e])=>{
+    const d=getDatoEsp(n,mes);
+    return {esp:e.especialidad, ppv:d.ppv};
+  }).reduce((acc,x)=>{
+    if(!acc[x.esp]) acc[x.esp]=0;
+    acc[x.esp]+=x.ppv; return acc;
+  },{});
+  const sortedPPV=Object.entries(espPPV).map(([e,v])=>({e,ppv:v})).filter(x=>x.ppv>0).sort((a,b)=>b.ppv-a.ppv);
+  const top2ppv=sortedPPV.slice(0,2);
+  const restoPPV=t.ppv>0?Math.max(0,100-top2ppv.reduce((s,x)=>s+Math.round(x.ppv/t.ppv*100),0)):0;
+  const subPPV=top2ppv.map(x=>`${x.e}: ${t.ppv>0?Math.round(x.ppv/t.ppv*100):0}%`).concat(`Restantes: ${restoPPV}%`).join(' · ');
+
+  // ── Día con más ausencias CNE y Control
+  const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
+  const cntDiaCNE={}, cntDiaCtrl={};
+  diasOrden.forEach(d=>{cntDiaCNE[d]=0; cntDiaCtrl[d]=0;});
+  Object.entries(DB.inasistencias_detalle||{}).forEach(([key,val])=>{
+    Object.entries(val.dias||{}).forEach(([dia,n])=>{
+      if(cntDiaCNE[dia]!==undefined){
+        if(val.cne>0) cntDiaCNE[dia]+=n;
+        if(val.ctrl>0) cntDiaCtrl[dia]+=n;
+      }
+    });
+  });
+  const diaMasCNE = diasOrden.reduce((a,b)=>cntDiaCNE[a]>=cntDiaCNE[b]?a:b,'Lunes');
+  const diaMasCtrl = diasOrden.reduce((a,b)=>cntDiaCtrl[a]>=cntDiaCtrl[b]?a:b,'Lunes');
+  const totDiaCNE = Object.values(cntDiaCNE).reduce((s,v)=>s+v,0);
+  const totDiaCtrl = Object.values(cntDiaCtrl).reduce((s,v)=>s+v,0);
+  const pctDiaCNE = totDiaCNE>0?Math.round(cntDiaCNE[diaMasCNE]/totDiaCNE*100):0;
+  const pctDiaCtrl = totDiaCtrl>0?Math.round(cntDiaCtrl[diaMasCtrl]/totDiaCtrl*100):0;
+
+  // ── Tabla ausentismo por especialidad
+  const espList = [...new Set(Object.values(DB.especialistas).map(e=>e.especialidad))].sort();
+  const ausentismoRows = espList.map(esp=>{
+    const espec = Object.entries(DB.especialistas).filter(([n,e])=>e.especialidad===esp);
+    let totCNE=0,totInasCNE=0,totCtrl=0,totInasCtrl=0;
+    espec.forEach(([n,e])=>{
+      const d=getDatoEsp(n,mes);
+      totCNE+=d.cne; totInasCNE+=d.inasist_cne;
+      totCtrl+=d.control; totInasCtrl+=d.inasist_ctrl;
+    });
+    const pAusCNE = totCNE+totInasCNE>0?Math.round(totInasCNE/(totCNE+totInasCNE)*100):0;
+    const pAusCtrl = totCtrl+totInasCtrl>0?Math.round(totInasCtrl/(totCtrl+totInasCtrl)*100):0;
+    return {esp, totInasCNE, pAusCNE, totInasCtrl, pAusCtrl};
+  }).filter(r=>r.totInasCNE>0||r.totInasCtrl>0);
+  const maxPct = Math.max(...ausentismoRows.map(r=>Math.max(r.pAusCNE,r.pAusCtrl)),1);
+  const tablaRows = ausentismoRows.map(r=>`
+    <tr class="inas-row">
+      <td>${r.esp}</td>
+      <td style="text-align:right;color:#0057D9;font-weight:500">${r.totInasCNE}</td>
+      <td style="text-align:right">
+        <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px">
+          <div style="width:60px;background:var(--borde);border-radius:3px;height:6px;overflow:hidden">
+            <div class="inas-bar" style="background:#0057D9" data-w="${Math.round(r.pAusCNE/maxPct*100)}"></div>
+          </div>
+          <span style="font-size:12px;color:var(--muted);min-width:36px;text-align:right">${r.pAusCNE}%</span>
+        </div>
+      </td>
+      <td style="text-align:right;color:#0057D9;font-weight:500">${r.totInasCtrl}</td>
+      <td style="text-align:right">
+        <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px">
+          <div style="width:60px;background:var(--borde);border-radius:3px;height:6px;overflow:hidden">
+            <div class="inas-bar" style="background:#185FA5" data-w="${Math.round(r.pAusCtrl/maxPct*100)}"></div>
+          </div>
+          <span style="font-size:12px;color:var(--muted);min-width:36px;text-align:right">${r.pAusCtrl}%</span>
+        </div>
+      </td>
+    </tr>`).join('');
+
+  const uid = 'gen'+Date.now();
+
   return `
 <div class="krow krow3">
   ${kpiSemaforo('Consultas nuevas (CNE)', t.cne.toLocaleString('es-CL'), 'Meta anual: '+META_CNE_ANUAL.toLocaleString('es-CL'), pC, pEsperado)}
@@ -377,53 +477,94 @@ function renderGeneral(mes){
     <div class="pbar"><div class="pbf" style="background:${colorCumpl}" data-w="${Math.min(pCumpl,100)}"></div></div>
     <div class="ppct">Esperado al corte: ${pEsperado}% <span class="bdg ${bdgCumpl}">${estadoCumpl}</span></div>
   </div>
-  ${(()=>{
-    // Top 2 especialidades por ausentismo CNE
-    const espInasCNE = Object.entries(DB.especialistas).map(([n,e])=>{
-      const d=getDatoEsp(n,mes);
-      return {esp:e.especialidad, ic:d.inasist_cne, cne:d.cne};
-    }).reduce((acc,x)=>{
-      if(!acc[x.esp]) acc[x.esp]={ic:0,cne:0};
-      acc[x.esp].ic+=x.ic; acc[x.esp].cne+=x.cne; return acc;
-    },{});
-    const sortedCNE=Object.entries(espInasCNE).map(([e,v])=>({e,p:v.cne>0?Math.round(v.ic/v.cne*100):0,ic:v.ic})).filter(x=>x.ic>0).sort((a,b)=>b.p-a.p);
-    const top2cne=sortedCNE.slice(0,2);
-    const restoCNE=100-top2cne.reduce((s,x)=>s+x.p,0);
-    const subCNE=top2cne.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCNE)}%`).join(' · ');
-    const pCNE=t.cne>0?Math.round(t.ic/t.cne*100):0; return kpi('#0057D9','Inasistentes a CNE', t.ic.toLocaleString('es-CL')+' ('+pCNE+'%)', subCNE);
-  })()}
+  ${kpi('#0057D9','Inasistentes a CNE', t.ic.toLocaleString('es-CL')+' ('+pCNE+'%)', subCNE)}
 </div>
 <div class="krow krow3" style="margin-top:-8px">
   ${kpiSemaforo('Altas de tratamiento', t.altas.toLocaleString('es-CL'), 'Meta anual: '+META_ALTAS_ANUAL.toLocaleString('es-CL'), pA, pEsperado)}
-  ${(()=>{
-    const espPPV = Object.entries(DB.especialistas).map(([n,e])=>{
-      const d=getDatoEsp(n,mes);
-      return {esp:e.especialidad, ppv:d.ppv};
-    }).reduce((acc,x)=>{
-      if(!acc[x.esp]) acc[x.esp]=0;
-      acc[x.esp]+=x.ppv; return acc;
-    },{});
-    const sortedPPV=Object.entries(espPPV).map(([e,v])=>({e,ppv:v})).filter(x=>x.ppv>0).sort((a,b)=>b.ppv-a.ppv);
-    const top2ppv=sortedPPV.slice(0,2);
-    const restoPPV=t.ppv>0?Math.max(0,100-top2ppv.reduce((s,x)=>s+Math.round(x.ppv/t.ppv*100),0)):0;
-    const subPPV=top2ppv.map(x=>`${x.e}: ${t.ppv>0?Math.round(x.ppv/t.ppv*100):0}%`).concat(`Restantes: ${restoPPV}%`).join(' · ');
-    return kpi('#0E7A5A','Registro Financiero PPV', fmt(t.ppv), subPPV);
-  })()}
-  ${(()=>{
-    const espInasCtrl = Object.entries(DB.especialistas).map(([n,e])=>{
-      const d=getDatoEsp(n,mes);
-      return {esp:e.especialidad, ik:d.inasist_ctrl, ctrl:d.control};
-    }).reduce((acc,x)=>{
-      if(!acc[x.esp]) acc[x.esp]={ik:0,ctrl:0};
-      acc[x.esp].ik+=x.ik; acc[x.esp].ctrl+=x.ctrl; return acc;
-    },{});
-    const sortedCtrl=Object.entries(espInasCtrl).map(([e,v])=>({e,p:v.ctrl>0?Math.round(v.ik/v.ctrl*100):0,ik:v.ik})).filter(x=>x.ik>0).sort((a,b)=>b.p-a.p);
-    const top2ctrl=sortedCtrl.slice(0,2);
-    const restoCtrl=100-top2ctrl.reduce((s,x)=>s+x.p,0);
-    const subCtrl=top2ctrl.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCtrl)}%`).join(' · ');
-    const pCtrl=t.ctrl>0?Math.round(t.ik/t.ctrl*100):0; return kpi('#0057D9','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl);
-  })()}
+  ${kpi('#0E7A5A','Registro Financiero PPV', fmt(t.ppv), subPPV)}
+  ${kpi('#0057D9','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl)}
 </div>
+
+<div style="height:0.5px;background:var(--borde);margin:24px 0"></div>
+
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+  <i class="ti ti-user-off" style="font-size:22px;color:#0057D9" aria-hidden="true"></i>
+  <div>
+    <div style="font-size:15px;font-weight:700;color:var(--az1)">Panel de ausentismo</div>
+    <div style="font-size:12px;color:var(--muted)">${mes==='acum'?'Acumulado '+DB.meses.length+' meses':'Mes seleccionado'}</div>
+  </div>
+</div>
+
+<div class="krow krow4" style="margin-bottom:20px">
+  <div class="kc fu" style="background:var(--azc)">
+    <div class="kc-bar" style="background:#0057D9"></div>
+    <div class="klbl">Inasistencias CNE</div>
+    <div class="kval" style="color:#0057D9" id="cnt-ic-${uid}">${t.ic.toLocaleString('es-CL')}</div>
+    <div class="ksub">pacientes ausentes a CNE</div>
+  </div>
+  <div class="kc fu" style="background:var(--azc)">
+    <div class="kc-bar" style="background:#0057D9"></div>
+    <div class="klbl">Inasistencias Control</div>
+    <div class="kval" style="color:#0057D9" id="cnt-ik-${uid}">${t.ik.toLocaleString('es-CL')}</div>
+    <div class="ksub">pacientes ausentes a control</div>
+  </div>
+  <div class="kc fu" style="background:var(--azc)">
+    <div class="kc-bar" style="background:#0057D9"></div>
+    <div class="klbl">Día más ausente CNE</div>
+    <div class="kval" style="color:#0057D9;font-size:20px">${diaMasCNE}</div>
+    <div class="ksub">${pctDiaCNE}% de inasistencias CNE</div>
+  </div>
+  <div class="kc fu" style="background:var(--azc)">
+    <div class="kc-bar" style="background:#0057D9"></div>
+    <div class="klbl">Día más ausente Control</div>
+    <div class="kval" style="color:#0057D9;font-size:20px">${diaMasCtrl}</div>
+    <div class="ksub">${pctDiaCtrl}% de inasistencias Control</div>
+  </div>
+</div>
+
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr>
+      <th style="font-size:11px;font-weight:500;color:var(--muted);text-align:left;padding:6px 10px;border-bottom:0.5px solid var(--borde)">Especialidad</th>
+      <th style="font-size:11px;font-weight:500;color:var(--muted);text-align:right;padding:6px 10px;border-bottom:0.5px solid var(--borde)">CNE</th>
+      <th style="font-size:11px;font-weight:500;color:var(--muted);text-align:right;padding:6px 10px;border-bottom:0.5px solid var(--borde);min-width:130px">% Ausentismo CNE</th>
+      <th style="font-size:11px;font-weight:500;color:var(--muted);text-align:right;padding:6px 10px;border-bottom:0.5px solid var(--borde)">Control</th>
+      <th style="font-size:11px;font-weight:500;color:var(--muted);text-align:right;padding:6px 10px;border-bottom:0.5px solid var(--borde);min-width:130px">% Ausentismo Control</th>
+    </tr>
+  </thead>
+  <tbody id="inas-tbody-${uid}">${tablaRows}</tbody>
+</table>
+
+<script>
+(function(){
+  function animNum(el, end){
+    if(!el) return;
+    const dur=1200, start=performance.now();
+    function step(now){
+      const p=Math.min((now-start)/dur,1);
+      const ease=1-Math.pow(1-p,3);
+      el.textContent=Math.round(ease*end).toLocaleString('es-CL');
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  animNum(document.getElementById('cnt-ic-${uid}'), ${t.ic});
+  animNum(document.getElementById('cnt-ik-${uid}'), ${t.ik});
+  setTimeout(()=>{
+    document.querySelectorAll('#inas-tbody-${uid} .inas-bar').forEach(b=>{
+      b.style.cssText+='height:6px;border-radius:3px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)';
+      setTimeout(()=>{ b.style.width=b.dataset.w+'%'; },50);
+    });
+    document.querySelectorAll('.pbf[data-w]').forEach(b=>{
+      setTimeout(()=>{ b.style.width=b.dataset.w+'%'; },50);
+    });
+  },100);
+  document.querySelectorAll('.inas-row').forEach(r=>{
+    r.addEventListener('mouseenter',()=>r.style.background='var(--azc)');
+    r.addEventListener('mouseleave',()=>r.style.background='');
+  });
+})();
+<\/script>
 ${(espActiva && espActiva!=='todas') || (profActivo && profActivo!=='todos') ? renderIndicadoresEsp(mes) : ''}
 `;
 }
