@@ -931,20 +931,8 @@ function renderPanelDias(){
 // ── PANEL AUSENTISMO ──
 function renderPanelAusentismo(mes){
   const t = getTotales(mes, 'todas', 'todos');
-  const nMeses = mes==='acum' ? DB.meses.length : 1;
-  const META_ALTAS_ANUAL = 4233;
-  const META_CNE_ANUAL = 6326;
-  const pA = pct(t.altas, META_ALTAS_ANUAL);
-  const pC = pct(t.cne, META_CNE_ANUAL);
-  const pEsperado = Math.round(nMeses / 12 * 100);
-  const pCumpl = Math.round((pA + pC) / 2);
-  const ratioCumpl = pEsperado > 0 ? (pCumpl / pEsperado) * 100 : 0;
-  let colorCumpl, iconoCumpl, bdgCumpl, estadoCumpl;
-  if(ratioCumpl < 85){ colorCumpl='#E53935'; iconoCumpl='✗'; bdgCumpl='blow'; estadoCumpl='Bajo lo esperado'; }
-  else if(ratioCumpl > 115){ colorCumpl='#E53935'; iconoCumpl='✗'; bdgCumpl='blow'; estadoCumpl='Sobre lo esperado'; }
-  else { colorCumpl='#00C853'; iconoCumpl='✓'; bdgCumpl='bok'; estadoCumpl='Dentro del rango'; }
 
-  // ── Día con más ausencias CNE y Control
+  // Día con más ausencias CNE y Control
   const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
   const cntDiaCNE={}, cntDiaCtrl={};
   diasOrden.forEach(d=>{cntDiaCNE[d]=0; cntDiaCtrl[d]=0;});
@@ -963,7 +951,7 @@ function renderPanelAusentismo(mes){
   const pctDiaCNE = totDiaCNE>0?Math.round(cntDiaCNE[diaMasCNE]/totDiaCNE*100):0;
   const pctDiaCtrl = totDiaCtrl>0?Math.round(cntDiaCtrl[diaMasCtrl]/totDiaCtrl*100):0;
 
-  // ── Tabla ausentismo por especialidad
+  // Tabla ausentismo por especialidad
   const espList = [...new Set(Object.values(DB.especialistas).map(e=>e.especialidad))].sort();
   const ausentismoRows = espList.map(esp=>{
     const espec = Object.entries(DB.especialistas).filter(([n,e])=>e.especialidad===esp);
@@ -985,7 +973,7 @@ function renderPanelAusentismo(mes){
       <td style="padding:14px 12px;text-align:right">
         <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px">
           <div style="width:90px;background:var(--borde);border-radius:6px;height:12px;overflow:hidden">
-            <div class="inas-bar" style="display:block;height:12px;border-radius:6px;width:${Math.round(r.pAusCNE/maxPct*100)}%;background:#0057D9" data-w="${Math.round(r.pAusCNE/maxPct*100)}"></div>
+            <div style="display:block;height:12px;border-radius:6px;width:${Math.round(r.pAusCNE/maxPct*100)}%;background:#0057D9"></div>
           </div>
           <span style="font-size:13px;font-weight:500;color:#0057D9;min-width:38px;text-align:right">${r.pAusCNE}%</span>
         </div>
@@ -994,48 +982,25 @@ function renderPanelAusentismo(mes){
       <td style="padding:14px 12px;text-align:right">
         <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px">
           <div style="width:90px;background:var(--borde);border-radius:6px;height:12px;overflow:hidden">
-            <div class="inas-bar" style="display:block;height:12px;border-radius:6px;width:${Math.round(r.pAusCtrl/maxPct*100)}%;background:#185FA5" data-w="${Math.round(r.pAusCtrl/maxPct*100)}"></div>
+            <div style="display:block;height:12px;border-radius:6px;width:${Math.round(r.pAusCtrl/maxPct*100)}%;background:#185FA5"></div>
           </div>
           <span style="font-size:13px;font-weight:500;color:#185FA5;min-width:38px;text-align:right">${r.pAusCtrl}%</span>
         </div>
       </td>
     </tr>`).join('');
 
-  const uid = 'gen'+Date.now();
+  const uid = 'inas'+Date.now();
 
   return `
-<div class="krow krow3">
-  ${kpiSemaforo('Consultas nuevas (CNE)', t.cne.toLocaleString('es-CL'), 'Meta anual: '+META_CNE_ANUAL.toLocaleString('es-CL'), pC, pEsperado)}
-  <div class="kc fu">
-    <div class="kc-bar" style="background:${colorCumpl}"></div>
-    <div class="klbl">Cumplimiento programación</div>
-    <div style="display:flex;align-items:center;gap:8px">
-      <div class="kval" style="color:${colorCumpl}">${pCumpl}%</div>
-      <span style="font-size:22px;font-weight:900;color:${colorCumpl}">${iconoCumpl}</span>
-    </div>
-    <div class="ksub">CNE ${pC}% · Altas ${pA}%</div>
-    <div class="pbar"><div class="pbf" style="background:${colorCumpl}" data-w="${Math.min(pCumpl,100)}"></div></div>
-    <div class="ppct">Esperado al corte: ${pEsperado}% <span class="bdg ${bdgCumpl}">${estadoCumpl}</span></div>
-  </div>
-  ${kpi('#0057D9','Inasistentes a CNE', t.ic.toLocaleString('es-CL')+' ('+pCNE+'%)', subCNE)}
-</div>
-<div class="krow krow3" style="margin-top:-8px">
-  ${kpiSemaforo('Altas de tratamiento', t.altas.toLocaleString('es-CL'), 'Meta anual: '+META_ALTAS_ANUAL.toLocaleString('es-CL'), pA, pEsperado)}
-  ${kpi('#0E7A5A','Registro Financiero PPV', fmt(t.ppv), subPPV)}
-  ${kpi('#0057D9','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl)}
-</div>
-
 <div style="height:0.5px;background:var(--borde);margin:28px 0 24px"></div>
-
 <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
   <div style="flex:1;height:0.5px;background:var(--borde)"></div>
   <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap">
     <i class="ti ti-chart-bar" style="font-size:15px" aria-hidden="true"></i>
-    Ausentismo · ${mes==='acum'?'Acumulado '+DB.meses.length+' meses':'Mes seleccionado'}
+    Ausentismo &middot; ${mes==='acum'?'Acumulado '+DB.meses.length+' meses':'Mes seleccionado'}
   </div>
   <div style="flex:1;height:0.5px;background:var(--borde)"></div>
 </div>
-
 <div class="krow krow4" style="margin-bottom:24px">
   <div class="kc fu">
     <div class="kc-bar" style="background:#0057D9"></div>
@@ -1054,19 +1019,18 @@ function renderPanelAusentismo(mes){
   <div class="kc fu">
     <div class="kc-bar" style="background:#0057D9"></div>
     <i class="ti ti-calendar-x" style="font-size:18px;color:#0057D9;display:block;margin:4px 0 10px" aria-hidden="true"></i>
-    <div class="klbl" style="font-size:11px;letter-spacing:.3px">DÍA MÁS AUSENTE · CNE</div>
+    <div class="klbl" style="font-size:11px;letter-spacing:.3px">D&Iacute;A M&Aacute;S AUSENTE &middot; CNE</div>
     <div style="font-size:32px;font-weight:500;color:#0057D9;line-height:1;margin:6px 0 8px">${diaMasCNE}</div>
     <div class="ksub">${pctDiaCNE}% de inasistencias CNE</div>
   </div>
   <div class="kc fu">
     <div class="kc-bar" style="background:#185FA5"></div>
     <i class="ti ti-calendar-x" style="font-size:18px;color:#185FA5;display:block;margin:4px 0 10px" aria-hidden="true"></i>
-    <div class="klbl" style="font-size:11px;letter-spacing:.3px">DÍA MÁS AUSENTE · CONTROL</div>
+    <div class="klbl" style="font-size:11px;letter-spacing:.3px">D&Iacute;A M&Aacute;S AUSENTE &middot; CONTROL</div>
     <div style="font-size:32px;font-weight:500;color:#185FA5;line-height:1;margin:6px 0 8px">${diaMasCtrl}</div>
     <div class="ksub">${pctDiaCtrl}% de inasistencias Control</div>
   </div>
 </div>
-
 <table style="width:100%;border-collapse:collapse">
   <thead>
     <tr>
@@ -1079,42 +1043,22 @@ function renderPanelAusentismo(mes){
   </thead>
   <tbody id="inas-tbody-${uid}">${tablaRows}</tbody>
 </table>
-
 <script>
 (function(){
-  function animNum(el, end){
+  function animNum(el,end){
     if(!el) return;
-    const dur=1300, start=performance.now();
+    const dur=1300,s=performance.now();
     function step(now){
-      const p=Math.min((now-start)/dur,1);
-      const ease=1-Math.pow(1-p,3);
-      el.textContent=Math.round(ease*end).toLocaleString('es-CL');
+      const p=Math.min((now-s)/dur,1);
+      const e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(e*end).toLocaleString('es-CL');
       if(p<1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
-  animNum(document.getElementById('cnt-ic-${uid}'), ${t.ic});
-  animNum(document.getElementById('cnt-ik-${uid}'), ${t.ik});
-  setTimeout(()=>{
-    document.querySelectorAll('#inas-tbody-${uid} .inas-bar').forEach(b=>{
-      b.style.display='block';
-      b.style.height='12px';
-      b.style.borderRadius='6px';
-      b.style.width='0';
-      b.style.transition='width 1.3s cubic-bezier(.4,0,.2,1)';
-    });
-    setTimeout(()=>{
-      document.querySelectorAll('#inas-tbody-${uid} .inas-bar').forEach(b=>{
-        b.style.width=b.dataset.w+'%';
-      });
-    },50);
-    document.querySelectorAll('.pbf[data-w]').forEach(b=>{
-      setTimeout(()=>{ b.style.width=b.dataset.w+'%'; },50);
-    });
-  },150);
+  animNum(document.getElementById('cnt-ic-${uid}'),${t.ic});
+  animNum(document.getElementById('cnt-ik-${uid}'),${t.ik});
   document.querySelectorAll('.inas-row').forEach(r=>{
-    r.style.borderLeft='3px solid transparent';
-    r.style.transition='border-color .2s';
     r.addEventListener('mouseenter',()=>{r.style.background='var(--azc)';r.style.borderLeftColor='#0057D9';});
     r.addEventListener('mouseleave',()=>{r.style.background='';r.style.borderLeftColor='transparent';});
   });
@@ -1123,7 +1067,7 @@ function renderPanelAusentismo(mes){
 `;
 }
 
-// ── VISTA TODOS — gráficos generales ──
+
 function renderVistaTodos(mes){
   return renderPanelAusentismo(mes);
 }
