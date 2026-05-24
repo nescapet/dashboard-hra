@@ -404,7 +404,6 @@ function renderGeneral(mes){
   const restoPPV=t.ppv>0?Math.max(0,100-top2ppv.reduce((s,x)=>s+Math.round(x.ppv/t.ppv*100),0)):0;
   const subPPV=top2ppv.map(x=>`${x.e}: ${t.ppv>0?Math.round(x.ppv/t.ppv*100):0}%`).concat(`Restantes: ${restoPPV}%`).join(' · ');
 
-  const uid2 = 'gen2'+Date.now();
   return `
 <div class="krow krow3">
   ${kpiSemaforo('Consultas nuevas (CNE)', t.cne.toLocaleString('es-CL'), 'Meta anual: '+META_CNE_ANUAL.toLocaleString('es-CL'), pC, pEsperado)}
