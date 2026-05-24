@@ -931,6 +931,18 @@ function renderPanelDias(){
 // ── PANEL AUSENTISMO ──
 function renderPanelAusentismo(mes){
   const t = getTotales(mes, 'todas', 'todos');
+  const nMeses = mes==='acum' ? DB.meses.length : 1;
+  const META_ALTAS_ANUAL = 4233;
+  const META_CNE_ANUAL = 6326;
+  const pA = pct(t.altas, META_ALTAS_ANUAL);
+  const pC = pct(t.cne, META_CNE_ANUAL);
+  const pEsperado = Math.round(nMeses / 12 * 100);
+  const pCumpl = Math.round((pA + pC) / 2);
+  const ratioCumpl = pEsperado > 0 ? (pCumpl / pEsperado) * 100 : 0;
+  let colorCumpl, iconoCumpl, bdgCumpl, estadoCumpl;
+  if(ratioCumpl < 85){ colorCumpl='#E53935'; iconoCumpl='✗'; bdgCumpl='blow'; estadoCumpl='Bajo lo esperado'; }
+  else if(ratioCumpl > 115){ colorCumpl='#E53935'; iconoCumpl='✗'; bdgCumpl='blow'; estadoCumpl='Sobre lo esperado'; }
+  else { colorCumpl='#00C853'; iconoCumpl='✓'; bdgCumpl='bok'; estadoCumpl='Dentro del rango'; }
 
   // ── Día con más ausencias CNE y Control
   const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
