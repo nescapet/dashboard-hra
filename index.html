@@ -930,6 +930,7 @@ function renderPanelDias(){
 
 // ── PANEL AUSENTISMO ──
 function renderPanelAusentismo(mes){
+  const t = getTotales(mes, 'todas', 'todos');
 
   // ── Día con más ausencias CNE y Control
   const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
