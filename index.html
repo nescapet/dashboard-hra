@@ -1070,21 +1070,7 @@ function renderPanelDias(){
 
 // ── VISTA TODOS — gráficos generales ──
 function renderVistaTodos(mes){
-  return `
-<div class="g2">
-  <div class="card">
-    <div class="card-h"><div><div class="ct">Evolución mensual</div><div class="cs">Altas · CNE · Inasistencias</div></div></div>
-    <div style="position:relative;height:240px"><canvas id="ch-evol" role="img" aria-label="Evolución mensual"></canvas></div>
-  </div>
-  <div class="card">
-    <div class="card-h"><div><div class="ct">Altas por especialidad</div><div class="cs">Acumulado ${DB.meses.length} meses</div></div></div>
-    <div style="position:relative;height:240px"><canvas id="ch-esp" role="img" aria-label="Altas por especialidad"></canvas></div>
-  </div>
-</div>
-<div class="card">
-  <div class="card-h"><div><div class="ct">Cumplimiento por especialista — Top 8</div><div class="cs">Altas vs Meta mensual</div></div></div>
-  <div style="position:relative;height:200px"><canvas id="ch-cumpl" role="img" aria-label="Cumplimiento"></canvas></div>
-</div>`;
+  return '';
 }
 
 // ── VISTA ESPECIALIDAD INLINE ──
