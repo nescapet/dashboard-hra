@@ -557,13 +557,21 @@ function renderGeneral(mes){
   animNum(document.getElementById('cnt-ik-${uid}'), ${t.ik});
   setTimeout(()=>{
     document.querySelectorAll('#inas-tbody-${uid} .inas-bar').forEach(b=>{
-      b.style.cssText+='height:12px;border-radius:6px;width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1)';
-      setTimeout(()=>{ b.style.width=b.dataset.w+'%'; },100);
+      b.style.display='block';
+      b.style.height='12px';
+      b.style.borderRadius='6px';
+      b.style.width='0';
+      b.style.transition='width 1.3s cubic-bezier(.4,0,.2,1)';
     });
+    setTimeout(()=>{
+      document.querySelectorAll('#inas-tbody-${uid} .inas-bar').forEach(b=>{
+        b.style.width=b.dataset.w+'%';
+      });
+    },50);
     document.querySelectorAll('.pbf[data-w]').forEach(b=>{
       setTimeout(()=>{ b.style.width=b.dataset.w+'%'; },50);
     });
-  },100);
+  },150);
   document.querySelectorAll('.inas-row').forEach(r=>{
     r.style.borderLeft='3px solid transparent';
     r.style.transition='border-color .2s';
