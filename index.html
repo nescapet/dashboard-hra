@@ -96,7 +96,13 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo
 .slname{font-size:12px;font-weight:500;color:var(--texto)}
 .slval{font-size:12px;font-weight:700}
 @media(max-width:900px){.krow5{grid-template-columns:repeat(3,1fr)}.g2,.g3,.g13{grid-template-columns:1fr}}
-@media(max-width:600px){.krow5,.krow3,.krow4{grid-template-columns:1fr 1fr}.main{padding:12px 12px 40px}.krow3-fila2{margin-top:0px !important}}
+@media(max-width:600px){
+  .krow5,.krow3,.krow4{grid-template-columns:1fr 1fr;align-items:start}
+  .main{padding:12px 12px 40px}
+  .krow3-fila2{margin-top:0px !important}
+  .kpi6-grid .krow{display:contents}
+  .kpi6-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+}
 
 /* ── RESPONSIVE MOBILE ── */
 @media(max-width:768px){
@@ -405,6 +411,7 @@ function renderGeneral(mes){
   const subPPV=top2ppv.map(x=>`${x.e}: ${t.ppv>0?Math.round(x.ppv/t.ppv*100):0}%`).concat(`Restantes: ${restoPPV}%`).join(' · ');
 
   return `
+<div class="kpi6-grid">
 <div class="krow krow3">
   ${kpiSemaforo('Consultas nuevas (CNE)', t.cne.toLocaleString('es-CL'), 'Meta anual: '+META_CNE_ANUAL.toLocaleString('es-CL'), pC, pEsperado)}
   <div class="kc fu">
@@ -424,6 +431,7 @@ function renderGeneral(mes){
   ${kpiSemaforo('Altas de tratamiento', t.altas.toLocaleString('es-CL'), 'Meta anual: '+META_ALTAS_ANUAL.toLocaleString('es-CL'), pA, pEsperado)}
   ${kpi('#0E7A5A','Registro Financiero PPV', fmt(t.ppv), subPPV)}
   ${kpi('#0057D9','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl)}
+</div>
 </div>
 ${(espActiva && espActiva!=='todas') || (profActivo && profActivo!=='todos') ? renderIndicadoresEsp(mes) : ''}
 `;
