@@ -96,7 +96,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo
 .slname{font-size:12px;font-weight:500;color:var(--texto)}
 .slval{font-size:12px;font-weight:700}
 @media(max-width:900px){.krow5{grid-template-columns:repeat(3,1fr)}.g2,.g3,.g13{grid-template-columns:1fr}}
-@media(max-width:600px){.krow5,.krow3,.krow4{grid-template-columns:1fr 1fr}.main{padding:12px 12px 40px}}
+@media(max-width:600px){.krow5,.krow3,.krow4{grid-template-columns:1fr 1fr}.main{padding:12px 12px 40px}.krow3-fila2{margin-top:0px !important}}
 
 /* ── RESPONSIVE MOBILE ── */
 @media(max-width:768px){
@@ -420,7 +420,7 @@ function renderGeneral(mes){
   </div>
   ${kpi('#0057D9','Inasistentes a CNE', t.ic.toLocaleString('es-CL')+' ('+pCNE+'%)', subCNE)}
 </div>
-<div class="krow krow3" style="margin-top:-8px">
+<div class="krow krow3 krow3-fila2" style="margin-top:-8px">
   ${kpiSemaforo('Altas de tratamiento', t.altas.toLocaleString('es-CL'), 'Meta anual: '+META_ALTAS_ANUAL.toLocaleString('es-CL'), pA, pEsperado)}
   ${kpi('#0E7A5A','Registro Financiero PPV', fmt(t.ppv), subPPV)}
   ${kpi('#0057D9','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl)}
