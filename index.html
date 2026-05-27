@@ -225,13 +225,25 @@ function poblarMeses(){
 function getDatoEsp(nombre, mes){
   const meses = DB.especialistas[nombre]?.meses || {};
   if(mes==='acum'){
-    return Object.values(meses).reduce((a,b)=>({
+    const base = Object.values(meses).reduce((a,b)=>({
       cne:a.cne+b.cne, control:a.control+b.control, altas:a.altas+b.altas,
       inasist_cne:a.inasist_cne+b.inasist_cne, inasist_ctrl:a.inasist_ctrl+b.inasist_ctrl,
       ppv:a.ppv+b.ppv, ingresos:a.ingresos+b.ingresos,
       meta_altas_mes:a.meta_altas_mes+b.meta_altas_mes,
       meta_cne_mes:a.meta_cne_mes+b.meta_cne_mes,
     }),{cne:0,control:0,altas:0,inasist_cne:0,inasist_ctrl:0,ppv:0,ingresos:0,meta_altas_mes:0,meta_cne_mes:0});
+    // Acumular indicadores sumando por clave
+    const indAcum = {};
+    Object.values(meses).forEach(m=>{
+      if(!m.indicadores) return;
+      m.indicadores.split(' | ').forEach(item=>{
+        const [k,v] = item.split(':');
+        if(k) indAcum[k.trim()] = (indAcum[k.trim()]||0) + (parseInt(v)||0);
+      });
+    });
+    const indStr = Object.entries(indAcum).map(([k,v])=>`${k}:${v}`).join(' | ');
+    base.indicadores = indStr || '';
+    return base;
   }
   return meses[mes]||{cne:0,control:0,altas:0,inasist_cne:0,inasist_ctrl:0,ppv:0,ingresos:0,meta_altas_mes:0,meta_cne_mes:0};
 }
