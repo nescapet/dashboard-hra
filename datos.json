@@ -1,5 +1,5 @@
 {
-  "actualizado": "26/05/2026 20:14",
+  "actualizado": "26/05/2026 21:59",
   "meses": [
     "01_Enero",
     "02_Febrero",
@@ -821,7 +821,7 @@
           "inasist_ctrl": 9,
           "ppv": 2531400,
           "ppv_detalle": "Total PPV: $2,531,400 (2505644x4)",
-          "indicadores": "Etapa Protesica:0 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0",
+          "indicadores": "Etapa Protesica:0 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:0",
           "meta_altas_mes": 11,
           "meta_cne_mes": 12
         },
@@ -835,7 +835,7 @@
           "inasist_ctrl": 16,
           "ppv": 8227050,
           "ppv_detalle": "Total PPV: $8,227,050 (2505644x13)",
-          "indicadores": "Etapa Protesica:3 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0",
+          "indicadores": "Etapa Protesica:3 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:17",
           "meta_altas_mes": 11,
           "meta_cne_mes": 12
         },
@@ -849,7 +849,7 @@
           "inasist_ctrl": 23,
           "ppv": 12024150,
           "ppv_detalle": "Total PPV: $12,024,150 (2505644x19)",
-          "indicadores": "Etapa Protesica:16 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0",
+          "indicadores": "Etapa Protesica:16 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:27",
           "meta_altas_mes": 11,
           "meta_cne_mes": 12
         },
@@ -863,7 +863,7 @@
           "inasist_ctrl": 19,
           "ppv": 7594200,
           "ppv_detalle": "Total PPV: $7,594,200 (2505644x12)",
-          "indicadores": "Etapa Protesica:17 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0",
+          "indicadores": "Etapa Protesica:17 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:15",
           "meta_altas_mes": 11,
           "meta_cne_mes": 12
         }
