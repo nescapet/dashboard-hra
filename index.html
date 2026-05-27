@@ -203,6 +203,7 @@ async function cargarDatos(){
     document.getElementById('upd-lbl').textContent = 'Actualizado: '+DB.actualizado;
     poblarMeses();
     poblarFiltros();
+    restaurarDesdeURL();
     render();
     document.getElementById('loader').style.display='none';
     document.getElementById('app').style.display='block';
@@ -663,12 +664,14 @@ function setEspActiva(val){
   document.getElementById('sel-esp').value = val;
   actualizarProfSelect();
   actualizarBtnTodos();
+  sincURL();
   render();
 }
 
 function setProfActivo(val){
   profActivo = val;
   actualizarBtnTodos();
+  sincURL();
   render();
 }
 
@@ -677,7 +680,32 @@ function resetFiltros(){
   document.getElementById('sel-esp').value = 'todas';
   actualizarProfSelect();
   actualizarBtnTodos();
+  sincURL();
   render();
+}
+
+function sincURL(){
+  const p = new URLSearchParams();
+  if(espActiva && espActiva!=='todas') p.set('esp', espActiva);
+  if(profActivo && profActivo!=='todos') p.set('prof', profActivo);
+  const str = p.toString();
+  history.replaceState(null,'', str ? '?'+str : location.pathname);
+}
+
+function restaurarDesdeURL(){
+  const p = new URLSearchParams(location.search);
+  const esp = p.get('esp');
+  const prof = p.get('prof');
+  if(esp){
+    espActiva = esp;
+    document.getElementById('sel-esp').value = esp;
+    actualizarProfSelect();
+  }
+  if(prof){
+    profActivo = prof;
+    document.getElementById('sel-prof').value = prof;
+  }
+  actualizarBtnTodos();
 }
 
 function filtrarEsp(btn, esp){
