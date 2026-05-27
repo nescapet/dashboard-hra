@@ -1264,6 +1264,7 @@ function renderEspecialidadInline(mes){
       `:''}
     </div>
   </div>
+  ${esp!=='Radiologia Dental'?`
   <div style="overflow-x:auto">
     <table class="tbl">
       <thead><tr>
@@ -1272,7 +1273,7 @@ function renderEspecialidadInline(mes){
       </tr></thead>
       <tbody>${tbody}</tbody>
     </table>
-  </div>
+  </div>`:''}
   ${indPanel}
 </div>`;
 }
