@@ -1251,6 +1251,7 @@ function renderEspecialidadInline(mes){
       <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:2px">${nombres.length} especialista${nombres.length>1?'s':''} · ${periodoLabel}</div>
     </div>
     <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      ${esp!=='Radiologia Dental'?`
       <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:#fff">${cne.toLocaleString('es-CL')}</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">CNE</div></div>
       <div style="width:1px;height:30px;background:rgba(255,255,255,.2)"></div>
       <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:#fff">${ctrl.toLocaleString('es-CL')}</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">Controles</div></div>
@@ -1260,6 +1261,7 @@ function renderEspecialidadInline(mes){
       <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:${pA>=85?'#A8EFD0':pA>=55?'#FFE88A':'#FFB3AE'}">${pA}%</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">Cumpl.</div></div>
       ${ppv>0?`<div style="width:1px;height:30px;background:rgba(255,255,255,.2)"></div><div style="text-align:center"><div style="font-size:20px;font-weight:700;color:#fff">${fmt(ppv)}</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">PPV</div></div>`:''}
       ${pInas>0?`<div style="width:1px;height:30px;background:rgba(255,255,255,.2)"></div><div style="text-align:center"><div style="font-size:20px;font-weight:700;color:${pInas>25?'#FFB3AE':'#fff'}">${pInas}%</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">Inas.</div></div>`:''}
+      `:''}
     </div>
   </div>
   <div style="overflow-x:auto">
@@ -1287,8 +1289,9 @@ function renderProfesionalInline(mes){
   const ini=nombre.split(' ').slice(0,2).map(x=>x[0]).join('');
   const periodoLabel=mes==='acum'?'Acumulado '+DB.meses.length+' meses':mes.replace(/^\d+_/,'')+' 2026';
   const pan = document.getElementById('cnt');
+  const esRadiologiaProf = e.especialidad === 'Radiologia Dental';
   // render then draw chart
-  setTimeout(()=>drawProfChart(nombre),100);
+  setTimeout(()=>{ if(!esRadiologiaProf) drawProfChart(nombre); },100);
   return `
 <div style="background:${e.color};border-radius:var(--r2);padding:20px 24px;margin-bottom:16px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
   <div style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;flex-shrink:0">${ini}</div>
@@ -1296,7 +1299,7 @@ function renderProfesionalInline(mes){
     <div style="font-size:18px;font-weight:700;color:#fff">${nombre}</div>
     <div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:2px">${e.especialidad} · ${periodoLabel}</div>
   </div>
-  <div style="display:flex;gap:20px;margin-left:auto;flex-wrap:wrap">
+  ${esRadiologiaProf ? '' : `<div style="display:flex;gap:20px;margin-left:auto;flex-wrap:wrap">
     <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:#fff">${d.cne}</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">CNE</div></div>
     <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:#fff">${d.control}</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">Controles</div></div>
     <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:#fff">${d.altas}</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">Altas</div></div>
@@ -1304,13 +1307,13 @@ function renderProfesionalInline(mes){
     <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:${pCNE>=85?'#A8EFD0':pCNE>=55?'#FFE88A':'#FFB3AE'}">${pCNE}%</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">Cumpl. CNE</div></div>
     <div style="text-align:center"><div style="font-size:20px;font-weight:700;color:${pi>25?'#FFB3AE':'rgba(255,255,255,.9)'}">${pi}%</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">Inas.</div></div>
     ${d.ppv>0?`<div style="text-align:center"><div style="font-size:20px;font-weight:700;color:#fff">${fmt(d.ppv)}</div><div style="font-size:9px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em">PPV</div></div>`:''}
-  </div>
+  </div>`}
 </div>
-<div class="g2">
-  <div class="card">
+<div class="${esRadiologiaProf ? '' : 'g2'}">
+  ${esRadiologiaProf ? '' : `<div class="card">
     <div class="card-h"><div><div class="ct">Evolución mensual</div><div class="cs">${nombre}</div></div></div>
     <div style="position:relative;height:220px"><canvas id="ch-prof-evol" role="img" aria-label="Evolución de ${nombre}"></canvas></div>
-  </div>
+  </div>`}
   <div class="card">
     <div class="card-h"><div><div class="ct">Indicadores específicos</div><div class="cs">Producción por tipo de prestación</div></div></div>
     <div style="padding:8px 0">${renderIndicadores(d.indicadores)}</div>
