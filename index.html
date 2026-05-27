@@ -424,7 +424,10 @@ function renderGeneral(mes){
   const restoPPV=t.ppv>0?Math.max(0,100-top2ppv.reduce((s,x)=>s+Math.round(x.ppv/t.ppv*100),0)):0;
   const subPPV=top2ppv.map(x=>`${x.e}: ${t.ppv>0?Math.round(x.ppv/t.ppv*100):0}%`).concat(`Restantes: ${restoPPV}%`).join(' · ');
 
+  const esRadiologia = (espActiva==='Radiologia Dental') || (profActivo!=='todos' && DB.especialistas[profActivo]?.especialidad==='Radiologia Dental');
+
   return `
+${esRadiologia ? '' : `
 <div class="kpi6-grid">
 <div class="krow krow3">
   ${kpiSemaforo('Consultas nuevas (CNE)', t.cne.toLocaleString('es-CL'), 'Meta anual: '+META_CNE_ANUAL.toLocaleString('es-CL'), pC, pEsperado)}
@@ -447,6 +450,7 @@ function renderGeneral(mes){
   ${kpi('#0057D9','Inasistentes a Control', t.ik.toLocaleString('es-CL')+' ('+pCtrl+'%)', subCtrl)}
 </div>
 </div>
+`}
 `;
 }
 
