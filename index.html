@@ -667,6 +667,14 @@ function setEspActiva(val){
   espActiva = val; profActivo = 'todos';
   document.getElementById('sel-esp').value = val;
   actualizarProfSelect();
+  // Si la especialidad tiene un solo profesional, ir directo a su vista
+  if(val !== 'todas' && DB){
+    const profs = Object.keys(DB.especialistas).filter(n => DB.especialistas[n].especialidad === val);
+    if(profs.length === 1){
+      profActivo = profs[0];
+      document.getElementById('sel-prof').value = profs[0];
+    }
+  }
   actualizarBtnTodos();
   sincURL();
   render();
@@ -877,6 +885,8 @@ function renderIndicadores(ind){
     'Cirugia Menor':'Cirugía Menor',
     'Terceros Molares':'N° Terceros Molares',
     'Terapia Fisica TTM':'Terapia Física TTM',
+    'Implantes Instalados':'N° Implantes Instalados',
+    'Implantes Dentales':'N° Implantes Dentales',
   };
   const PALETA = ['#0B4F72','#1A7AAF','#2196C4','#0E7A5A','#9A6200','#7B3F9E','#C0392B','#0F8B8D'];
   const items = ind.split(' | ').map(i=>{
@@ -1201,7 +1211,7 @@ function renderEspecialidadInline(mes){
       });
     });
   });
-  const RENOMBRES={'Aparatologia Fija':'Instalación Aparato Fijo Ortodóncico','Instalacion Contencion':'Instalación Aparato de Contención Ortodóncico','Retiros':'Retiro Aparatología Ortodoncia','Proc Restaurador':'Procedimiento Restaurador (Odontopediatría)','Proc Pulpar':'Procedimiento Pulpar (Odontopediatría)','Etapa Protesica':'Etapa Protésica','Estudio Histopatologico':'Estudio Histopatológico','Estudio Clinico Lesiones':'Estudio Clínico Lesiones Territorio Oral','Prot Remov Acrilica':'Prótesis Removible Acrílica','Prot Remov Metalica':'Prótesis Removible Metálica','Prot Fija Unitaria':'Prótesis Fija Unitaria','Prot Fija InlayOnlay':'Prótesis Fija Inlay/Onlay','Instalacion Dispositivo':'Instalación Dispositivo','Terapia Fisica TTM':'Terapia Física TTM','Implantes Instalados':'N° Implantes Instalados','Prot Muco-Implantoasistida':'Prótesis Muco-Implantoasistida'};
+  const RENOMBRES={'Aparatologia Fija':'Instalación Aparato Fijo Ortodóncico','Instalacion Contencion':'Instalación Aparato de Contención Ortodóncico','Retiros':'Retiro Aparatología Ortodoncia','Proc Restaurador':'Procedimiento Restaurador (Odontopediatría)','Proc Pulpar':'Procedimiento Pulpar (Odontopediatría)','Etapa Protesica':'Etapa Protésica','Estudio Histopatologico':'Estudio Histopatológico','Estudio Clinico Lesiones':'Estudio Clínico Lesiones Territorio Oral','Prot Remov Acrilica':'Prótesis Removible Acrílica','Prot Remov Metalica':'Prótesis Removible Metálica','Prot Fija Unitaria':'Prótesis Fija Unitaria','Prot Fija InlayOnlay':'Prótesis Fija Inlay/Onlay','Instalacion Dispositivo':'Instalación Dispositivo','Terapia Fisica TTM':'Terapia Física TTM','Implantes Instalados':'N° Implantes Instalados','Implantes Dentales':'N° Implantes Dentales','Prot Muco-Implantoasistida':'Prótesis Muco-Implantoasistida'};
   const indItems=Object.entries(indAcum).map(([k,v])=>([RENOMBRES[k]||k,v])).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
   const indTotal=indItems.reduce((s,[,v])=>s+v,0);
   const indMax=indItems[0]?.[1]||1;
