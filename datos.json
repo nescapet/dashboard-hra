@@ -1,5 +1,5 @@
 {
-  "actualizado": "25/05/2026 18:42",
+  "actualizado": "26/05/2026 20:14",
   "meses": [
     "01_Enero",
     "02_Febrero",
@@ -721,7 +721,7 @@
           "inasist_ctrl": 0,
           "ppv": 9008450,
           "ppv_detalle": "Total PPV: $9,008,450 (2505976x13 | 2505977x16)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:8 | Terceros Molares:20",
           "meta_altas_mes": 22,
           "meta_cne_mes": 36
         },
@@ -735,7 +735,7 @@
           "inasist_ctrl": 33,
           "ppv": 13752630,
           "ppv_detalle": "Total PPV: $13,752,630 (2505977x23 | 2505976x22)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:63 | Terceros Molares:87",
           "meta_altas_mes": 22,
           "meta_cne_mes": 36
         }
@@ -757,7 +757,7 @@
           "inasist_ctrl": 4,
           "ppv": 974550,
           "ppv_detalle": "Total PPV: $974,550 (2505977x2 | 2505976x1)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:1 | Cirugia Menor:5 | Terceros Molares:10",
           "meta_altas_mes": 22,
           "meta_cne_mes": 36
         },
@@ -771,7 +771,7 @@
           "inasist_ctrl": 29,
           "ppv": 7733180,
           "ppv_detalle": "Total PPV: $7,733,180 (2505976x8 | 2505977x14 | 2505637x1 | 2505645x1)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:1 | Cirugia Menor:43 | Terceros Molares:96",
           "meta_altas_mes": 22,
           "meta_cne_mes": 36
         },
@@ -785,7 +785,7 @@
           "inasist_ctrl": 4,
           "ppv": 974550,
           "ppv_detalle": "Total PPV: $974,550 (2505977x2 | 2505976x1)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:1 | Cirugia Menor:5 | Terceros Molares:10",
           "meta_altas_mes": 22,
           "meta_cne_mes": 36
         },
@@ -799,7 +799,7 @@
           "inasist_ctrl": 15,
           "ppv": 5728550,
           "ppv_detalle": "Total PPV: $5,728,550 (2505977x13 | 2505976x4)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:29 | Terceros Molares:70",
           "meta_altas_mes": 22,
           "meta_cne_mes": 36
         }
@@ -1113,7 +1113,7 @@
           "inasist_ctrl": 18,
           "ppv": 8276310,
           "ppv_detalle": "Total PPV: $8,276,310 (2505977x14 | 2505976x13)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:42 | Terceros Molares:98",
           "meta_altas_mes": 43,
           "meta_cne_mes": 72
         },
@@ -1127,7 +1127,7 @@
           "inasist_ctrl": 32,
           "ppv": 18378060,
           "ppv_detalle": "Total PPV: $18,378,060 (2505976x29 | 2505977x31)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:103 | Terceros Molares:120",
           "meta_altas_mes": 43,
           "meta_cne_mes": 72
         },
@@ -1141,7 +1141,7 @@
           "inasist_ctrl": 17,
           "ppv": 7059350,
           "ppv_detalle": "Total PPV: $7,059,350 (2505976x11 | 2505977x12)",
-          "indicadores": "",
+          "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:36 | Terceros Molares:63",
           "meta_altas_mes": 43,
           "meta_cne_mes": 72
         }
