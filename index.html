@@ -162,6 +162,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--fondo
   <div class="hdr-r">
     <select class="sel" id="sel-mes" onchange="render()"></select>
     <span class="upd" id="upd-lbl"></span>
+    <span class="upd" id="visit-lbl" style="display:none">· <span id="visit-cnt"></span> visitas</span>
   </div>
 </div>
 <!-- FILTRO EN CASCADA -->
@@ -1286,6 +1287,16 @@ function renderProfesionalInline(mes){
 }
 
 cargarDatos();
+
+// Contador de visitas
+fetch('https://countapi.mileshilliard.com/api/v1/hit/dashboard-hra-hra2026')
+  .then(r=>r.json())
+  .then(data=>{
+    if(data && data.value){
+      document.getElementById('visit-cnt').textContent = data.value.toLocaleString('es-CL');
+      document.getElementById('visit-lbl').style.display = 'inline';
+    }
+  }).catch(()=>{});
 </script>
 </body>
 </html>
