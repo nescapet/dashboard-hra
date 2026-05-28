@@ -182,6 +182,35 @@ const DATA_URL = 'datos.json';
 let DB = null, espActiva = 'todas', profActivo = 'todos';
 let charts = {};
 
+// ── METAS INDICADORES ESPECÍFICOS ──
+const METAS_ESP = {
+  "Andres Caballero":    {"Unirradicular":84,"Birradicular":94,"Multirradicular":112,"Retratamiento":16},
+  "Fernando Duran":      {"Unirradicular":101,"Birradicular":112,"Multirradicular":133,"Retratamiento":19},
+  "Jimena Carrasco":     {"Unirradicular":116,"Birradicular":128,"Multirradicular":162,"Retratamiento":16},
+  "Isabel Torres":       {"Retroalveolar":1068,"Bite Wing":230,"Extraoral":1282,"CBCT Zona Dentaria":30,"CBCT Unimaxilar":97,"CBCT Craneofacial":8},
+  "Andres Segovia":      {"Retroalveolar":1119,"Bite Wing":240,"Extraoral":1345,"CBCT Zona Dentaria":32,"CBCT Unimaxilar":103,"CBCT Craneofacial":10},
+  "Tamara Contreras":    {"Retroalveolar":911,"Bite Wing":183,"Extraoral":1095,"CBCT Zona Dentaria":32,"CBCT Unimaxilar":101,"CBCT Craneofacial":10},
+  "Nikole Guerrero":     {"Aparatologia Fija":157},
+  "Roberto Munoz":       {"Aparatologia Fija":157},
+  "Marcelo Rivera":      {"Aparatologia Fija":165},
+  "Cristian Villalobos": {"Aparatologia Fija":182},
+  "Gabriela Farias":     {"Prot Remov Acrilica":213,"Prot Remov Metalica":2,"Prot Fija Unitaria":20,"Prot Fija InlayOnlay":73},
+  "Manuel Campana":      {"Prot Remov Acrilica":250,"Prot Remov Metalica":2,"Prot Fija Unitaria":22,"Prot Fija InlayOnlay":70},
+  "Giselle Garrido":     {"Prot Remov Acrilica":250,"Prot Remov Metalica":3,"Prot Fija Unitaria":21,"Prot Fija InlayOnlay":76},
+  "Sebastian Godoy":     {"Prot Remov Acrilica":281,"Prot Remov Metalica":4,"Prot Fija Unitaria":22,"Prot Fija InlayOnlay":50},
+  "Rodolfo Olivares":    {"Prot Remov Acrilica":192,"Prot Remov Metalica":12,"Prot Fija Unitaria":12,"Prot Fija InlayOnlay":60},
+  "Juan Bugueño":        {"Cirugia Menor":268},
+  "Juan Cortes":         {"Cirugia Menor":280},
+  "Paulina Gonzalez":    {"Cirugia Menor":548}
+};
+
+// Fracción del año transcurrida según el mes seleccionado
+function fraccionAnio(mes){
+  if(!mes || mes==='acum') return DB && DB.meses ? DB.meses.length/12 : 1/12;
+  const num = parseInt(mes.split('_')[0]);
+  return isNaN(num) ? 1/12 : num/12;
+}
+
 // ── UTILIDADES ──
 const pct = (a,b) => b>0 ? Math.round(a/b*100) : 0;
 const fmt = n => {
@@ -871,38 +900,73 @@ function renderProfesionalDetalle(nombre, mes){
         <div style="position:relative;height:220px"><canvas id="ch-prof-evol" role="img" aria-label="Evolución mensual de ${nombre}"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-h"><div><div class="ct">Indicadores específicos</div><div class="cs">Producción por tipo de prestación</div></div></div>
-        <div style="padding:8px 0">${renderIndicadores(d.indicadores)}</div>
+        <div class="card-h"><div><div class="ct">Indicadores específicos</div><div class="cs">Producción · meta proporcional al mes</div></div></div>
+        <div style="padding:8px 0">${renderIndicadores(d.indicadores, nombre, mes)}</div>
       </div>
     </div>`;
   drawProfChart(nombre);
 }
 
-function renderIndicadores(ind){
+function renderIndicadores(ind, nombreProf, mes){
   if(!ind) return '<p style="color:var(--muted);font-size:13px;padding:8px 4px">Sin indicadores específicos</p>';
   const RENOMBRES_IND = {
-    'Cirugia Ortognatica':'Cirugía Ortognática',
-    'Cirugia Menor':'Cirugía Menor',
-    'Terceros Molares':'N° Terceros Molares',
-    'Terapia Fisica TTM':'Terapia Física TTM',
-    'Implantes Instalados':'N° Implantes Instalados',
-    'Implantes Dentales':'N° Implantes Dentales',
+    'Cirugia Ortognatica':'Cirugía Ortognática','Cirugia Menor':'Cirugía Menor',
+    'Terceros Molares':'N° Terceros Molares','Terapia Fisica TTM':'Terapia Física TTM',
+    'Implantes Instalados':'N° Implantes Instalados','Implantes Dentales':'N° Implantes Dentales',
+    'Aparatologia Fija':'Instalación Aparato Fijo Ortodóncico',
+    'Instalacion Contencion':'Instalación Aparato de Contención Ortodóncico',
+    'Retiros':'Retiro Aparatología Ortodoncia',
+    'Proc Restaurador':'Procedimiento Restaurador (Odontopediatría)',
+    'Proc Pulpar':'Procedimiento Pulpar (Odontopediatría)',
+    'Etapa Protesica':'Etapa Protésica','Estudio Histopatologico':'Estudio Histopatológico',
+    'Estudio Clinico Lesiones':'Estudio Clínico Lesiones Territorio Oral',
+    'Prot Remov Acrilica':'Prótesis Removible Acrílica','Prot Remov Metalica':'Prótesis Removible Metálica',
+    'Prot Fija Unitaria':'Prótesis Fija Unitaria','Prot Fija InlayOnlay':'Prótesis Fija Inlay/Onlay',
+    'Instalacion Dispositivo':'Instalación Dispositivo','Prot Muco-Implantoasistida':'Prótesis Muco-Implantoasistida',
   };
   const PALETA = ['#0B4F72','#1A7AAF','#2196C4','#0E7A5A','#9A6200','#7B3F9E','#C0392B','#0F8B8D'];
+  const metasProf = (nombreProf && METAS_ESP[nombreProf]) ? METAS_ESP[nombreProf] : {};
+  const fraccion = fraccionAnio(mes);
+
   const items = ind.split(' | ').map(i=>{
     const [k,v] = i.split(':');
-    const nombre = RENOMBRES_IND[k?.trim()] || k?.trim() || '';
-    return [nombre, parseInt(v)||0];
+    const claveInt = k?.trim() || '';
+    const nombre = RENOMBRES_IND[claveInt] || claveInt;
+    return [nombre, parseInt(v)||0, claveInt];
   }).filter(([k])=>k);
-  const maxVal = Math.max(...items.map(([,v])=>v), 1);
-  const cards = items.map(([k,v],i)=>{
-    const w = Math.round(v/maxVal*100);
+
+  const cards = items.map(([nombre,v,claveInt],i)=>{
     const c = PALETA[i % PALETA.length];
-    return `<div style="background:#fff;border-radius:10px;border:1px solid #EDF2F7;padding:14px 16px;position:relative;overflow:hidden">
-      <div style="position:absolute;bottom:0;left:0;height:3px;width:${w}%;background:${c};border-radius:0 2px 2px 0"></div>
-      <div style="font-size:10px;font-weight:600;color:#6B8CA4;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;line-height:1.3">${k}</div>
-      <div style="font-size:28px;font-weight:700;color:${c};line-height:1">${v.toLocaleString('es-CL')}</div>
-      <div style="font-size:10px;color:#B0C4D3;margin-top:4px">prestaciones registradas</div>
+    const metaAnual = metasProf[claveInt] || null;
+    if(!metaAnual){
+      return `<div style="background:#fff;border-radius:12px;border:1px solid #EDF2F7;padding:16px 18px;position:relative;overflow:hidden">
+        <div style="position:absolute;bottom:0;left:0;height:3px;width:100%;background:${c}22"></div>
+        <div style="font-size:10px;font-weight:600;color:#6B8CA4;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;line-height:1.3">${nombre}</div>
+        <div style="font-size:30px;font-weight:700;color:${c};line-height:1">${v.toLocaleString('es-CL')}</div>
+        <div style="font-size:10px;color:#B0C4D3;margin-top:4px">prestaciones registradas</div>
+      </div>`;
+    }
+    const metaEsperada = metaAnual * fraccion;
+    const cumplProp = metaEsperada > 0 ? Math.round(v / metaEsperada * 100) : 0;
+    const barW = Math.min(Math.round(v / metaAnual * 100), 100);
+    let col, bdg, est;
+    if(cumplProp >= 85){ col='#00C853'; bdg='background:#E0FFF0;color:#00A846'; est='En cumplimiento'; }
+    else if(cumplProp >= 60){ col='#E67E22'; bdg='background:#FEF3CD;color:#9A6200'; est='En riesgo'; }
+    else { col='#E53935'; bdg='background:#FDECEA;color:#C0392B'; est='Incumplimiento'; }
+    return `<div style="background:#fff;border-radius:12px;border:1.5px solid ${col}33;border-left:3px solid ${col};padding:16px 18px;position:relative;overflow:hidden">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px">
+        <div style="font-size:10px;font-weight:600;color:#6B8CA4;text-transform:uppercase;letter-spacing:.04em;line-height:1.3;flex:1;padding-right:8px">${nombre}</div>
+        <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap;${bdg}">${est}</span>
+      </div>
+      <div style="font-size:32px;font-weight:700;color:${col};line-height:1;margin-bottom:2px">${v.toLocaleString('es-CL')}</div>
+      <div style="font-size:11px;color:#6B8CA4;margin-bottom:10px">Meta anual: <strong style="color:var(--texto)">${metaAnual.toLocaleString('es-CL')}</strong></div>
+      <div style="background:#EDF2F7;border-radius:3px;height:5px;overflow:hidden;margin-bottom:6px">
+        <div style="width:${barW}%;height:100%;background:${col};border-radius:3px;transition:width 1.2s ease"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:11px;font-weight:700;color:${col}">${cumplProp}% del esperado</span>
+        <span style="font-size:10px;color:#B0C4D3">${Math.round(fraccion*100)}% del año</span>
+      </div>
     </div>`;
   }).join('');
   const nCols = items.length <= 2 ? items.length : items.length <= 4 ? 2 : 3;
@@ -1228,26 +1292,56 @@ function renderEspecialidadInline(mes){
   }
 
   const nCols=indItems.length<=2?indItems.length:indItems.length<=4?2:indItems.length<=6?3:4;
+
+  // Metas por especialidad: suma de metas de cada profesional del equipo
+  const metasEsp = {};
+  nombres.forEach(n=>{
+    const m = METAS_ESP[n] || {};
+    Object.entries(m).forEach(([k,v])=>{ metasEsp[k]=(metasEsp[k]||0)+v; });
+  });
+  const fraccion = fraccionAnio(mes);
+
   const indPanel=indItems.length>0?`
   <div style="padding:20px 22px;border-top:1px solid var(--borde)">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em">Indicadores específicos</span>
+      <span style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em">Indicadores específicos · meta proporcional al mes</span>
       <span style="font-size:12px;color:var(--muted)">${indTotal.toLocaleString('es-CL')} procedimientos${tasaPerio!==null?' · <span style="color:'+color+';font-weight:700">Tasa ctrl/alta: '+tasaPerio+'x</span>':''}</span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(${nCols},1fr);gap:10px">
-      ${indItems.map(([k,v],i)=>{
+      ${indItems.map(([nombreRenombrado,v],i)=>{
         const c=PALETA[i%PALETA.length];
-        const w=Math.round(v/indMax*100);
-        const p2=indTotal>0?Math.round(v/indTotal*100):0;
-        return `<div style="background:#F8FAFC;border-radius:10px;border:1px solid #EDF2F7;padding:14px 16px;display:flex;align-items:center;gap:14px">
-          <div style="flex:1;font-size:12px;font-weight:600;color:var(--texto);line-height:1.3">${k}</div>
-          <div style="width:100px;flex-shrink:0">
-            <div style="height:6px;background:#E8EEF4;border-radius:3px;overflow:hidden;margin-bottom:4px">
-              <div style="width:${w}%;height:100%;background:${c};border-radius:3px"></div>
-            </div>
-            <div style="font-size:9px;color:var(--muted);text-align:right">${p2}% del total</div>
+        // Buscar clave interna original buscando en el mapa de renombres inverso
+        const claveInterna=Object.entries({'Aparatologia Fija':'Instalación Aparato Fijo Ortodóncico','Instalacion Contencion':'Instalación Aparato de Contención Ortodóncico','Retiros':'Retiro Aparatología Ortodoncia','Proc Restaurador':'Procedimiento Restaurador (Odontopediatría)','Proc Pulpar':'Procedimiento Pulpar (Odontopediatría)','Etapa Protesica':'Etapa Protésica','Estudio Histopatologico':'Estudio Histopatológico','Estudio Clinico Lesiones':'Estudio Clínico Lesiones Territorio Oral','Prot Remov Acrilica':'Prótesis Removible Acrílica','Prot Remov Metalica':'Prótesis Removible Metálica','Prot Fija Unitaria':'Prótesis Fija Unitaria','Prot Fija InlayOnlay':'Prótesis Fija Inlay/Onlay','Instalacion Dispositivo':'Instalación Dispositivo','Terapia Fisica TTM':'Terapia Física TTM','Implantes Instalados':'N° Implantes Instalados','Implantes Dentales':'N° Implantes Dentales','Prot Muco-Implantoasistida':'Prótesis Muco-Implantoasistida','Cirugia Ortognatica':'Cirugía Ortognática','Cirugia Menor':'Cirugía Menor','Terceros Molares':'N° Terceros Molares'}).find(([,r])=>r===nombreRenombrado)?.[0]||nombreRenombrado;
+        const metaAnual=metasEsp[claveInterna]||null;
+        if(!metaAnual){
+          return `<div style="background:#F8FAFC;border-radius:12px;border:1px solid #EDF2F7;padding:14px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;bottom:0;left:0;height:3px;width:100%;background:${c}22"></div>
+            <div style="font-size:11px;font-weight:600;color:var(--texto);line-height:1.3;margin-bottom:10px">${nombreRenombrado}</div>
+            <div style="font-size:28px;font-weight:700;color:${c};line-height:1">${v.toLocaleString('es-CL')}</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:4px">prestaciones registradas</div>
+          </div>`;
+        }
+        const metaEsperada=metaAnual*fraccion;
+        const cumplProp=metaEsperada>0?Math.round(v/metaEsperada*100):0;
+        const barW=Math.min(Math.round(v/metaAnual*100),100);
+        let col,bdg,est;
+        if(cumplProp>=85){col='#00C853';bdg='background:#E0FFF0;color:#00A846';est='En cumplimiento';}
+        else if(cumplProp>=60){col='#E67E22';bdg='background:#FEF3CD;color:#9A6200';est='En riesgo';}
+        else{col='#E53935';bdg='background:#FDECEA;color:#C0392B';est='Incumplimiento';}
+        return `<div style="background:#F8FAFC;border-radius:12px;border:1.5px solid ${col}33;border-left:3px solid ${col};padding:14px 16px;position:relative;overflow:hidden">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:11px;font-weight:600;color:var(--texto);line-height:1.3;flex:1;padding-right:6px">${nombreRenombrado}</div>
+            <span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;white-space:nowrap;${bdg}">${est}</span>
           </div>
-          <div style="font-size:22px;font-weight:700;color:${c};line-height:1;min-width:44px;text-align:right">${v}</div>
+          <div style="font-size:28px;font-weight:700;color:${col};line-height:1;margin-bottom:2px">${v.toLocaleString('es-CL')}</div>
+          <div style="font-size:10px;color:#6B8CA4;margin-bottom:8px">Meta anual: <strong style="color:var(--texto)">${metaAnual.toLocaleString('es-CL')}</strong></div>
+          <div style="background:#EDF2F7;border-radius:3px;height:5px;overflow:hidden;margin-bottom:5px">
+            <div style="width:${barW}%;height:100%;background:${col};border-radius:3px"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between">
+            <span style="font-size:10px;font-weight:700;color:${col}">${cumplProp}% del esperado</span>
+            <span style="font-size:10px;color:#B0C4D3">${Math.round(fraccion*100)}% del año</span>
+          </div>
         </div>`;
       }).join('')}
     </div>
@@ -1326,8 +1420,8 @@ function renderProfesionalInline(mes){
     <div style="position:relative;height:220px"><canvas id="ch-prof-evol" role="img" aria-label="Evolución de ${nombre}"></canvas></div>
   </div>`}
   <div class="card">
-    <div class="card-h"><div><div class="ct">Indicadores específicos</div><div class="cs">Producción por tipo de prestación</div></div></div>
-    <div style="padding:8px 0">${renderIndicadores(d.indicadores)}</div>
+    <div class="card-h"><div><div class="ct">Indicadores específicos</div><div class="cs">Producción · meta proporcional al mes</div></div></div>
+    <div style="padding:8px 0">${renderIndicadores(d.indicadores, nombre, mes)}</div>
   </div>
 </div>`;
 }
