@@ -375,16 +375,23 @@ function kpiSemaforo(lbl, val, sub, pctReal, pctEsperado){
 // ── VISTA GENERAL ──
 function renderGeneral(mes){
   const t=getTotales(mes, espActiva, profActivo);
-  // When filtering by speciality or professional, use corresponding metas
-  let META_ALTAS_ANUAL=4233, META_CNE_ANUAL=6326;
+  // Metas: siempre calculadas dinamicamente desde DB.especialistas (nunca hardcodeadas)
+  // asi quedan siempre sincronizadas con METAS de exportar_json.py sin tocar este archivo.
+  let META_ALTAS_ANUAL=0, META_CNE_ANUAL=0;
   if(profActivo && profActivo!=='todos'){
     const ep = DB.especialistas[profActivo];
     META_ALTAS_ANUAL = ep ? ep.meta_altas : 0;
     META_CNE_ANUAL   = ep ? ep.meta_cne   : 0;
   } else if(espActiva && espActiva!=='todas'){
-    META_ALTAS_ANUAL=0; META_CNE_ANUAL=0;
     Object.entries(DB.especialistas).forEach(([n,e])=>{
       if(e.especialidad===espActiva){ META_ALTAS_ANUAL+=e.meta_altas; META_CNE_ANUAL+=e.meta_cne; }
+    });
+  } else {
+    // Vista "Todos" (Servicio Dental completo): suma la meta de TODOS los especialistas
+    // presentes en datos.json (antes esto usaba 4233/6326 hardcodeados de sesion 10,
+    // desactualizados desde que se cambiaron las metas en sesion 11 - fix sesion 12).
+    Object.values(DB.especialistas).forEach(e=>{
+      META_ALTAS_ANUAL+=e.meta_altas; META_CNE_ANUAL+=e.meta_cne;
     });
   }
   const nMeses = mes==='acum' ? DB.meses.length : 1;
