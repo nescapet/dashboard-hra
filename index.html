@@ -183,25 +183,30 @@ let DB = null, espActiva = 'todas', profActivo = 'todos';
 let charts = {};
 
 // ── METAS INDICADORES ESPECÍFICOS ──
+// Metas actualizadas sesion 11 (Agosto 2026) desde "Planilla programacion PM y
+// PNM 2026 v.1.1_odonto (1).xlsx", confirmadas con Nestor. Ortodoncia
+// (Aparatologia Fija/Instalacion Contencion/Retiros) NO se actualiza: son
+// indicadores distintos a Consulta Nueva/Altas y la planilla no los trae
+// desagregados. Implantologia (Amengual) sigue sin metas de indicador
+// especifico (solo tiene meta general en METAS). Cristian Villalobos y Juan
+// Bugueño renunciaron - se eliminan.
 const METAS_ESP = {
-  "Andres Caballero":    {"Unirradicular":84,"Birradicular":94,"Multirradicular":112,"Retratamiento":16},
-  "Fernando Duran":      {"Unirradicular":101,"Birradicular":112,"Multirradicular":133,"Retratamiento":19},
-  "Jimena Carrasco":     {"Unirradicular":116,"Birradicular":128,"Multirradicular":162,"Retratamiento":16},
-  "Isabel Torres":       {"Retroalveolar":1068,"Bite Wing":230,"Extraoral":1282,"CBCT Zona Dentaria":30,"CBCT Unimaxilar":97,"CBCT Craneofacial":8},
-  "Andres Segovia":      {"Retroalveolar":1119,"Bite Wing":240,"Extraoral":1345,"CBCT Zona Dentaria":32,"CBCT Unimaxilar":103,"CBCT Craneofacial":10},
-  "Tamara Contreras":    {"Retroalveolar":911,"Bite Wing":183,"Extraoral":1095,"CBCT Zona Dentaria":32,"CBCT Unimaxilar":101,"CBCT Craneofacial":10},
+  "Andres Caballero":    {"Unirradicular":93,"Birradicular":94,"Multirradicular":113,"Retratamiento":17},
+  "Fernando Duran":      {"Unirradicular":101,"Birradicular":113,"Multirradicular":135,"Retratamiento":20},
+  "Jimena Carrasco":     {"Unirradicular":117,"Birradicular":130,"Multirradicular":163,"Retratamiento":14},
+  "Isabel Torres":       {"Retroalveolar":1494,"Bite Wing":321,"Extraoral":1796,"CBCT Zona Dentaria":42,"CBCT Unimaxilar":137,"CBCT Craneofacial":12},
+  "Andres Segovia":      {"Retroalveolar":1566,"Bite Wing":337,"Extraoral":1881,"CBCT Zona Dentaria":45,"CBCT Unimaxilar":144,"CBCT Craneofacial":12},
+  "Tamara Contreras":    {"Retroalveolar":1276,"Bite Wing":256,"Extraoral":1532,"CBCT Zona Dentaria":44,"CBCT Unimaxilar":141,"CBCT Craneofacial":12},
   "Nikole Guerrero":     {"Aparatologia Fija":157},
   "Roberto Munoz":       {"Aparatologia Fija":157},
   "Marcelo Rivera":      {"Aparatologia Fija":165},
-  "Cristian Villalobos": {"Aparatologia Fija":182},
-  "Gabriela Farias":     {"Prot Remov Acrilica":213,"Prot Remov Metalica":2,"Prot Fija Unitaria":20,"Prot Fija InlayOnlay":73},
-  "Manuel Campana":      {"Prot Remov Acrilica":250,"Prot Remov Metalica":2,"Prot Fija Unitaria":22,"Prot Fija InlayOnlay":70},
-  "Giselle Garrido":     {"Prot Remov Acrilica":250,"Prot Remov Metalica":3,"Prot Fija Unitaria":21,"Prot Fija InlayOnlay":76},
-  "Sebastian Godoy":     {"Prot Remov Acrilica":281,"Prot Remov Metalica":4,"Prot Fija Unitaria":22,"Prot Fija InlayOnlay":50},
-  "Rodolfo Olivares":    {"Prot Remov Acrilica":192,"Prot Remov Metalica":12,"Prot Fija Unitaria":12,"Prot Fija InlayOnlay":60},
-  "Juan Bugueño":        {"Cirugia Menor":268},
-  "Juan Cortes":         {"Cirugia Menor":280},
-  "Paulina Gonzalez":    {"Cirugia Menor":548}
+  "Gabriela Farias":     {"Prot Remov Acrilica":220,"Prot Remov Metalica":2,"Prot Fija Unitaria":22,"Prot Fija InlayOnlay":82},
+  "Manuel Campana":      {"Prot Remov Acrilica":260,"Prot Remov Metalica":2,"Prot Fija Unitaria":24,"Prot Fija InlayOnlay":79},
+  "Giselle Garrido":     {"Prot Remov Acrilica":260,"Prot Remov Metalica":3,"Prot Fija Unitaria":24,"Prot Fija InlayOnlay":85},
+  "Sebastian Godoy":     {"Prot Remov Acrilica":291,"Prot Remov Metalica":3,"Prot Fija Unitaria":24,"Prot Fija InlayOnlay":57},
+  "Rodolfo Olivares":    {"Prot Remov Acrilica":198,"Prot Remov Metalica":9,"Prot Fija Unitaria":10,"Prot Fija InlayOnlay":67},
+  "Juan Cortes":         {"Cirugia Menor":368},
+  "Paulina Gonzalez":    {"Cirugia Menor":716}
 };
 
 // Fracción del año transcurrida según el mes seleccionado
