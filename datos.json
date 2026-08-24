@@ -1,5 +1,5 @@
 {
-  "actualizado": "24/08/2026 15:20",
+  "actualizado": "24/08/2026 18:43",
   "meses": [
     "01_Enero",
     "02_Febrero",
@@ -1471,8 +1471,8 @@
     "Nikole Guerrero": {
       "especialidad": "Ortodoncia",
       "color": "#0F8B8D",
-      "meta_altas": 86,
-      "meta_cne": 220,
+      "meta_altas": 94,
+      "meta_cne": 242,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1485,8 +1485,8 @@
           "ppv": 2825410,
           "ppv_detalle": "Total PPV: $2,825,410 (2505638x6 | 2505639x1)",
           "indicadores": "Aparatologia Fija:8 | Instalacion Contencion:2 | Retiros:2",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1499,8 +1499,8 @@
           "ppv": 5143840,
           "ppv_detalle": "Total PPV: $5,143,840 (2505638x9 | 2505639x4)",
           "indicadores": "Aparatologia Fija:9 | Instalacion Contencion:10 | Retiros:10",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1513,8 +1513,8 @@
           "ppv": 5240300,
           "ppv_detalle": "Total PPV: $5,240,300 (2505638x11 | 2505639x2)",
           "indicadores": "Aparatologia Fija:19 | Instalacion Contencion:8 | Retiros:14",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1527,8 +1527,8 @@
           "ppv": 8113940,
           "ppv_detalle": "Total PPV: $8,113,940 (2505639x2 | 2505638x18)",
           "indicadores": "Aparatologia Fija:21 | Instalacion Contencion:3 | Retiros:8",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1541,8 +1541,8 @@
           "ppv": 7292900,
           "ppv_detalle": "Total PPV: $7,292,900 (2505638x16 | 2505639x2)",
           "indicadores": "Aparatologia Fija:20 | Instalacion Contencion:3 | Retiros:6",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1555,8 +1555,8 @@
           "ppv": 3646450,
           "ppv_detalle": "Total PPV: $3,646,450 (2505638x8 | 2505639x1)",
           "indicadores": "Aparatologia Fija:11 | Instalacion Contencion:10 | Retiros:11",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1569,8 +1569,8 @@
           "ppv": 4829780,
           "ppv_detalle": "Total PPV: $4,829,780 (2505638x10 | 2505639x2)",
           "indicadores": "Aparatologia Fija:15 | Instalacion Contencion:5 | Retiros:10",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         }
       }
     },
@@ -1853,8 +1853,8 @@
     "Roberto Munoz": {
       "especialidad": "Ortodoncia",
       "color": "#0F8B8D",
-      "meta_altas": 86,
-      "meta_cne": 220,
+      "meta_altas": 94,
+      "meta_cne": 242,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1867,8 +1867,8 @@
           "ppv": 3284160,
           "ppv_detalle": "Total PPV: $3,284,160 (2505638x8)",
           "indicadores": "Aparatologia Fija:8 | Instalacion Contencion:0 | Retiros:0",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1881,8 +1881,8 @@
           "ppv": 5602590,
           "ppv_detalle": "Total PPV: $5,602,590 (2505638x11 | 2505639x3)",
           "indicadores": "Aparatologia Fija:11 | Instalacion Contencion:0 | Retiros:3",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1895,8 +1895,8 @@
           "ppv": 4105200,
           "ppv_detalle": "Total PPV: $4,105,200 (2505638x10)",
           "indicadores": "Aparatologia Fija:12 | Instalacion Contencion:3 | Retiros:1",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1909,8 +1909,8 @@
           "ppv": 5240300,
           "ppv_detalle": "Total PPV: $5,240,300 (2505638x11 | 2505639x2)",
           "indicadores": "Aparatologia Fija:15 | Instalacion Contencion:1 | Retiros:4",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1923,8 +1923,8 @@
           "ppv": 2052600,
           "ppv_detalle": "Total PPV: $2,052,600 (2505638x5)",
           "indicadores": "Aparatologia Fija:10 | Instalacion Contencion:4 | Retiros:9",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1937,8 +1937,8 @@
           "ppv": 1231560,
           "ppv_detalle": "Total PPV: $1,231,560 (2505638x3)",
           "indicadores": "Aparatologia Fija:7 | Instalacion Contencion:4 | Retiros:3",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1951,8 +1951,8 @@
           "ppv": 3284160,
           "ppv_detalle": "Total PPV: $3,284,160 (2505638x8)",
           "indicadores": "Aparatologia Fija:11 | Instalacion Contencion:2 | Retiros:1",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 18
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 20
         }
       }
     },
