@@ -1,5 +1,5 @@
 {
-  "actualizado": "24/08/2026 15:13",
+  "actualizado": "24/08/2026 15:20",
   "meses": [
     "01_Enero",
     "02_Febrero",
@@ -13,8 +13,8 @@
     "Andres Caballero": {
       "especialidad": "Endodoncia",
       "color": "#1A7AAF",
-      "meta_altas": 236,
-      "meta_cne": 328,
+      "meta_altas": 318,
+      "meta_cne": 441,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -27,8 +27,8 @@
           "ppv": 1719630,
           "ppv_detalle": "Total PPV: $1,719,630 (2505641x11)",
           "indicadores": "Unirradicular:5 | Birradicular:3 | Multirradicular:2 | Retratamiento:1",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 37
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -41,8 +41,8 @@
           "ppv": 3126600,
           "ppv_detalle": "Total PPV: $3,126,600 (2505641x20)",
           "indicadores": "Unirradicular:8 | Birradicular:7 | Multirradicular:5 | Retratamiento:0",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 37
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -55,8 +55,8 @@
           "ppv": 1406970,
           "ppv_detalle": "Total PPV: $1,406,970 (2505641x9)",
           "indicadores": "Unirradicular:4 | Birradicular:4 | Multirradicular:2 | Retratamiento:1",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 37
         },
         "06_Junio": {
           "mes_num": 6,
@@ -69,8 +69,8 @@
           "ppv": 5315220,
           "ppv_detalle": "Total PPV: $5,315,220 (2505641x34)",
           "indicadores": "Unirradicular:9 | Birradicular:14 | Multirradicular:11 | Retratamiento:1",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 37
         },
         "07_Julio": {
           "mes_num": 7,
@@ -83,8 +83,8 @@
           "ppv": 2188620,
           "ppv_detalle": "Total PPV: $2,188,620 (2505641x14)",
           "indicadores": "Unirradicular:5 | Birradicular:6 | Multirradicular:2 | Retratamiento:0",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 37
         }
       }
     },
@@ -197,8 +197,8 @@
     "Carlos Humeres": {
       "especialidad": "Patologia Oral",
       "color": "#7B6FA0",
-      "meta_altas": 226,
-      "meta_cne": 349,
+      "meta_altas": 317,
+      "meta_cne": 488,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -211,8 +211,8 @@
           "ppv": 1838760,
           "ppv_detalle": "Total PPV: $1,838,760 (2505980x12)",
           "indicadores": "Estudio Histopatologico:4 | Estudio Clinico Lesiones:0",
-          "meta_altas_mes": 19,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 41
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -225,8 +225,8 @@
           "ppv": 1532300,
           "ppv_detalle": "Total PPV: $1,532,300 (2505980x10)",
           "indicadores": "Estudio Histopatologico:3 | Estudio Clinico Lesiones:0",
-          "meta_altas_mes": 19,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 41
         },
         "04_Abril": {
           "mes_num": 4,
@@ -239,8 +239,8 @@
           "ppv": 4596900,
           "ppv_detalle": "Total PPV: $4,596,900 (2505980x30)",
           "indicadores": "Estudio Histopatologico:23 | Estudio Clinico Lesiones:0",
-          "meta_altas_mes": 19,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 41
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -253,8 +253,8 @@
           "ppv": 1991990,
           "ppv_detalle": "Total PPV: $1,991,990 (2505980x13)",
           "indicadores": "Estudio Histopatologico:10 | Estudio Clinico Lesiones:0",
-          "meta_altas_mes": 19,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 41
         },
         "06_Junio": {
           "mes_num": 6,
@@ -267,8 +267,8 @@
           "ppv": 5363050,
           "ppv_detalle": "Total PPV: $5,363,050 (2505980x35)",
           "indicadores": "Estudio Histopatologico:22 | Estudio Clinico Lesiones:0",
-          "meta_altas_mes": 19,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 41
         },
         "07_Julio": {
           "mes_num": 7,
@@ -281,16 +281,16 @@
           "ppv": 3217830,
           "ppv_detalle": "Total PPV: $3,217,830 (2505980x21)",
           "indicadores": "Estudio Histopatologico:17 | Estudio Clinico Lesiones:0",
-          "meta_altas_mes": 19,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 26,
+          "meta_cne_mes": 41
         }
       }
     },
     "Cristian Villalobos": {
       "especialidad": "Ortodoncia",
       "color": "#0F8B8D",
-      "meta_altas": 79,
-      "meta_cne": 182,
+      "meta_altas": 0,
+      "meta_cne": 0,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -303,16 +303,16 @@
           "ppv": 5699050,
           "ppv_detalle": "Total PPV: $5,699,050 (2505638x13 | 2505639x1)",
           "indicadores": "Aparatologia Fija:13 | Instalacion Contencion:1 | Retiros:1",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 15
+          "meta_altas_mes": 0,
+          "meta_cne_mes": 0
         }
       }
     },
     "Fernando Duran": {
       "especialidad": "Endodoncia",
       "color": "#1A7AAF",
-      "meta_altas": 314,
-      "meta_cne": 437,
+      "meta_altas": 369,
+      "meta_cne": 512,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -325,8 +325,8 @@
           "ppv": 3126600,
           "ppv_detalle": "Total PPV: $3,126,600 (2505641x20)",
           "indicadores": "Unirradicular:7 | Birradicular:4 | Multirradicular:11 | Retratamiento:0",
-          "meta_altas_mes": 26,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 43
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -339,8 +339,8 @@
           "ppv": 1250640,
           "ppv_detalle": "Total PPV: $1,250,640 (2505641x8)",
           "indicadores": "Unirradicular:4 | Birradicular:2 | Multirradicular:3 | Retratamiento:1",
-          "meta_altas_mes": 26,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 43
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -353,8 +353,8 @@
           "ppv": 2970270,
           "ppv_detalle": "Total PPV: $2,970,270 (2505641x19)",
           "indicadores": "Unirradicular:9 | Birradicular:9 | Multirradicular:3 | Retratamiento:1",
-          "meta_altas_mes": 26,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 43
         },
         "04_Abril": {
           "mes_num": 4,
@@ -367,8 +367,8 @@
           "ppv": 2032290,
           "ppv_detalle": "Total PPV: $2,032,290 (2505641x13)",
           "indicadores": "Unirradicular:2 | Birradicular:6 | Multirradicular:4 | Retratamiento:0",
-          "meta_altas_mes": 26,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 43
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -381,8 +381,8 @@
           "ppv": 4714600,
           "ppv_detalle": "Total PPV: $4,714,600 (2505641x29 | 2702002x1)",
           "indicadores": "Unirradicular:6 | Birradicular:11 | Multirradicular:15 | Retratamiento:2",
-          "meta_altas_mes": 26,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 43
         },
         "06_Junio": {
           "mes_num": 6,
@@ -395,8 +395,8 @@
           "ppv": 5940540,
           "ppv_detalle": "Total PPV: $5,940,540 (2505641x38)",
           "indicadores": "Unirradicular:12 | Birradicular:11 | Multirradicular:14 | Retratamiento:0",
-          "meta_altas_mes": 26,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 43
         },
         "07_Julio": {
           "mes_num": 7,
@@ -409,16 +409,16 @@
           "ppv": 5940540,
           "ppv_detalle": "Total PPV: $5,940,540 (2505641x38)",
           "indicadores": "Unirradicular:13 | Birradicular:11 | Multirradicular:15 | Retratamiento:0",
-          "meta_altas_mes": 26,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 43
         }
       }
     },
     "Gabriela Farias": {
       "especialidad": "Rehabilitacion Oral",
       "color": "#2E86AB",
-      "meta_altas": 260,
-      "meta_cne": 344,
+      "meta_altas": 326,
+      "meta_cne": 430,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -431,8 +431,8 @@
           "ppv": 4567390,
           "ppv_detalle": "Total PPV: $4,567,390 (2505642x11 | 2505643x2)",
           "indicadores": "Prot Remov Acrilica:23 | Prot Remov Metalica:0 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 27,
+          "meta_cne_mes": 36
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -445,8 +445,8 @@
           "ppv": 4470100,
           "ppv_detalle": "Total PPV: $4,470,100 (2505642x12 | 2505643x1)",
           "indicadores": "Prot Remov Acrilica:20 | Prot Remov Metalica:2 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:1",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 27,
+          "meta_cne_mes": 36
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -459,8 +459,8 @@
           "ppv": 8656620,
           "ppv_detalle": "Total PPV: $8,656,620 (2505642x18 | 2505643x6)",
           "indicadores": "Prot Remov Acrilica:35 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:6",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 27,
+          "meta_cne_mes": 36
         },
         "04_Abril": {
           "mes_num": 4,
@@ -473,8 +473,8 @@
           "ppv": 7497430,
           "ppv_detalle": "Total PPV: $7,497,430 (2505642x21 | 2505643x1)",
           "indicadores": "Prot Remov Acrilica:39 | Prot Remov Metalica:0 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 27,
+          "meta_cne_mes": 36
         },
         "06_Junio": {
           "mes_num": 6,
@@ -487,8 +487,8 @@
           "ppv": 7736510,
           "ppv_detalle": "Total PPV: $7,736,510 (2505642x23)",
           "indicadores": "Prot Remov Acrilica:37 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 27,
+          "meta_cne_mes": 36
         },
         "07_Julio": {
           "mes_num": 7,
@@ -501,16 +501,16 @@
           "ppv": 7355640,
           "ppv_detalle": "Total PPV: $7,355,640 (2505642x18 | 2505643x3)",
           "indicadores": "Prot Remov Acrilica:31 | Prot Remov Metalica:0 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:2",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 27,
+          "meta_cne_mes": 36
         }
       }
     },
     "Gabriela Ovando": {
       "especialidad": "Periodoncia",
       "color": "#5B8DB8",
-      "meta_altas": 109,
-      "meta_cne": 132,
+      "meta_altas": 161,
+      "meta_cne": 194,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -523,8 +523,8 @@
           "ppv": 5081040,
           "ppv_detalle": "Total PPV: $5,081,040 (2505978x18)",
           "indicadores": "Destartraje Subgingival:55 | Destartraje Supragingival:80 | Tasa_Real_Por_Paciente:2.95",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 13,
+          "meta_cne_mes": 16
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -537,8 +537,8 @@
           "ppv": 4234200,
           "ppv_detalle": "Total PPV: $4,234,200 (2505978x15)",
           "indicadores": "Destartraje Subgingival:59 | Destartraje Supragingival:50 | Tasa_Real_Por_Paciente:3.47",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 13,
+          "meta_cne_mes": 16
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -551,8 +551,8 @@
           "ppv": 3387360,
           "ppv_detalle": "Total PPV: $3,387,360 (2505978x12)",
           "indicadores": "Destartraje Subgingival:42 | Destartraje Supragingival:68 | Tasa_Real_Por_Paciente:4.42",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 13,
+          "meta_cne_mes": 16
         },
         "04_Abril": {
           "mes_num": 4,
@@ -565,8 +565,8 @@
           "ppv": 2540520,
           "ppv_detalle": "Total PPV: $2,540,520 (2505978x9)",
           "indicadores": "Destartraje Subgingival:25 | Destartraje Supragingival:68 | Tasa_Real_Por_Paciente:5.67",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 13,
+          "meta_cne_mes": 16
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -579,8 +579,8 @@
           "ppv": 3105080,
           "ppv_detalle": "Total PPV: $3,105,080 (2505978x11)",
           "indicadores": "Destartraje Subgingival:45 | Destartraje Supragingival:74 | Tasa_Real_Por_Paciente:5.73",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 13,
+          "meta_cne_mes": 16
         },
         "06_Junio": {
           "mes_num": 6,
@@ -593,8 +593,8 @@
           "ppv": 3003830,
           "ppv_detalle": "Total PPV: $3,003,830 (2702102x1 | 2505978x10)",
           "indicadores": "Destartraje Subgingival:51 | Destartraje Supragingival:124 | Tasa_Real_Por_Paciente:6.92",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 13,
+          "meta_cne_mes": 16
         },
         "07_Julio": {
           "mes_num": 7,
@@ -607,16 +607,16 @@
           "ppv": 1129120,
           "ppv_detalle": "Total PPV: $1,129,120 (2505978x4)",
           "indicadores": "Destartraje Subgingival:21 | Destartraje Supragingival:49 | Tasa_Real_Por_Paciente:12.0",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 13,
+          "meta_cne_mes": 16
         }
       }
     },
     "Giselle Garrido": {
       "especialidad": "Rehabilitacion Oral",
       "color": "#2E86AB",
-      "meta_altas": 260,
-      "meta_cne": 344,
+      "meta_altas": 372,
+      "meta_cne": 491,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -629,8 +629,8 @@
           "ppv": 2007350,
           "ppv_detalle": "Total PPV: $2,007,350 (2505642x4 | 2505636x1 | 2505643x1)",
           "indicadores": "Prot Remov Acrilica:8 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:1",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 41
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -643,8 +643,8 @@
           "ppv": 11859370,
           "ppv_detalle": "Total PPV: $11,859,370 (2505642x32 | 2505636x1 | 2505643x2)",
           "indicadores": "Prot Remov Acrilica:62 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:3",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 41
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -657,8 +657,8 @@
           "ppv": 8409250,
           "ppv_detalle": "Total PPV: $8,409,250 (2505642x25)",
           "indicadores": "Prot Remov Acrilica:40 | Prot Remov Metalica:4 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 41
         },
         "04_Abril": {
           "mes_num": 4,
@@ -671,8 +671,8 @@
           "ppv": 12595770,
           "ppv_detalle": "Total PPV: $12,595,770 (2505642x31 | 2505643x5)",
           "indicadores": "Prot Remov Acrilica:61 | Prot Remov Metalica:0 | Prot Fija Unitaria:3 | Prot Fija InlayOnlay:4",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 41
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -685,8 +685,8 @@
           "ppv": 10674840,
           "ppv_detalle": "Total PPV: $10,674,840 (2505642x24 | 2505643x6)",
           "indicadores": "Prot Remov Acrilica:47 | Prot Remov Metalica:0 | Prot Fija Unitaria:4 | Prot Fija InlayOnlay:3",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 41
         },
         "06_Junio": {
           "mes_num": 6,
@@ -699,8 +699,8 @@
           "ppv": 12595770,
           "ppv_detalle": "Total PPV: $12,595,770 (2505642x31 | 2505643x5)",
           "indicadores": "Prot Remov Acrilica:60 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:5",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 41
         },
         "07_Julio": {
           "mes_num": 7,
@@ -713,16 +713,16 @@
           "ppv": 10855870,
           "ppv_detalle": "Total PPV: $10,855,870 (2505642x24 | 2702007x1 | 2505643x6)",
           "indicadores": "Prot Remov Acrilica:48 | Prot Remov Metalica:0 | Prot Fija Unitaria:3 | Prot Fija InlayOnlay:4",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 41
         }
       }
     },
     "Irene Gutierrez": {
       "especialidad": "Odontopediatria",
       "color": "#0E7A5A",
-      "meta_altas": 89,
-      "meta_cne": 109,
+      "meta_altas": 118,
+      "meta_cne": 141,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -735,8 +735,8 @@
           "ppv": 0,
           "ppv_detalle": "Total PPV: $0 ()",
           "indicadores": "Proc Restaurador:50 | Proc Pulpar:3",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 12
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -749,8 +749,8 @@
           "ppv": 0,
           "ppv_detalle": "Total PPV: $0 ()",
           "indicadores": "Proc Restaurador:20 | Proc Pulpar:2",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 12
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -763,8 +763,8 @@
           "ppv": 0,
           "ppv_detalle": "",
           "indicadores": "Proc Restaurador:36 | Proc Pulpar:7",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 12
         },
         "04_Abril": {
           "mes_num": 4,
@@ -777,8 +777,8 @@
           "ppv": 1253980,
           "ppv_detalle": "Total PPV: $1,253,980 (2505635x3 | 2505997x4)",
           "indicadores": "Proc Restaurador:33 | Proc Pulpar:3",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 12
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -791,8 +791,8 @@
           "ppv": 1524320,
           "ppv_detalle": "Total PPV: $1,524,320 (2505997x6 | 2505635x1)",
           "indicadores": "Proc Restaurador:34 | Proc Pulpar:3",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 12
         },
         "06_Junio": {
           "mes_num": 6,
@@ -805,8 +805,8 @@
           "ppv": 677940,
           "ppv_detalle": "Total PPV: $677,940 (2505997x2 | 2505635x2)",
           "indicadores": "Proc Restaurador:37 | Proc Pulpar:6",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 12
         },
         "07_Julio": {
           "mes_num": 7,
@@ -819,8 +819,8 @@
           "ppv": 1830020,
           "ppv_detalle": "Total PPV: $1,830,020 (2505997x6 | 2505635x4)",
           "indicadores": "Proc Restaurador:35 | Proc Pulpar:5",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 12
         }
       }
     },
@@ -933,8 +933,8 @@
     "Jimena Carrasco": {
       "especialidad": "Endodoncia",
       "color": "#1A7AAF",
-      "meta_altas": 236,
-      "meta_cne": 328,
+      "meta_altas": 423,
+      "meta_cne": 588,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -947,8 +947,8 @@
           "ppv": 3776620,
           "ppv_detalle": "Total PPV: $3,776,620 (2505641x23 | 2702002x1)",
           "indicadores": "Unirradicular:8 | Birradicular:11 | Multirradicular:4 | Retratamiento:0",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 35,
+          "meta_cne_mes": 49
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -961,8 +961,8 @@
           "ppv": 4582970,
           "ppv_detalle": "Total PPV: $4,582,970 (2702003x1 | 2505641x27 | 2702002x1)",
           "indicadores": "Unirradicular:11 | Birradicular:7 | Multirradicular:13 | Retratamiento:2",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 35,
+          "meta_cne_mes": 49
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -975,8 +975,8 @@
           "ppv": 4533570,
           "ppv_detalle": "Total PPV: $4,533,570 (2505641x29)",
           "indicadores": "Unirradicular:17 | Birradicular:8 | Multirradicular:5 | Retratamiento:0",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 35,
+          "meta_cne_mes": 49
         },
         "04_Abril": {
           "mes_num": 4,
@@ -989,8 +989,8 @@
           "ppv": 4064580,
           "ppv_detalle": "Total PPV: $4,064,580 (2505641x26)",
           "indicadores": "Unirradicular:10 | Birradicular:10 | Multirradicular:8 | Retratamiento:0",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 35,
+          "meta_cne_mes": 49
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1003,8 +1003,8 @@
           "ppv": 2813940,
           "ppv_detalle": "Total PPV: $2,813,940 (2505641x18)",
           "indicadores": "Unirradicular:6 | Birradicular:8 | Multirradicular:6 | Retratamiento:1",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 35,
+          "meta_cne_mes": 49
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1017,8 +1017,8 @@
           "ppv": 1612700,
           "ppv_detalle": "Total PPV: $1,612,700 (2505641x8 | 2702003x2)",
           "indicadores": "Unirradicular:4 | Birradicular:3 | Multirradicular:1 | Retratamiento:0",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 35,
+          "meta_cne_mes": 49
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1031,16 +1031,16 @@
           "ppv": 1431670,
           "ppv_detalle": "Total PPV: $1,431,670 (2505641x8 | 2702002x1)",
           "indicadores": "Unirradicular:6 | Birradicular:2 | Multirradicular:2 | Retratamiento:0",
-          "meta_altas_mes": 20,
-          "meta_cne_mes": 27
+          "meta_altas_mes": 35,
+          "meta_cne_mes": 49
         }
       }
     },
     "Jorge Ferrada": {
       "especialidad": "Periodoncia",
       "color": "#5B8DB8",
-      "meta_altas": 109,
-      "meta_cne": 132,
+      "meta_altas": 144,
+      "meta_cne": 174,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1053,8 +1053,8 @@
           "ppv": 2501190,
           "ppv_detalle": "Total PPV: $2,501,190 (2505978x7 | 2701003x1)",
           "indicadores": "Destartraje Subgingival:26 | Destartraje Supragingival:172 | Tasa_Real_Por_Paciente:10.38",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 12,
+          "meta_cne_mes": 14
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1067,8 +1067,8 @@
           "ppv": 1411400,
           "ppv_detalle": "Total PPV: $1,411,400 (2505978x5)",
           "indicadores": "Destartraje Subgingival:26 | Destartraje Supragingival:120 | Tasa_Real_Por_Paciente:12.4",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 12,
+          "meta_cne_mes": 14
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1081,8 +1081,8 @@
           "ppv": 1411400,
           "ppv_detalle": "Total PPV: $1,411,400 (2505978x5)",
           "indicadores": "Destartraje Subgingival:6 | Destartraje Supragingival:46 | Tasa_Real_Por_Paciente:4.6",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 12,
+          "meta_cne_mes": 14
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1095,8 +1095,8 @@
           "ppv": 2540520,
           "ppv_detalle": "Total PPV: $2,540,520 (2505978x9)",
           "indicadores": "Destartraje Subgingival:39 | Destartraje Supragingival:260 | Tasa_Real_Por_Paciente:13.22",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 12,
+          "meta_cne_mes": 14
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1109,8 +1109,8 @@
           "ppv": 1129120,
           "ppv_detalle": "Total PPV: $1,129,120 (2505978x4)",
           "indicadores": "Destartraje Subgingival:35 | Destartraje Supragingival:178 | Tasa_Real_Por_Paciente:19.0",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 12,
+          "meta_cne_mes": 14
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1123,16 +1123,16 @@
           "ppv": 3387360,
           "ppv_detalle": "Total PPV: $3,387,360 (2505978x12)",
           "indicadores": "Destartraje Subgingival:9 | Destartraje Supragingival:86 | Tasa_Real_Por_Paciente:7.25",
-          "meta_altas_mes": 9,
-          "meta_cne_mes": 11
+          "meta_altas_mes": 12,
+          "meta_cne_mes": 14
         }
       }
     },
     "Juan Bugueno": {
       "especialidad": "Cirugia Maxilofacial",
       "color": "#0B4F72",
-      "meta_altas": 260,
-      "meta_cne": 435,
+      "meta_altas": 0,
+      "meta_cne": 0,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1145,8 +1145,8 @@
           "ppv": 9008450,
           "ppv_detalle": "Total PPV: $9,008,450 (2505976x13 | 2505977x16)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:8 | Terceros Molares:20",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 0,
+          "meta_cne_mes": 0
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1159,8 +1159,8 @@
           "ppv": 13752630,
           "ppv_detalle": "Total PPV: $13,752,630 (2505977x23 | 2505976x22)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:63 | Terceros Molares:87",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 0,
+          "meta_cne_mes": 0
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1173,16 +1173,16 @@
           "ppv": 3774540,
           "ppv_detalle": "Total PPV: $3,774,540 (2505977x7 | 2505976x5)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:21 | Terceros Molares:50",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 0,
+          "meta_cne_mes": 0
         }
       }
     },
     "Juan Cortes": {
       "especialidad": "Cirugia Maxilofacial",
       "color": "#0B4F72",
-      "meta_altas": 260,
-      "meta_cne": 435,
+      "meta_altas": 371,
+      "meta_cne": 619,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1195,8 +1195,8 @@
           "ppv": 974550,
           "ppv_detalle": "Total PPV: $974,550 (2505977x2 | 2505976x1)",
           "indicadores": "Cirugia Ortognatica:1 | Cirugia Menor:5 | Terceros Molares:10",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 52
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1209,8 +1209,8 @@
           "ppv": 7733180,
           "ppv_detalle": "Total PPV: $7,733,180 (2505976x8 | 2505977x14 | 2505637x1 | 2505645x1)",
           "indicadores": "Cirugia Ortognatica:1 | Cirugia Menor:43 | Terceros Molares:96",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 52
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1223,8 +1223,8 @@
           "ppv": 974550,
           "ppv_detalle": "Total PPV: $974,550 (2505977x2 | 2505976x1)",
           "indicadores": "Cirugia Ortognatica:1 | Cirugia Menor:5 | Terceros Molares:10",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 52
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1237,8 +1237,8 @@
           "ppv": 5728550,
           "ppv_detalle": "Total PPV: $5,728,550 (2505977x13 | 2505976x4)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:29 | Terceros Molares:70",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 52
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1251,8 +1251,8 @@
           "ppv": 3289720,
           "ppv_detalle": "Total PPV: $3,289,720 (2505976x3 | 2505977x7)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:16 | Terceros Molares:35",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 52
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1265,8 +1265,8 @@
           "ppv": 5001320,
           "ppv_detalle": "Total PPV: $5,001,320 (2505977x13 | 2505976x1)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:27 | Terceros Molares:76",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 52
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1279,16 +1279,16 @@
           "ppv": 3650880,
           "ppv_detalle": "Total PPV: $3,650,880 (2505977x6 | 2505976x6)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:29 | Terceros Molares:70",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 36
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 52
         }
       }
     },
     "Luis Amengual": {
       "especialidad": "Implantologia",
       "color": "#C0842D",
-      "meta_altas": 133,
-      "meta_cne": 143,
+      "meta_altas": 186,
+      "meta_cne": 374,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1301,8 +1301,8 @@
           "ppv": 2531400,
           "ppv_detalle": "Total PPV: $2,531,400 (2505644x4)",
           "indicadores": "Etapa Protesica:0 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:0",
-          "meta_altas_mes": 11,
-          "meta_cne_mes": 12
+          "meta_altas_mes": 16,
+          "meta_cne_mes": 31
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1315,8 +1315,8 @@
           "ppv": 8227050,
           "ppv_detalle": "Total PPV: $8,227,050 (2505644x13)",
           "indicadores": "Etapa Protesica:3 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:17",
-          "meta_altas_mes": 11,
-          "meta_cne_mes": 12
+          "meta_altas_mes": 16,
+          "meta_cne_mes": 31
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1329,8 +1329,8 @@
           "ppv": 12024150,
           "ppv_detalle": "Total PPV: $12,024,150 (2505644x19)",
           "indicadores": "Etapa Protesica:16 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:27",
-          "meta_altas_mes": 11,
-          "meta_cne_mes": 12
+          "meta_altas_mes": 16,
+          "meta_cne_mes": 31
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1343,8 +1343,8 @@
           "ppv": 7594200,
           "ppv_detalle": "Total PPV: $7,594,200 (2505644x12)",
           "indicadores": "Etapa Protesica:17 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:15",
-          "meta_altas_mes": 11,
-          "meta_cne_mes": 12
+          "meta_altas_mes": 16,
+          "meta_cne_mes": 31
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1357,8 +1357,8 @@
           "ppv": 9492750,
           "ppv_detalle": "Total PPV: $9,492,750 (2505644x15)",
           "indicadores": "Etapa Protesica:21 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:18",
-          "meta_altas_mes": 11,
-          "meta_cne_mes": 12
+          "meta_altas_mes": 16,
+          "meta_cne_mes": 31
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1371,8 +1371,8 @@
           "ppv": 4505980,
           "ppv_detalle": "Total PPV: $4,505,980 (2505644x6 | 2505640x1)",
           "indicadores": "Etapa Protesica:16 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:10",
-          "meta_altas_mes": 11,
-          "meta_cne_mes": 12
+          "meta_altas_mes": 16,
+          "meta_cne_mes": 31
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1385,16 +1385,16 @@
           "ppv": 2683460,
           "ppv_detalle": "Total PPV: $2,683,460 (2505644x2 | 2505640x2)",
           "indicadores": "Etapa Protesica:19 | Prot Muco-Implantoasistida:0 | Implantes Instalados:0 | Implantes Dentales:6",
-          "meta_altas_mes": 11,
-          "meta_cne_mes": 12
+          "meta_altas_mes": 16,
+          "meta_cne_mes": 31
         }
       }
     },
     "Marcelo Rivera": {
       "especialidad": "Ortodoncia",
       "color": "#0F8B8D",
-      "meta_altas": 60,
-      "meta_cne": 165,
+      "meta_altas": 90,
+      "meta_cne": 231,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1407,8 +1407,8 @@
           "ppv": 4056970,
           "ppv_detalle": "Total PPV: $4,056,970 (2505638x9 | 2505639x1)",
           "indicadores": "Aparatologia Fija:15 | Instalacion Contencion:0 | Retiros:2",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 14
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 19
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1421,8 +1421,8 @@
           "ppv": 7341130,
           "ppv_detalle": "Total PPV: $7,341,130 (2505639x1 | 2505638x17)",
           "indicadores": "Aparatologia Fija:12 | Instalacion Contencion:0 | Retiros:5",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 14
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 19
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1435,8 +1435,8 @@
           "ppv": 2004370,
           "ppv_detalle": "Total PPV: $2,004,370 (2505638x4 | 2505639x1)",
           "indicadores": "Aparatologia Fija:4 | Instalacion Contencion:1 | Retiros:5",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 14
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 19
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1449,8 +1449,8 @@
           "ppv": 821040,
           "ppv_detalle": "Total PPV: $821,040 (2505638x2)",
           "indicadores": "Aparatologia Fija:5 | Instalacion Contencion:0 | Retiros:2",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 14
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 19
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1463,16 +1463,16 @@
           "ppv": 2052600,
           "ppv_detalle": "Total PPV: $2,052,600 (2505638x5)",
           "indicadores": "Aparatologia Fija:8 | Instalacion Contencion:0 | Retiros:1",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 14
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 19
         }
       }
     },
     "Nikole Guerrero": {
       "especialidad": "Ortodoncia",
       "color": "#0F8B8D",
-      "meta_altas": 60,
-      "meta_cne": 157,
+      "meta_altas": 86,
+      "meta_cne": 220,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1485,8 +1485,8 @@
           "ppv": 2825410,
           "ppv_detalle": "Total PPV: $2,825,410 (2505638x6 | 2505639x1)",
           "indicadores": "Aparatologia Fija:8 | Instalacion Contencion:2 | Retiros:2",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1499,8 +1499,8 @@
           "ppv": 5143840,
           "ppv_detalle": "Total PPV: $5,143,840 (2505638x9 | 2505639x4)",
           "indicadores": "Aparatologia Fija:9 | Instalacion Contencion:10 | Retiros:10",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1513,8 +1513,8 @@
           "ppv": 5240300,
           "ppv_detalle": "Total PPV: $5,240,300 (2505638x11 | 2505639x2)",
           "indicadores": "Aparatologia Fija:19 | Instalacion Contencion:8 | Retiros:14",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1527,8 +1527,8 @@
           "ppv": 8113940,
           "ppv_detalle": "Total PPV: $8,113,940 (2505639x2 | 2505638x18)",
           "indicadores": "Aparatologia Fija:21 | Instalacion Contencion:3 | Retiros:8",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1541,8 +1541,8 @@
           "ppv": 7292900,
           "ppv_detalle": "Total PPV: $7,292,900 (2505638x16 | 2505639x2)",
           "indicadores": "Aparatologia Fija:20 | Instalacion Contencion:3 | Retiros:6",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1555,8 +1555,8 @@
           "ppv": 3646450,
           "ppv_detalle": "Total PPV: $3,646,450 (2505638x8 | 2505639x1)",
           "indicadores": "Aparatologia Fija:11 | Instalacion Contencion:10 | Retiros:11",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1569,16 +1569,16 @@
           "ppv": 4829780,
           "ppv_detalle": "Total PPV: $4,829,780 (2505638x10 | 2505639x2)",
           "indicadores": "Aparatologia Fija:15 | Instalacion Contencion:5 | Retiros:10",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         }
       }
     },
     "Pablo Spencer": {
       "especialidad": "Odontopediatria",
       "color": "#0E7A5A",
-      "meta_altas": 89,
-      "meta_cne": 109,
+      "meta_altas": 130,
+      "meta_cne": 157,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1591,8 +1591,8 @@
           "ppv": 1730210,
           "ppv_detalle": "Total PPV: $1,730,210 (2505635x10 | 2505997x3)",
           "indicadores": "Proc Restaurador:0 | Proc Pulpar:0",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 11,
+          "meta_cne_mes": 13
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1605,8 +1605,8 @@
           "ppv": 3318980,
           "ppv_detalle": "Total PPV: $3,318,980 (2505997x14)",
           "indicadores": "Proc Restaurador:0 | Proc Pulpar:1",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 11,
+          "meta_cne_mes": 13
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1619,8 +1619,8 @@
           "ppv": 0,
           "ppv_detalle": "Total PPV: $0 ()",
           "indicadores": "Proc Restaurador:0 | Proc Pulpar:2",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 11,
+          "meta_cne_mes": 13
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1633,8 +1633,8 @@
           "ppv": 9063770,
           "ppv_detalle": "Total PPV: $9,063,770 (2505635x19 | 2505636x25 | 2505997x6)",
           "indicadores": "Proc Restaurador:11 | Proc Pulpar:3",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 11,
+          "meta_cne_mes": 13
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1647,8 +1647,8 @@
           "ppv": 5601180,
           "ppv_detalle": "Total PPV: $5,601,180 (2505635x11 | 2505636x14 | 2505997x4 | 2505637x1)",
           "indicadores": "Proc Restaurador:0 | Proc Pulpar:1",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 11,
+          "meta_cne_mes": 13
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1661,8 +1661,8 @@
           "ppv": 8756420,
           "ppv_detalle": "Total PPV: $8,756,420 (2505635x16 | 2505636x21 | 2505997x7 | 2505637x2)",
           "indicadores": "Proc Restaurador:0 | Proc Pulpar:1",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 11,
+          "meta_cne_mes": 13
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1675,16 +1675,16 @@
           "ppv": 8036430,
           "ppv_detalle": "Total PPV: $8,036,430 (2505997x9 | 2505636x18 | 2505635x11 | 2505637x2)",
           "indicadores": "Proc Restaurador:0 | Proc Pulpar:0",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 11,
+          "meta_cne_mes": 13
         }
       }
     },
     "Paula Besnier": {
       "especialidad": "Odontopediatria",
       "color": "#0E7A5A",
-      "meta_altas": 89,
-      "meta_cne": 109,
+      "meta_altas": 123,
+      "meta_cne": 157,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1697,8 +1697,8 @@
           "ppv": 4019340,
           "ppv_detalle": "Total PPV: $4,019,340 (2505997x9 | 2505635x4 | 2505636x5 | 2505637x1)",
           "indicadores": "Proc Restaurador:22 | Proc Pulpar:4",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 13
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1711,8 +1711,8 @@
           "ppv": 2040510,
           "ppv_detalle": "Total PPV: $2,040,510 (2505635x4 | 2505997x4 | 2505636x3)",
           "indicadores": "Proc Restaurador:7 | Proc Pulpar:5",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 13
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1725,8 +1725,8 @@
           "ppv": 2643050,
           "ppv_detalle": "Total PPV: $2,643,050 (2505635x10 | 2505636x4 | 2505997x3)",
           "indicadores": "Proc Restaurador:8 | Proc Pulpar:4",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 13
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1739,8 +1739,8 @@
           "ppv": 3403080,
           "ppv_detalle": "Total PPV: $3,403,080 (2505635x6 | 2505997x6 | 2505636x6)",
           "indicadores": "Proc Restaurador:22 | Proc Pulpar:8",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 13
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1753,8 +1753,8 @@
           "ppv": 3631290,
           "ppv_detalle": "Total PPV: $3,631,290 (2505997x6 | 2505636x7 | 2505635x6)",
           "indicadores": "Proc Restaurador:17 | Proc Pulpar:15",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 13
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1767,8 +1767,8 @@
           "ppv": 1949560,
           "ppv_detalle": "Total PPV: $1,949,560 (2505635x10 | 2505997x2 | 2505636x2)",
           "indicadores": "Proc Restaurador:11 | Proc Pulpar:2",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 13
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1781,16 +1781,16 @@
           "ppv": 1905340,
           "ppv_detalle": "Total PPV: $1,905,340 (2505635x5 | 2505997x3 | 2505636x3)",
           "indicadores": "Proc Restaurador:10 | Proc Pulpar:6",
-          "meta_altas_mes": 7,
-          "meta_cne_mes": 9
+          "meta_altas_mes": 10,
+          "meta_cne_mes": 13
         }
       }
     },
     "Paulina Gonzalez": {
       "especialidad": "Cirugia Maxilofacial",
       "color": "#0B4F72",
-      "meta_altas": 520,
-      "meta_cne": 870,
+      "meta_altas": 724,
+      "meta_cne": 1208,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1803,8 +1803,8 @@
           "ppv": 8276310,
           "ppv_detalle": "Total PPV: $8,276,310 (2505977x14 | 2505976x13)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:42 | Terceros Molares:98",
-          "meta_altas_mes": 43,
-          "meta_cne_mes": 72
+          "meta_altas_mes": 60,
+          "meta_cne_mes": 101
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1817,8 +1817,8 @@
           "ppv": 18378060,
           "ppv_detalle": "Total PPV: $18,378,060 (2505976x29 | 2505977x31)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:103 | Terceros Molares:120",
-          "meta_altas_mes": 43,
-          "meta_cne_mes": 72
+          "meta_altas_mes": 60,
+          "meta_cne_mes": 101
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1831,8 +1831,8 @@
           "ppv": 7059350,
           "ppv_detalle": "Total PPV: $7,059,350 (2505976x11 | 2505977x12)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:36 | Terceros Molares:63",
-          "meta_altas_mes": 43,
-          "meta_cne_mes": 72
+          "meta_altas_mes": 60,
+          "meta_cne_mes": 101
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1845,16 +1845,16 @@
           "ppv": 10091930,
           "ppv_detalle": "Total PPV: $10,091,930 (2505976x22 | 2505977x13)",
           "indicadores": "Cirugia Ortognatica:0 | Cirugia Menor:50 | Terceros Molares:76",
-          "meta_altas_mes": 43,
-          "meta_cne_mes": 72
+          "meta_altas_mes": 60,
+          "meta_cne_mes": 101
         }
       }
     },
     "Roberto Munoz": {
       "especialidad": "Ortodoncia",
       "color": "#0F8B8D",
-      "meta_altas": 60,
-      "meta_cne": 157,
+      "meta_altas": 86,
+      "meta_cne": 220,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1867,8 +1867,8 @@
           "ppv": 3284160,
           "ppv_detalle": "Total PPV: $3,284,160 (2505638x8)",
           "indicadores": "Aparatologia Fija:8 | Instalacion Contencion:0 | Retiros:0",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1881,8 +1881,8 @@
           "ppv": 5602590,
           "ppv_detalle": "Total PPV: $5,602,590 (2505638x11 | 2505639x3)",
           "indicadores": "Aparatologia Fija:11 | Instalacion Contencion:0 | Retiros:3",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -1895,8 +1895,8 @@
           "ppv": 4105200,
           "ppv_detalle": "Total PPV: $4,105,200 (2505638x10)",
           "indicadores": "Aparatologia Fija:12 | Instalacion Contencion:3 | Retiros:1",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "04_Abril": {
           "mes_num": 4,
@@ -1909,8 +1909,8 @@
           "ppv": 5240300,
           "ppv_detalle": "Total PPV: $5,240,300 (2505638x11 | 2505639x2)",
           "indicadores": "Aparatologia Fija:15 | Instalacion Contencion:1 | Retiros:4",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -1923,8 +1923,8 @@
           "ppv": 2052600,
           "ppv_detalle": "Total PPV: $2,052,600 (2505638x5)",
           "indicadores": "Aparatologia Fija:10 | Instalacion Contencion:4 | Retiros:9",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "06_Junio": {
           "mes_num": 6,
@@ -1937,8 +1937,8 @@
           "ppv": 1231560,
           "ppv_detalle": "Total PPV: $1,231,560 (2505638x3)",
           "indicadores": "Aparatologia Fija:7 | Instalacion Contencion:4 | Retiros:3",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         },
         "07_Julio": {
           "mes_num": 7,
@@ -1951,16 +1951,16 @@
           "ppv": 3284160,
           "ppv_detalle": "Total PPV: $3,284,160 (2505638x8)",
           "indicadores": "Aparatologia Fija:11 | Instalacion Contencion:2 | Retiros:1",
-          "meta_altas_mes": 5,
-          "meta_cne_mes": 13
+          "meta_altas_mes": 7,
+          "meta_cne_mes": 18
         }
       }
     },
     "Rodolfo Olivares": {
       "especialidad": "Rehabilitacion Oral",
       "color": "#2E86AB",
-      "meta_altas": 195,
-      "meta_cne": 258,
+      "meta_altas": 283,
+      "meta_cne": 375,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -1973,8 +1973,8 @@
           "ppv": 9625080,
           "ppv_detalle": "Total PPV: $9,625,080 (2505642x27 | 2702007x3)",
           "indicadores": "Prot Remov Acrilica:51 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 16,
-          "meta_cne_mes": 22
+          "meta_altas_mes": 24,
+          "meta_cne_mes": 31
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -1987,8 +1987,8 @@
           "ppv": 6692110,
           "ppv_detalle": "Total PPV: $6,692,110 (2505642x18 | 2505636x2 | 2702007x1)",
           "indicadores": "Prot Remov Acrilica:36 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 16,
-          "meta_cne_mes": 22
+          "meta_altas_mes": 24,
+          "meta_cne_mes": 31
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -2001,8 +2001,8 @@
           "ppv": 9096810,
           "ppv_detalle": "Total PPV: $9,096,810 (2505642x24 | 2505636x1 | 2505643x1 | 2702007x2)",
           "indicadores": "Prot Remov Acrilica:46 | Prot Remov Metalica:0 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:1",
-          "meta_altas_mes": 16,
-          "meta_cne_mes": 22
+          "meta_altas_mes": 24,
+          "meta_cne_mes": 31
         },
         "04_Abril": {
           "mes_num": 4,
@@ -2015,8 +2015,8 @@
           "ppv": 5479210,
           "ppv_detalle": "Total PPV: $5,479,210 (2505642x15 | 2505643x1)",
           "indicadores": "Prot Remov Acrilica:23 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:6",
-          "meta_altas_mes": 16,
-          "meta_cne_mes": 22
+          "meta_altas_mes": 24,
+          "meta_cne_mes": 31
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -2029,8 +2029,8 @@
           "ppv": 10861130,
           "ppv_detalle": "Total PPV: $10,861,130 (2505642x31 | 2505643x1)",
           "indicadores": "Prot Remov Acrilica:58 | Prot Remov Metalica:0 | Prot Fija Unitaria:2 | Prot Fija InlayOnlay:1",
-          "meta_altas_mes": 16,
-          "meta_cne_mes": 22
+          "meta_altas_mes": 24,
+          "meta_cne_mes": 31
         },
         "06_Junio": {
           "mes_num": 6,
@@ -2043,8 +2043,8 @@
           "ppv": 7594720,
           "ppv_detalle": "Total PPV: $7,594,720 (2505642x20 | 2505643x2)",
           "indicadores": "Prot Remov Acrilica:33 | Prot Remov Metalica:2 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:1",
-          "meta_altas_mes": 16,
-          "meta_cne_mes": 22
+          "meta_altas_mes": 24,
+          "meta_cne_mes": 31
         },
         "07_Julio": {
           "mes_num": 7,
@@ -2057,16 +2057,16 @@
           "ppv": 13507590,
           "ppv_detalle": "Total PPV: $13,507,590 (2505642x35 | 2505643x4)",
           "indicadores": "Prot Remov Acrilica:64 | Prot Remov Metalica:0 | Prot Fija Unitaria:4 | Prot Fija InlayOnlay:2",
-          "meta_altas_mes": 16,
-          "meta_cne_mes": 22
+          "meta_altas_mes": 24,
+          "meta_cne_mes": 31
         }
       }
     },
     "Sebastian Godoy": {
       "especialidad": "Rehabilitacion Oral",
       "color": "#2E86AB",
-      "meta_altas": 260,
-      "meta_cne": 344,
+      "meta_altas": 375,
+      "meta_cne": 498,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -2079,8 +2079,8 @@
           "ppv": 5177490,
           "ppv_detalle": "Total PPV: $5,177,490 (2505642x12 | 2505636x5)",
           "indicadores": "Prot Remov Acrilica:22 | Prot Remov Metalica:1 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 42
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -2093,8 +2093,8 @@
           "ppv": 3711960,
           "ppv_detalle": "Total PPV: $3,711,960 (2505642x9 | 2505636x3)",
           "indicadores": "Prot Remov Acrilica:13 | Prot Remov Metalica:1 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 42
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -2107,8 +2107,8 @@
           "ppv": 6608370,
           "ppv_detalle": "Total PPV: $6,608,370 (2505642x17 | 2505643x1 | 2505636x2)",
           "indicadores": "Prot Remov Acrilica:25 | Prot Remov Metalica:5 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 42
         },
         "04_Abril": {
           "mes_num": 4,
@@ -2121,8 +2121,8 @@
           "ppv": 6489340,
           "ppv_detalle": "Total PPV: $6,489,340 (2505642x14 | 2505636x4 | 2505643x2)",
           "indicadores": "Prot Remov Acrilica:23 | Prot Remov Metalica:1 | Prot Fija Unitaria:5 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 42
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -2135,8 +2135,8 @@
           "ppv": 8422160,
           "ppv_detalle": "Total PPV: $8,422,160 (2505642x19 | 2505636x7 | 2505643x1)",
           "indicadores": "Prot Remov Acrilica:25 | Prot Remov Metalica:6 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 42
         },
         "06_Junio": {
           "mes_num": 6,
@@ -2149,8 +2149,8 @@
           "ppv": 9802290,
           "ppv_detalle": "Total PPV: $9,802,290 (2505642x21 | 2505636x12)",
           "indicadores": "Prot Remov Acrilica:26 | Prot Remov Metalica:7 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 42
         },
         "07_Julio": {
           "mes_num": 7,
@@ -2163,8 +2163,8 @@
           "ppv": 5970280,
           "ppv_detalle": "Total PPV: $5,970,280 (2505642x13 | 2505636x7)",
           "indicadores": "Prot Remov Acrilica:22 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:0",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 31,
+          "meta_cne_mes": 42
         }
       }
     },
@@ -2277,8 +2277,8 @@
     "Yasna Covarrubias": {
       "especialidad": "TTM",
       "color": "#2DA8A8",
-      "meta_altas": 70,
-      "meta_cne": 116,
+      "meta_altas": 97,
+      "meta_cne": 162,
       "meses": {
         "01_Enero": {
           "mes_num": 1,
@@ -2291,8 +2291,8 @@
           "ppv": 847640,
           "ppv_detalle": "Total PPV: $847,640 (2505979x4)",
           "indicadores": "Terapia Fisica TTM:0 | Instalacion Dispositivo:20",
-          "meta_altas_mes": 6,
-          "meta_cne_mes": 10
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 14
         },
         "02_Febrero": {
           "mes_num": 2,
@@ -2305,8 +2305,8 @@
           "ppv": 1271460,
           "ppv_detalle": "Total PPV: $1,271,460 (2505979x6)",
           "indicadores": "Terapia Fisica TTM:0 | Instalacion Dispositivo:3",
-          "meta_altas_mes": 6,
-          "meta_cne_mes": 10
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 14
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -2319,8 +2319,8 @@
           "ppv": 2119100,
           "ppv_detalle": "Total PPV: $2,119,100 (2505979x10)",
           "indicadores": "Terapia Fisica TTM:2 | Instalacion Dispositivo:11",
-          "meta_altas_mes": 6,
-          "meta_cne_mes": 10
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 14
         },
         "04_Abril": {
           "mes_num": 4,
@@ -2333,8 +2333,8 @@
           "ppv": 2542920,
           "ppv_detalle": "Total PPV: $2,542,920 (2505979x12)",
           "indicadores": "Terapia Fisica TTM:0 | Instalacion Dispositivo:20",
-          "meta_altas_mes": 6,
-          "meta_cne_mes": 10
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 14
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -2347,8 +2347,8 @@
           "ppv": 423820,
           "ppv_detalle": "Total PPV: $423,820 (2505979x2)",
           "indicadores": "Terapia Fisica TTM:0 | Instalacion Dispositivo:18",
-          "meta_altas_mes": 6,
-          "meta_cne_mes": 10
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 14
         },
         "06_Junio": {
           "mes_num": 6,
@@ -2361,8 +2361,8 @@
           "ppv": 211910,
           "ppv_detalle": "Total PPV: $211,910 (2505979x1)",
           "indicadores": "Terapia Fisica TTM:1 | Instalacion Dispositivo:7",
-          "meta_altas_mes": 6,
-          "meta_cne_mes": 10
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 14
         },
         "07_Julio": {
           "mes_num": 7,
@@ -2375,16 +2375,16 @@
           "ppv": 1483370,
           "ppv_detalle": "Total PPV: $1,483,370 (2505979x7)",
           "indicadores": "Terapia Fisica TTM:1 | Instalacion Dispositivo:29",
-          "meta_altas_mes": 6,
-          "meta_cne_mes": 10
+          "meta_altas_mes": 8,
+          "meta_cne_mes": 14
         }
       }
     },
     "Manuel Campana": {
       "especialidad": "Rehabilitacion Oral",
       "color": "#2E86AB",
-      "meta_altas": 260,
-      "meta_cne": 344,
+      "meta_altas": 364,
+      "meta_cne": 482,
       "meses": {
         "02_Febrero": {
           "mes_num": 2,
@@ -2397,8 +2397,8 @@
           "ppv": 6921980,
           "ppv_detalle": "Total PPV: $6,921,980 (2505642x18 | 2505643x2)",
           "indicadores": "Prot Remov Acrilica:36 | Prot Remov Metalica:0 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:6",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 30,
+          "meta_cne_mes": 40
         },
         "03_Marzo": {
           "mes_num": 3,
@@ -2411,8 +2411,8 @@
           "ppv": 5323870,
           "ppv_detalle": "Total PPV: $5,323,870 (2505642x14 | 2505643x1 | 2702007x1)",
           "indicadores": "Prot Remov Acrilica:28 | Prot Remov Metalica:0 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:4",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 30,
+          "meta_cne_mes": 40
         },
         "04_Abril": {
           "mes_num": 4,
@@ -2425,8 +2425,8 @@
           "ppv": 6682900,
           "ppv_detalle": "Total PPV: $6,682,900 (2505642x16 | 2505643x3)",
           "indicadores": "Prot Remov Acrilica:34 | Prot Remov Metalica:0 | Prot Fija Unitaria:2 | Prot Fija InlayOnlay:2",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 30,
+          "meta_cne_mes": 40
         },
         "05_Mayo": {
           "mes_num": 5,
@@ -2439,8 +2439,8 @@
           "ppv": 8506540,
           "ppv_detalle": "Total PPV: $8,506,540 (2505642x24 | 2505643x1)",
           "indicadores": "Prot Remov Acrilica:43 | Prot Remov Metalica:0 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:1",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 30,
+          "meta_cne_mes": 40
         },
         "06_Junio": {
           "mes_num": 6,
@@ -2453,8 +2453,8 @@
           "ppv": 7355640,
           "ppv_detalle": "Total PPV: $7,355,640 (2505642x18 | 2505643x3)",
           "indicadores": "Prot Remov Acrilica:34 | Prot Remov Metalica:0 | Prot Fija Unitaria:0 | Prot Fija InlayOnlay:4",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 30,
+          "meta_cne_mes": 40
         },
         "07_Julio": {
           "mes_num": 7,
@@ -2467,8 +2467,8 @@
           "ppv": 8842910,
           "ppv_detalle": "Total PPV: $8,842,910 (2505642x25 | 2505643x1)",
           "indicadores": "Prot Remov Acrilica:43 | Prot Remov Metalica:3 | Prot Fija Unitaria:1 | Prot Fija InlayOnlay:2",
-          "meta_altas_mes": 22,
-          "meta_cne_mes": 29
+          "meta_altas_mes": 30,
+          "meta_cne_mes": 40
         }
       }
     }
