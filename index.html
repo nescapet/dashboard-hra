@@ -270,15 +270,27 @@ function getDatoEsp(nombre, mes){
       meta_altas_mes:a.meta_altas_mes+b.meta_altas_mes,
       meta_cne_mes:a.meta_cne_mes+b.meta_cne_mes,
     }),{cne:0,control:0,altas:0,inasist_cne:0,inasist_ctrl:0,ppv:0,ingresos:0,meta_altas_mes:0,meta_cne_mes:0});
-    // Acumular indicadores sumando por clave
+    // Acumular indicadores sumando por clave.
+    // Fix sesion 12: "Tasa_Real_Por_Paciente" (Periodoncia) es una TASA (ej.
+    // controles por cada alta), no una cantidad - sumarla mes a mes da un numero
+    // sin sentido (ej. 2.95+3.47+...=37). Para esa clave especifica se promedia
+    // en vez de sumar. Ademas se cambio parseInt->parseFloat porque truncaba el
+    // decimal de esa tasa (2.95 se mostraba como 2).
     const indAcum = {};
+    const indCount = {};
     Object.values(meses).forEach(m=>{
       if(!m.indicadores) return;
       m.indicadores.split(' | ').forEach(item=>{
         const [k,v] = item.split(':');
-        if(k) indAcum[k.trim()] = (indAcum[k.trim()]||0) + (parseInt(v)||0);
+        if(!k) return;
+        const key = k.trim();
+        indAcum[key] = (indAcum[key]||0) + (parseFloat(v)||0);
+        indCount[key] = (indCount[key]||0) + 1;
       });
     });
+    if(indAcum['Tasa_Real_Por_Paciente']!==undefined){
+      indAcum['Tasa_Real_Por_Paciente'] = Math.round((indAcum['Tasa_Real_Por_Paciente']/indCount['Tasa_Real_Por_Paciente'])*100)/100;
+    }
     const indStr = Object.entries(indAcum).map(([k,v])=>`${k}:${v}`).join(' | ');
     base.indicadores = indStr || '';
     return base;
@@ -427,31 +439,40 @@ function renderGeneral(mes){
   }).join('');
 
   // ── Cálculo top 2 CNE
+  // Fix sesion 12: antes "p" era la tasa de ausentismo PROPIA de cada especialidad
+  // (independiente entre especialidades, no tiene por que sumar 100), y "Restantes"
+  // se calculaba como 100-suma(tasas) - matematicamente sin sentido (podia dar
+  // negativo, mostrado como 0% aunque si hubiera inasistencias en el resto). Ahora
+  // "p" es la PARTICIPACION de cada especialidad sobre el total de inasistencias
+  // (igual logica que ya usaba correctamente "Registro Financiero PPV" mas abajo),
+  // asi los 3 numeros siempre suman 100%.
   const espInasCNE = Object.entries(DB.especialistas).map(([n,e])=>{
     const d=getDatoEsp(n,mes);
-    return {esp:e.especialidad, ic:d.inasist_cne, cne:d.cne};
+    return {esp:e.especialidad, ic:d.inasist_cne};
   }).reduce((acc,x)=>{
-    if(!acc[x.esp]) acc[x.esp]={ic:0,cne:0};
-    acc[x.esp].ic+=x.ic; acc[x.esp].cne+=x.cne; return acc;
+    if(!acc[x.esp]) acc[x.esp]=0;
+    acc[x.esp]+=x.ic; return acc;
   },{});
-  const sortedCNE=Object.entries(espInasCNE).map(([e,v])=>({e,p:v.cne>0?Math.round(v.ic/v.cne*100):0,ic:v.ic})).filter(x=>x.ic>0).sort((a,b)=>b.p-a.p);
+  const totalICesp=Object.values(espInasCNE).reduce((s,v)=>s+v,0);
+  const sortedCNE=Object.entries(espInasCNE).map(([e,ic])=>({e,ic,p:totalICesp>0?Math.round(ic/totalICesp*100):0})).filter(x=>x.ic>0).sort((a,b)=>b.ic-a.ic);
   const top2cne=sortedCNE.slice(0,2);
-  const restoCNE=100-top2cne.reduce((s,x)=>s+x.p,0);
-  const subCNE=top2cne.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCNE)}%`).join(' · ');
+  const restoCNE=totalICesp>0?Math.max(0,100-top2cne.reduce((s,x)=>s+x.p,0)):0;
+  const subCNE=top2cne.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${restoCNE}%`).join(' · ');
   const pCNE=t.cne>0?Math.round(t.ic/t.cne*100):0;
 
-  // ── Cálculo top 2 Control
+  // ── Cálculo top 2 Control (mismo fix que CNE)
   const espInasCtrl = Object.entries(DB.especialistas).map(([n,e])=>{
     const d=getDatoEsp(n,mes);
-    return {esp:e.especialidad, ik:d.inasist_ctrl, ctrl:d.control};
+    return {esp:e.especialidad, ik:d.inasist_ctrl};
   }).reduce((acc,x)=>{
-    if(!acc[x.esp]) acc[x.esp]={ik:0,ctrl:0};
-    acc[x.esp].ik+=x.ik; acc[x.esp].ctrl+=x.ctrl; return acc;
+    if(!acc[x.esp]) acc[x.esp]=0;
+    acc[x.esp]+=x.ik; return acc;
   },{});
-  const sortedCtrl=Object.entries(espInasCtrl).map(([e,v])=>({e,p:v.ctrl>0?Math.round(v.ik/v.ctrl*100):0,ik:v.ik})).filter(x=>x.ik>0).sort((a,b)=>b.p-a.p);
+  const totalIKesp=Object.values(espInasCtrl).reduce((s,v)=>s+v,0);
+  const sortedCtrl=Object.entries(espInasCtrl).map(([e,ik])=>({e,ik,p:totalIKesp>0?Math.round(ik/totalIKesp*100):0})).filter(x=>x.ik>0).sort((a,b)=>b.ik-a.ik);
   const top2ctrl=sortedCtrl.slice(0,2);
-  const restoCtrl=100-top2ctrl.reduce((s,x)=>s+x.p,0);
-  const subCtrl=top2ctrl.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${Math.max(0,restoCtrl)}%`).join(' · ');
+  const restoCtrl=totalIKesp>0?Math.max(0,100-top2ctrl.reduce((s,x)=>s+x.p,0)):0;
+  const subCtrl=top2ctrl.map(x=>`${x.e}: ${x.p}%`).concat(`Restantes: ${restoCtrl}%`).join(' · ');
   const pCtrl=t.ctrl>0?Math.round(t.ik/t.ctrl*100):0;
 
   // ── Cálculo PPV
@@ -937,16 +958,19 @@ function renderIndicadores(ind, nombreProf, mes){
     'Prot Remov Acrilica':'Prótesis Removible Acrílica','Prot Remov Metalica':'Prótesis Removible Metálica',
     'Prot Fija Unitaria':'Prótesis Fija Unitaria','Prot Fija InlayOnlay':'Prótesis Fija Inlay/Onlay',
     'Instalacion Dispositivo':'Instalación Dispositivo','Prot Muco-Implantoasistida':'Prótesis Muco-Implantoasistida',
+    'Tasa_Real_Por_Paciente':'Tasa Real Control/Alta (Periodoncia)',
   };
   const PALETA = ['#0B4F72','#1A7AAF','#2196C4','#0E7A5A','#9A6200','#7B3F9E','#C0392B','#0F8B8D'];
   const metasProf = (nombreProf && METAS_ESP[nombreProf]) ? METAS_ESP[nombreProf] : {};
   const fraccion = fraccionAnio(mes);
 
+  // Fix sesion 12: parseInt truncaba el decimal de "Tasa_Real_Por_Paciente" (ej.
+  // 2.95 se mostraba como 2). Se cambio a parseFloat para todos los indicadores.
   const items = ind.split(' | ').map(i=>{
     const [k,v] = i.split(':');
     const claveInt = k?.trim() || '';
     const nombre = RENOMBRES_IND[claveInt] || claveInt;
-    return [nombre, parseInt(v)||0, claveInt];
+    return [nombre, parseFloat(v)||0, claveInt];
   }).filter(([k])=>k);
 
   const cards = items.map(([nombre,v,claveInt],i)=>{
@@ -1097,10 +1121,17 @@ function renderPanelAusentismo(mes){
   const t = getTotales(mes, 'todas', 'todos');
 
   // Día con más ausencias CNE y Control
+  // Fix sesion 12: antes esto siempre sumaba TODOS los meses de
+  // DB.inasistencias_detalle sin importar el mes seleccionado en el filtro (la
+  // clave de cada entrada es "nombre|mes"). Con un mes especifico elegido, las
+  // tarjetas de arriba (INASISTENCIAS CNE/CONTROL) si filtraban correctamente,
+  // pero "dia mas ausente" seguia mostrando el acumulado completo - inconsistente
+  // dentro del mismo panel. Ahora respeta el mes elegido igual que el resto.
   const diasOrden = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
   const cntDiaCNE={}, cntDiaCtrl={};
   diasOrden.forEach(d=>{cntDiaCNE[d]=0; cntDiaCtrl[d]=0;});
   Object.entries(DB.inasistencias_detalle||{}).forEach(([key,val])=>{
+    if(mes!=='acum' && !key.endsWith('|'+mes)) return;
     Object.entries(val.dias||{}).forEach(([dia,n])=>{
       if(cntDiaCNE[dia]!==undefined){
         if(val.cne>0) cntDiaCNE[dia]+=n;
@@ -1278,6 +1309,12 @@ function renderEspecialidadInline(mes){
   }).join('');
 
   // Indicadores acumulados
+  // Fix sesion 12: "Tasa_Real_Por_Paciente" (Periodoncia) es una tasa, no una
+  // cantidad sumable - se excluye de esta grilla generica porque mas abajo
+  // ("tasaPerio") ya se calcula correctamente como control_total/altas_total
+  // del periodo. Sumar sus valores mensuales aca (como se hacia antes) daba un
+  // numero sin sentido y ademas duplicaba, con un valor distinto e incorrecto,
+  // lo que "Tasa ctrl/alta" ya muestra bien en el encabezado.
   const indAcum={};
   nombres.forEach(n=>{
     const mesesKeys=mes==='acum'?DB.meses:[mes];
@@ -1285,7 +1322,7 @@ function renderEspecialidadInline(mes){
       const ind=DB.especialistas[n]?.meses?.[m]?.indicadores||'';
       if(ind) ind.split('|').forEach(item=>{
         const [k,v]=item.trim().split(':');
-        if(k&&v) indAcum[k.trim()]=(indAcum[k.trim()]||0)+(parseInt(v.trim())||0);
+        if(k&&v&&k.trim()!=='Tasa_Real_Por_Paciente') indAcum[k.trim()]=(indAcum[k.trim()]||0)+(parseFloat(v.trim())||0);
       });
     });
   });
