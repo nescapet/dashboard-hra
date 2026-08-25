@@ -1402,8 +1402,14 @@ function renderProfesionalInline(mes){
   const e=DB.especialistas[nombre];
   if(!e) return '';
   const d=getDatoEsp(nombre,mes);
-  const p=pct(d.altas,e.meta_altas);
-  const pCNE=pct(d.cne,e.meta_cne);
+  // Fix sesion 12: antes comparaba lo acumulado del periodo contra la META ANUAL
+  // completa (e.meta_altas/e.meta_cne) sin escalar por tiempo transcurrido, lo que
+  // mostraba a todos los profesionales en rojo/amarillo casi todo el ano aunque
+  // fueran al dia. Ahora usa meta_altas_mes/meta_cne_mes (ya vienen prorrateados
+  // y sumados segun el periodo seleccionado por getDatoEsp), igual que el resto
+  // del dashboard (tabla de especialidad, top5, etc).
+  const p=pct(d.altas,d.meta_altas_mes);
+  const pCNE=pct(d.cne,d.meta_cne_mes);
   const pi=d.cne+d.control>0?Math.round((d.inasist_cne+d.inasist_ctrl)/(d.cne+d.control)*100):0;
   const ini=nombre.split(' ').slice(0,2).map(x=>x[0]).join('');
   const periodoLabel=mes==='acum'?'Acumulado '+DB.meses.length+' meses':mes.replace(/^\d+_/,'')+' 2026';
